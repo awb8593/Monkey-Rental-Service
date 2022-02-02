@@ -7,7 +7,7 @@ An online E-store system built in Java 8=>11 and ___ _replace with other platfor
 
 - Jack Yakubison jcy4561
 - Adrian Burgos awb8593
-- MEMBER3
+- Eligh Ros edr5068
 - MEMBER4
 - Jack Hester jrh339
 
