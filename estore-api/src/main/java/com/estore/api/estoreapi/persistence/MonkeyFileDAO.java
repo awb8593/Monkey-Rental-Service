@@ -21,6 +21,7 @@ import com.estore.api.estoreapi.model.Monkey;
  * class and injects the instance into other classes as needed
  * 
  * @author Adrian Burgos awb8593
+ * @author Trent Wesley taw8452
  */
 public class MonkeyFileDAO implements MonkeyDAO{
 
@@ -33,6 +34,21 @@ public class MonkeyFileDAO implements MonkeyDAO{
                                         // to the file
     private static int nextId;  // The next Id to assign to a new monkey
     private String filename;    // Filename to read from and write to
+    
+    /**
+     * Creates a Monkey File Data Access Object
+     * 
+     * @param filename Filename to read from and write to
+     * @param objectMapper Provides JSON Object to/from Java Object serialization and deserialization
+     * 
+     * @throws IOException when file cannot be accessed or read from
+     */
+    public MonkeyFileDAO(@Value("${monkeys.file}") String filename,ObjectMapper objectMapper) throws IOException {
+        this.filename = filename;
+        this.objectMapper = objectMapper;
+        load();  // load the heroes from the file
+    }
+
     /**
      * Generates the next id for a new {@linkplain Monkey monkey}
      * 
@@ -50,7 +66,30 @@ public class MonkeyFileDAO implements MonkeyDAO{
      * @return  The array of {@link Monkey monkeys}, may be empty
      */
     private Monkey[] getMonkeysArray() {
-        return getMonkeysArray();
+        return getMonkeysArray(null);
+    }
+
+    /**
+     * Generates an array of {@linkplain Monkey monkey} from the tree map for any
+     * {@linkplain Monkey monkey} that contains the text specified by containsText
+     * <br>
+     * If containsText is null, the array contains all of the {@linkplain Monkey monkey}
+     * in the tree map
+     * 
+     * @return  The array of {@link Monkey monkey}, may be empty
+     */
+    private Monkey[] getMonkeysArray(String containsText) { // if containsText == null, no filter
+        ArrayList<Monkey> monkeyArrayList = new ArrayList<>();
+
+        for (Monkey monkey : monkeys.values()) {
+            if (containsText == null || monkey.getName().contains(containsText)) {
+                monkeyArrayList.add(monkey);
+            }
+        }
+
+        Monkey[] monkeyArray = new Monkey[monkeyArrayList.size()];
+        monkeyArrayList.toArray(monkeyArray);
+        return monkeyArray;
     }
 
     /**
@@ -61,19 +100,48 @@ public class MonkeyFileDAO implements MonkeyDAO{
      * @throws IOException when file cannot be accessed or written to
      */
     private boolean save() throws IOException {
-        Monkey[] heroArray = getMonkeysArray();
+        Monkey[] monkeyArray = getMonkeysArray();
 
         // Serializes the Java Objects to JSON objects into the file
         // writeValue will thrown an IOException if there is an issue
         // with the file or reading from the file
-        objectMapper.writeValue(new File(filename),heroArray);
+        objectMapper.writeValue(new File(filename),monkeyArray);
+        return true;
+    }
+
+    /**
+     * Loads {@linkplain Monkey monkey} from the JSON file into the map
+     * <br>
+     * Also sets next id to one more than the greatest id found in the file
+     * 
+     * @return true if the file was read successfully
+     * 
+     * @throws IOException when file cannot be accessed or read from
+     */
+    private boolean load() throws IOException {
+        monkeys = new TreeMap<>();
+        nextId = 0;
+
+        // Deserializes the JSON objects from the file into an array of monkeys
+        // readValue will throw an IOException if there's an issue with the file
+        // or reading from the file
+        Monkey[] monkeyArray = objectMapper.readValue(new File(filename),Monkey[].class);
+
+        // Add each hero to the tree map and keep track of the greatest id
+        for (Monkey monkey : monkeyArray) {
+            monkeys.put(monkey.getId(), monkey);
+            if (monkey.getId() > nextId)
+                nextId = monkey.getId();
+        }
+        // Make the next id one greater than the maximum from the file
+        ++nextId;
         return true;
     }
 
     /**
     ** {@inheritDoc}
      */
-    // @Override we will have to add back later, currently throwing an error because it is not overriding anything yet
+    @Override
     public Monkey createMonkey(Monkey monkey) throws IOException {
         synchronized(monkeys) {
             // We create a new hero object because the id field is immutable
