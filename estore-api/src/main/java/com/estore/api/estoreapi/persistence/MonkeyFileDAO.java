@@ -46,7 +46,7 @@ public class MonkeyFileDAO implements MonkeyDAO{
     public MonkeyFileDAO(@Value("${monkeys.file}") String filename,ObjectMapper objectMapper) throws IOException {
         this.filename = filename;
         this.objectMapper = objectMapper;
-        load();  // load the heroes from the file
+        load();  // load the monkeys from the file
     }
 
     /**
@@ -127,7 +127,7 @@ public class MonkeyFileDAO implements MonkeyDAO{
         // or reading from the file
         Monkey[] monkeyArray = objectMapper.readValue(new File(filename),Monkey[].class);
 
-        // Add each hero to the tree map and keep track of the greatest id
+        // Add each monkey to the tree map and keep track of the greatest id
         for (Monkey monkey : monkeyArray) {
             monkeys.put(monkey.getId(), monkey);
             if (monkey.getId() > nextId)
@@ -144,7 +144,7 @@ public class MonkeyFileDAO implements MonkeyDAO{
     @Override
     public Monkey createMonkey(Monkey monkey) throws IOException {
         synchronized(monkeys) {
-            // We create a new hero object because the id field is immutable
+            // We create a new monkey object because the id field is immutable
             // and we need to assign the next unique id
             Monkey newMonkey = new Monkey(nextId(),monkey.getName());
             monkeys.put(newMonkey.getId(),newMonkey);
