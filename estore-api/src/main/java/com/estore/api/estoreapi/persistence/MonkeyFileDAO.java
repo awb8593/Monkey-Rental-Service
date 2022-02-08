@@ -22,7 +22,7 @@ import com.estore.api.estoreapi.model.Monkey;
  * 
  * @author Adrian Burgos awb8593
  */
-public class MonkeyFileDAO {
+public class MonkeyFileDAO implements MonkeyDAO{
 
     private static final Logger LOG = Logger.getLogger(MonkeyFileDAO.class.getName());
     Map<Integer,Monkey> monkeys;   // Provides a local cache of the monkey objects
