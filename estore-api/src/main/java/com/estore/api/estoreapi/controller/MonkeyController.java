@@ -54,7 +54,7 @@ public class MonkeyController {
      * ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
      */
     @PostMapping("")
-    public ResponseEntity<Monkey> createHero(@RequestBody Monkey monkey) {
+    public ResponseEntity<Monkey> createMonkey(@RequestBody Monkey monkey) {
         LOG.info("POST /monkeys " + monkey);
         try {
             Monkey m = monkeyDao.createMonkey(monkey);
