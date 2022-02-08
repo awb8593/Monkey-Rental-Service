@@ -21,6 +21,6 @@ public interface MonkeyDAO {
      * 
      * @throws IOException if an issue with underlying storage
      */
-    Monkey createProduct(Monkey monkey) throws IOException;
+    Monkey createMonkey(Monkey monkey) throws IOException;
     
 }
