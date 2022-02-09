@@ -153,4 +153,14 @@ public class MonkeyFileDAO implements MonkeyDAO{
             return newMonkey;
         }
     }
+
+    /**
+    ** {@inheritDoc}
+     */
+    @Override
+    public Monkey[] findMonkeys(String containsText) {
+        synchronized(monkeys) {
+            return getMonkeysArray(containsText);
+        }
+    }
 }

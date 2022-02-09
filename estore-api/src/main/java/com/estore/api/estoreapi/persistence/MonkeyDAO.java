@@ -23,4 +23,14 @@ public interface MonkeyDAO {
      */
     Monkey createMonkey(Monkey monkey) throws IOException;
     
+    /**
+     * Finds all {@linkplain Monkey monkey} whose name contains the given text
+     * 
+     * @param containsText The text to match against
+     * 
+     * @return An array of {@link Monkey monkey} whose names contains the given text, may be empty
+     * 
+     * @throws IOException if an issue with underlying storage
+     */
+    Monkey[] findMonkeys(String containsText) throws IOException;
 }

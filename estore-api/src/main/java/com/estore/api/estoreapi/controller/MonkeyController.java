@@ -68,4 +68,30 @@ public class MonkeyController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    /**
+     * Responds to the GET request for all {@linkplain Monkey monkey} whose name contains
+     * the text in name
+     * 
+     * @param name The name parameter which contains the text used to find the {@link Monkey monkey}
+     * 
+     * @return ResponseEntity with array of {@link Monkey monkey} objects (may be empty) and
+     * HTTP status of OK
+     * ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
+     * <p>
+     * Example: Find all monkeys that contain the text "ma"
+     * GET http://localhost:8080/monkeys/?name=ma
+     */
+    @GetMapping("/")
+    public ResponseEntity<Monkey[]> searchMonkeys(@RequestParam String name) {
+        LOG.info("GET /monkeys/?name="+name);
+        try{
+            Monkey[] monkeys = monkeyDao.findMonkeys(name);
+            return new ResponseEntity<Monkey[]>(monkeys,HttpStatus.OK);
+        }
+        catch(IOException e) {
+            LOG.log(Level.SEVERE,e.getLocalizedMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
