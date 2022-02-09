@@ -153,4 +153,19 @@ public class MonkeyFileDAO implements MonkeyDAO{
             return newMonkey;
         }
     }
+
+    /**
+    ** {@inheritDoc}
+     */
+    @Override
+    public Monkey updateMonkey(Monkey monkey) throws IOException {
+        synchronized(monkeys) {
+            if (monkeys.containsKey(monkey.getId()) == false)
+                return null;  // monkey does not exist
+
+            monkeys.put(monkey.getId(),monkey);
+            save(); // may throw an IOException
+            return monkey;
+        }
+    }
 }

@@ -22,5 +22,17 @@ public interface MonkeyDAO {
      * @throws IOException if an issue with underlying storage
      */
     Monkey createMonkey(Monkey monkey) throws IOException;
+
+    /**
+     * Updates and saves a {@linkplain Monkey monkey}
+     * 
+     * @param {@link Monkey monkey} object to be updated and saved
+     * 
+     * @return updated {@link Monkey monkey} if successful, null if
+     * {@link Monkey monkey} could not be found
+     * 
+     * @throws IOException if underlying storage cannot be accessed
+     */
+    Monkey updateMonkey(Monkey monkey) throws IOException;
     
 }
