@@ -23,6 +23,7 @@ import com.estore.api.estoreapi.model.Monkey;
  * @author Adrian Burgos awb8593
  * @author Trent Wesley taw8452
  */
+@Component
 public class MonkeyFileDAO implements MonkeyDAO{
 
     private static final Logger LOG = Logger.getLogger(MonkeyFileDAO.class.getName());
