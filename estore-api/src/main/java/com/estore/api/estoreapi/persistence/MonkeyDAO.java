@@ -11,6 +11,15 @@ import com.estore.api.estoreapi.model.Monkey;
 public interface MonkeyDAO {
     
     /**
+     * Retrieves all {@linkplain Monkey monkeys}
+     * 
+     * @return An array of {@link Monkey monkey} objects, may be empty
+     * 
+     * @throws IOException if an issue with underlying storage
+     */
+    Monkey[] getMonkeys() throws IOException;
+    
+    /**
      * Creates and saves a {@linkplain Monkey monkey}
      * 
      * @param monkey {@linkplain Monkey monkey} object to be created and saved
