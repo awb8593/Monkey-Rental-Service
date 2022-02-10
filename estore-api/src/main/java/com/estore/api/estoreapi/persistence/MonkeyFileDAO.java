@@ -143,16 +143,6 @@ public class MonkeyFileDAO implements MonkeyDAO{
     ** {@inheritDoc}
      */
     @Override
-    public Monkey[] getMonkeys() {
-        synchronized(monkeys) {
-            return getMonkeysArray();
-        }
-    }
-
-    /**
-    ** {@inheritDoc}
-     */
-    @Override
     public Monkey createMonkey(Monkey monkey) throws IOException {
         synchronized(monkeys) {
             // We create a new monkey object because the id field is immutable
