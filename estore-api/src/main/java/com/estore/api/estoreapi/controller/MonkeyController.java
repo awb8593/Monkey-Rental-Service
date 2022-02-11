@@ -80,7 +80,7 @@ public class MonkeyController {
      */
     @GetMapping("/{id}")
     public ResponseEntity<Monkey> getMonkey(@PathVariable int id) {
-        LOG.info("GET /monkeys" + id);
+        LOG.info("GET /monkeys/" + id);
         try {
             Monkey monkey = monkeyDao.getMonkey(id);
             if (monkey != null) {
