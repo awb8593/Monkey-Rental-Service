@@ -83,8 +83,8 @@ public class MonkeyController {
         LOG.info("PUT /monkeys " + monkey);
 
         try {
-            if (monkeyDao.getMonkey(monkey.getId()) == null) {
-                monkeyDao.updateMonkey(monkey);
+            Monkey m = monkeyDao.updateMonkey(monkey);
+            if (m != null) {
                 return new ResponseEntity<Monkey>(monkey, HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
