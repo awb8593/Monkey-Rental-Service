@@ -68,4 +68,31 @@ public class MonkeyController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    /**
+     * Updates the {@linkplain Monkey monkey} with the provided {@linkplain Monkey monkey} object, if it exists
+     * 
+     * @param monkey The {@link Monkey monkey} to update
+     * 
+     * @return ResponseEntity with updated {@link Monkey monkey} object and HTTP status of OK if updated<br>
+     * ResponseEntity with HTTP status of NOT_FOUND if not found<br>
+     * ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
+     */
+    @PutMapping("")
+    public ResponseEntity<Monkey> updateMonkey(@RequestBody Monkey monkey) {
+        LOG.info("PUT /monkeys " + monkey);
+
+        try {
+            if (monkeyDao.getMonkey(monkey.getId()) == null) {
+                monkeyDao.updateMonkey(monkey);
+                return new ResponseEntity<Monkey>(monkey, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        }
+        catch(IOException e) {
+            LOG.log(Level.SEVERE,e.getLocalizedMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
