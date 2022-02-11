@@ -22,6 +22,7 @@ import com.estore.api.estoreapi.model.Monkey;
  * 
  * @author Adrian Burgos awb8593
  * @author Trent Wesley taw8452
+ * @author Jack Hester jrh3397
  */
 @Component
 public class MonkeyFileDAO implements MonkeyDAO{
@@ -151,6 +152,16 @@ public class MonkeyFileDAO implements MonkeyDAO{
             monkeys.put(newMonkey.getId(),newMonkey);
             save(); // may throw an IOException
             return newMonkey;
+        }
+    }
+
+    /**
+     ** {@inheritDoc}
+     */
+    @Override
+    public Monkey[] getMonkeys() throws IOException {
+        synchronized(monkeys) {
+            return getMonkeysArray();
         }
     }
 }
