@@ -31,5 +31,5 @@ public interface MonkeyDAO {
      * 
      * @throws IOException if an issue with underlying storage
      */
-    Monkey[] getMonkeys() throws IOException;
+    Monkey[] getAllMonkeys() throws IOException;
 }

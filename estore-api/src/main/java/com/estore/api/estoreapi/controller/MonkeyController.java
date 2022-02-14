@@ -78,7 +78,7 @@ public class MonkeyController {
      * ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
      */
     @GetMapping("")
-    public ResponseEntity<Monkey[]> getMonkey(){
+    public ResponseEntity<Monkey[]> getAllMonkeys(){
         LOG.info("GET /monkeys");
         try {
             return new ResponseEntity<>(monkeyDao.getMonkeys(), HttpStatus.OK);

@@ -159,7 +159,7 @@ public class MonkeyFileDAO implements MonkeyDAO{
      ** {@inheritDoc}
      */
     @Override
-    public Monkey[] getMonkeys() throws IOException {
+    public Monkey[] getAllMonkeys() throws IOException {
         synchronized(monkeys) {
             return getMonkeysArray();
         }
