@@ -56,12 +56,15 @@ public class MonkeyController {
     @PostMapping("")
     public ResponseEntity<Monkey> createMonkey(@RequestBody Monkey monkey) {
         LOG.info("POST /monkeys " + monkey);
+
+        if (monkey.getName() == "") {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
         try {
-            Monkey m = monkeyDao.createMonkey(monkey);
-            if (monkey != null)
-                return new ResponseEntity<Monkey>(m, HttpStatus.CREATED);
-            else
-                return new ResponseEntity<>(HttpStatus.CONFLICT);
+            
+            Monkey newMonkey = monkeyDao.createMonkey(monkey);
+            return new ResponseEntity<Monkey>(newMonkey, HttpStatus.CREATED);
+
         }
         catch(IOException e){
             LOG.log(Level.SEVERE,e.getLocalizedMessage());
