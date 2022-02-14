@@ -87,7 +87,7 @@ public class MonkeyController {
                 return new ResponseEntity<Monkey>(monkey, HttpStatus.OK);
             }
             else {
-                return new ResponseEntity<Monkey>(HttpStatus.NOT_FOUND);
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
         }
         catch(IOException e) {
