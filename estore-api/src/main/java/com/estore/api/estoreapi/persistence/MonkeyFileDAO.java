@@ -158,8 +158,7 @@ public class MonkeyFileDAO implements MonkeyDAO{
     }
 
     /**
-GetEntireInventory
-     ** {@inheritDoc}
+    ** {@inheritDoc}
      */
     @Override
     public Monkey[] getAllMonkeys() throws IOException {
@@ -168,10 +167,10 @@ GetEntireInventory
         }
     }
 
+    /**
     ** {@inheritDoc}
      */
     @Override
-Update-a-product
     public Monkey updateMonkey(Monkey monkey) throws IOException {
         synchronized(monkeys) {
             if (monkeys.containsKey(monkey.getId()) == false)
@@ -219,6 +218,4 @@ Update-a-product
         }
     }
 
-main
-main
 }

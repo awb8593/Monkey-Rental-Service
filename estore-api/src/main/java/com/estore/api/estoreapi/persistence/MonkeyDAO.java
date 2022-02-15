@@ -24,7 +24,7 @@ public interface MonkeyDAO {
      */
     Monkey createMonkey(Monkey monkey) throws IOException;
 
-Update-a-product
+
     /**
      * Updates and saves a {@linkplain Monkey monkey}
      * 
@@ -38,7 +38,7 @@ Update-a-product
     Monkey updateMonkey(Monkey monkey) throws IOException;
 
     Monkey getMonkey(int id) throws IOException;
-main
+
     
     /**
 GetEntireInventory
@@ -50,6 +50,7 @@ GetEntireInventory
      */
     Monkey[] getAllMonkeys() throws IOException;
 
+    /**
      * Finds all {@linkplain Monkey monkey} whose name contains the given text
      * 
      * @param containsText The text to match against
@@ -72,5 +73,4 @@ GetEntireInventory
      * @throws IOException if underlying storage cannot be accessed
      */
     boolean deleteMonkey(int id) throws IOException;
-main
 }

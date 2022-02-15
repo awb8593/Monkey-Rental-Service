@@ -94,7 +94,8 @@ GetEntireInventory
 
     }
 
-Update-a-product
+
+    /**
      * Updates the {@linkplain Monkey monkey} with the provided {@linkplain Monkey monkey} object, if it exists
      * 
      * @param monkey The {@link Monkey monkey} to update
@@ -113,6 +114,7 @@ Update-a-product
                 return new ResponseEntity<Monkey>(monkey, HttpStatus.OK);
             } else {
 
+    /**
      * Responds to the GET request for a {@linkplain Monkey monkey} for the given id
      * 
      * @param id The id used to locate the {@link Monkey monkey}
@@ -130,12 +132,12 @@ Update-a-product
                 return new ResponseEntity<Monkey>(monkey, HttpStatus.OK);
             }
             else {
-main
+
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
         }
         catch(IOException e) {
-Update-a-product
+
 
             LOG.log(Level.SEVERE, e.getLocalizedMessage());
             return new ResponseEntity<Monkey>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -188,14 +190,9 @@ Update-a-product
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         catch(IOException e) {
-main
+
             LOG.log(Level.SEVERE,e.getLocalizedMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-Update-a-product
-
-
-main
-main
 }
