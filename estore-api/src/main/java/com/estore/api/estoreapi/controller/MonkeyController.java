@@ -81,7 +81,7 @@ public class MonkeyController {
     public ResponseEntity<Monkey[]> getAllMonkeys(){
         LOG.info("GET /monkeys");
         try {
-            return new ResponseEntity<>(monkeyDao.getMonkeys(), HttpStatus.OK);
+            return new ResponseEntity<>(monkeyDao.getAllMonkeys(), HttpStatus.OK);
         }
         catch(IOException e){
             LOG.log(Level.SEVERE,e.getLocalizedMessage());
