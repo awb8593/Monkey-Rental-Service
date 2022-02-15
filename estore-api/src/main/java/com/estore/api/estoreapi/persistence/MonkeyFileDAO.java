@@ -170,4 +170,30 @@ public class MonkeyFileDAO implements MonkeyDAO{
                 }
             }
     }
+  
+      /**
+    ** {@inheritDoc}
+     */
+    @Override
+    public Monkey[] findMonkeys(String containsText) {
+        synchronized(monkeys) {
+            return getMonkeysArray(containsText);
+        }
+    }
+
+    /**
+    ** {@inheritDoc}
+     */
+    @Override
+    public boolean deleteMonkey(int id) throws IOException {
+        synchronized(monkeys) {
+            if (monkeys.containsKey(id)) {
+                monkeys.remove(id);
+                return save();
+            }
+            else
+                return false;
+        }
+    }
+
 }

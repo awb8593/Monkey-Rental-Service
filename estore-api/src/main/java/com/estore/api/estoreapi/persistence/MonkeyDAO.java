@@ -25,4 +25,27 @@ public interface MonkeyDAO {
 
     Monkey getMonkey(int id) throws IOException;
     
+    /**
+     * Finds all {@linkplain Monkey monkey} whose name contains the given text
+     * 
+     * @param containsText The text to match against
+     * 
+     * @return An array of {@link Monkey monkey} whose names contains the given text, may be empty
+     * 
+     * @throws IOException if an issue with underlying storage
+     */
+    Monkey[] findMonkeys(String containsText) throws IOException;
+
+    /**
+     * Deletes a {@linkplain Monkey monkey} with the given id
+     * 
+     * @param id The id of the {@link Monkey monkey}
+     * 
+     * @return true if the {@link Monkey monkey} was deleted
+     * <br>
+     * false if monkey with the given id does not exist
+     * 
+     * @throws IOException if underlying storage cannot be accessed
+     */
+    boolean deleteMonkey(int id) throws IOException;
 }

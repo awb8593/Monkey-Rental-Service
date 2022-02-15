@@ -56,12 +56,15 @@ public class MonkeyController {
     @PostMapping("")
     public ResponseEntity<Monkey> createMonkey(@RequestBody Monkey monkey) {
         LOG.info("POST /monkeys " + monkey);
+
+        if (monkey.getName() == "") {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
         try {
-            Monkey m = monkeyDao.createMonkey(monkey);
-            if (monkey != null)
-                return new ResponseEntity<Monkey>(m, HttpStatus.CREATED);
-            else
-                return new ResponseEntity<>(HttpStatus.CONFLICT);
+            
+            Monkey newMonkey = monkeyDao.createMonkey(monkey);
+            return new ResponseEntity<Monkey>(newMonkey, HttpStatus.CREATED);
+
         }
         catch(IOException e){
             LOG.log(Level.SEVERE,e.getLocalizedMessage());
@@ -95,4 +98,56 @@ public class MonkeyController {
             return new ResponseEntity<Monkey>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    /**
+     * Responds to the GET request for all {@linkplain Monkey monkey} whose name contains
+     * the text in name
+     * 
+     * @param name The name parameter which contains the text used to find the {@link Monkey monkey}
+     * 
+     * @return ResponseEntity with array of {@link Monkey monkey} objects (may be empty) and
+     * HTTP status of OK
+     * ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
+     * <p>
+     * Example: Find all monkeys that contain the text "ma"
+     * GET http://localhost:8080/monkeys/?name=ma
+     */
+    @GetMapping("/")
+    public ResponseEntity<Monkey[]> searchMonkeys(@RequestParam String name) {
+        LOG.info("GET /monkeys/?name="+name);
+        try{
+            Monkey[] monkeys = monkeyDao.findMonkeys(name);
+            return new ResponseEntity<Monkey[]>(monkeys,HttpStatus.OK);
+        }
+        catch(IOException e) {
+            LOG.log(Level.SEVERE,e.getLocalizedMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /**
+     * Deletes a {@linkplain Monkey monkey} with the given id
+     * 
+     * @param id The id of the {@link Monkey monkey} to deleted
+     * 
+     * @return ResponseEntity HTTP status of OK if deleted<br>
+     * ResponseEntity with HTTP status of NOT_FOUND if not found<br>
+     * ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
+     */
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Monkey> deleteMonkey(@PathVariable int id) {
+        LOG.info("DELETE /monkeys/" + id);
+
+        try{
+            if( monkeyDao.deleteMonkey(id)) {
+                return new ResponseEntity<>(HttpStatus.OK);
+            }
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        catch(IOException e) {
+            LOG.log(Level.SEVERE,e.getLocalizedMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }
