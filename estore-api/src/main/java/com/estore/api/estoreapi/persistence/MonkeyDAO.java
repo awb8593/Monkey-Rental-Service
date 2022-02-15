@@ -7,6 +7,7 @@ import com.estore.api.estoreapi.model.Monkey;
  * Defines the interface for Monkey object persistence
  * 
  * @author Adrian Burgos awb8593
+ * @author Jack Hester jrh3397
  */
 public interface MonkeyDAO {
    
@@ -40,6 +41,15 @@ Update-a-product
 main
     
     /**
+GetEntireInventory
+     * Retrieves all {@linkplain Monkey monkeys}
+     * 
+     * @return An array of {@link Monkey hero} objects, may be empty
+     * 
+     * @throws IOException if an issue with underlying storage
+     */
+    Monkey[] getAllMonkeys() throws IOException;
+
      * Finds all {@linkplain Monkey monkey} whose name contains the given text
      * 
      * @param containsText The text to match against
@@ -62,4 +72,5 @@ main
      * @throws IOException if underlying storage cannot be accessed
      */
     boolean deleteMonkey(int id) throws IOException;
+main
 }

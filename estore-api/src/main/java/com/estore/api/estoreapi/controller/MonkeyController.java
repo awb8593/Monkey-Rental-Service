@@ -26,6 +26,7 @@ import com.estore.api.estoreapi.persistence.MonkeyDAO;
  * method handler to the Spring framework
  * 
  * @author Trent Wesley taw8452
+ * @author Jack Hester jrh3397
  */
 @RestController
 @RequestMapping("monkeys")
@@ -73,6 +74,26 @@ public class MonkeyController {
     }
 
     /**
+GetEntireInventory
+     * Responds to the GET request for all {@linkplain Monkey monkeys}
+     * 
+     * @return ResponseEntity with array of {@link Monkey monkey} objects (may be empty) and
+     * HTTP status of OK<br>
+     * ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
+     */
+    @GetMapping("")
+    public ResponseEntity<Monkey[]> getAllMonkeys(){
+        LOG.info("GET /monkeys");
+        try {
+            return new ResponseEntity<>(monkeyDao.getAllMonkeys(), HttpStatus.OK);
+        }
+        catch(IOException e){
+            LOG.log(Level.SEVERE,e.getLocalizedMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+
 Update-a-product
      * Updates the {@linkplain Monkey monkey} with the provided {@linkplain Monkey monkey} object, if it exists
      * 
@@ -175,5 +196,6 @@ main
 Update-a-product
 
 
+main
 main
 }

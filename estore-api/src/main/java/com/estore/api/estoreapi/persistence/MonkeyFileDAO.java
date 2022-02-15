@@ -24,6 +24,7 @@ import com.estore.api.estoreapi.model.Monkey;
  * 
  * @author Adrian Burgos awb8593
  * @author Trent Wesley taw8452
+ * @author Jack Hester jrh3397
  */
 @Component
 public class MonkeyFileDAO implements MonkeyDAO{
@@ -157,6 +158,16 @@ public class MonkeyFileDAO implements MonkeyDAO{
     }
 
     /**
+GetEntireInventory
+     ** {@inheritDoc}
+     */
+    @Override
+    public Monkey[] getAllMonkeys() throws IOException {
+        synchronized(monkeys) {
+            return getMonkeysArray();
+        }
+    }
+
     ** {@inheritDoc}
      */
     @Override
@@ -208,5 +219,6 @@ Update-a-product
         }
     }
 
+main
 main
 }
