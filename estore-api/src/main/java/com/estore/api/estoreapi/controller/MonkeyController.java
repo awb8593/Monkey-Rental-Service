@@ -73,6 +73,25 @@ public class MonkeyController {
     }
 
     /**
+Update-a-product
+     * Updates the {@linkplain Monkey monkey} with the provided {@linkplain Monkey monkey} object, if it exists
+     * 
+     * @param monkey The {@link Monkey monkey} to update
+     * 
+     * @return ResponseEntity with updated {@link Monkey monkey} object and HTTP status of OK if updated<br>
+     * ResponseEntity with HTTP status of NOT_FOUND if not found<br>
+     * ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
+     */
+    @PutMapping("")
+    public ResponseEntity<Monkey> updateMonkey(@RequestBody Monkey monkey) {
+        LOG.info("PUT /monkeys " + monkey);
+
+        try {
+            Monkey m = monkeyDao.updateMonkey(monkey);
+            if (m != null) {
+                return new ResponseEntity<Monkey>(monkey, HttpStatus.OK);
+            } else {
+
      * Responds to the GET request for a {@linkplain Monkey monkey} for the given id
      * 
      * @param id The id used to locate the {@link Monkey monkey}
@@ -90,10 +109,13 @@ public class MonkeyController {
                 return new ResponseEntity<Monkey>(monkey, HttpStatus.OK);
             }
             else {
+main
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
         }
         catch(IOException e) {
+Update-a-product
+
             LOG.log(Level.SEVERE, e.getLocalizedMessage());
             return new ResponseEntity<Monkey>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -145,9 +167,13 @@ public class MonkeyController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         catch(IOException e) {
+main
             LOG.log(Level.SEVERE,e.getLocalizedMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+Update-a-product
 
+
+main
 }

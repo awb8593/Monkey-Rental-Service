@@ -160,6 +160,18 @@ public class MonkeyFileDAO implements MonkeyDAO{
     ** {@inheritDoc}
      */
     @Override
+Update-a-product
+    public Monkey updateMonkey(Monkey monkey) throws IOException {
+        synchronized(monkeys) {
+            if (monkeys.containsKey(monkey.getId()) == false)
+                return null;  // monkey does not exist
+
+            monkeys.put(monkey.getId(),monkey);
+            save(); // may throw an IOException
+            return monkey;
+        }
+    }
+
     public Monkey getMonkey(int id) {
             synchronized(monkeys) {
                 if (monkeys.containsKey(id)) {
@@ -196,4 +208,5 @@ public class MonkeyFileDAO implements MonkeyDAO{
         }
     }
 
+main
 }
