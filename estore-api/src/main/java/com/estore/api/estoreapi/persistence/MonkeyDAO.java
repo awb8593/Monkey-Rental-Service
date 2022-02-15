@@ -7,6 +7,7 @@ import com.estore.api.estoreapi.model.Monkey;
  * Defines the interface for Monkey object persistence
  * 
  * @author Adrian Burgos awb8593
+ * @author Jack Hester jrh3397
  */
 public interface MonkeyDAO {
     
@@ -46,4 +47,13 @@ public interface MonkeyDAO {
      * @throws IOException if underlying storage cannot be accessed
      */
     boolean deleteMonkey(int id) throws IOException;
+    /**
+     * Retrieves all {@linkplain Monkey monkeys}
+     * 
+     * @return An array of {@link Monkey hero} objects, may be empty
+     * 
+     * @throws IOException if an issue with underlying storage
+     */
+    Monkey[] getAllMonkeys() throws IOException;
+GetEntireInventory
 }
