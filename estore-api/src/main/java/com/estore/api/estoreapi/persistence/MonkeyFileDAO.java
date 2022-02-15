@@ -2,11 +2,13 @@ package com.estore.api.estoreapi.persistence;
 
 import java.io.File;
 import java.io.IOException;
+import java.security.Key;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.logging.Logger;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -156,6 +158,7 @@ public class MonkeyFileDAO implements MonkeyDAO{
     }
 
     /**
+GetEntireInventory
      ** {@inheritDoc}
      */
     @Override
@@ -164,4 +167,58 @@ public class MonkeyFileDAO implements MonkeyDAO{
             return getMonkeysArray();
         }
     }
+
+    ** {@inheritDoc}
+     */
+    @Override
+Update-a-product
+    public Monkey updateMonkey(Monkey monkey) throws IOException {
+        synchronized(monkeys) {
+            if (monkeys.containsKey(monkey.getId()) == false)
+                return null;  // monkey does not exist
+
+            monkeys.put(monkey.getId(),monkey);
+            save(); // may throw an IOException
+            return monkey;
+        }
+    }
+
+    public Monkey getMonkey(int id) {
+            synchronized(monkeys) {
+                if (monkeys.containsKey(id)) {
+                    return monkeys.get(id);
+                }
+                else {
+                    return null;
+                }
+            }
+    }
+  
+      /**
+    ** {@inheritDoc}
+     */
+    @Override
+    public Monkey[] findMonkeys(String containsText) {
+        synchronized(monkeys) {
+            return getMonkeysArray(containsText);
+        }
+    }
+
+    /**
+    ** {@inheritDoc}
+     */
+    @Override
+    public boolean deleteMonkey(int id) throws IOException {
+        synchronized(monkeys) {
+            if (monkeys.containsKey(id)) {
+                monkeys.remove(id);
+                return save();
+            }
+            else
+                return false;
+        }
+    }
+
+main
+main
 }

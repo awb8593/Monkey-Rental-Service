@@ -10,7 +10,7 @@ import com.estore.api.estoreapi.model.Monkey;
  * @author Jack Hester jrh3397
  */
 public interface MonkeyDAO {
-    
+   
     /**
      * Creates and saves a {@linkplain Monkey monkey}
      * 
@@ -23,8 +23,25 @@ public interface MonkeyDAO {
      * @throws IOException if an issue with underlying storage
      */
     Monkey createMonkey(Monkey monkey) throws IOException;
+
+Update-a-product
+    /**
+     * Updates and saves a {@linkplain Monkey monkey}
+     * 
+     * @param {@link Monkey monkey} object to be updated and saved
+     * 
+     * @return updated {@link Monkey monkey} if successful, null if
+     * {@link Monkey monkey} could not be found
+     * 
+     * @throws IOException if underlying storage cannot be accessed
+     */
+    Monkey updateMonkey(Monkey monkey) throws IOException;
+
+    Monkey getMonkey(int id) throws IOException;
+main
     
     /**
+GetEntireInventory
      * Retrieves all {@linkplain Monkey monkeys}
      * 
      * @return An array of {@link Monkey hero} objects, may be empty
@@ -32,4 +49,28 @@ public interface MonkeyDAO {
      * @throws IOException if an issue with underlying storage
      */
     Monkey[] getAllMonkeys() throws IOException;
+
+     * Finds all {@linkplain Monkey monkey} whose name contains the given text
+     * 
+     * @param containsText The text to match against
+     * 
+     * @return An array of {@link Monkey monkey} whose names contains the given text, may be empty
+     * 
+     * @throws IOException if an issue with underlying storage
+     */
+    Monkey[] findMonkeys(String containsText) throws IOException;
+
+    /**
+     * Deletes a {@linkplain Monkey monkey} with the given id
+     * 
+     * @param id The id of the {@link Monkey monkey}
+     * 
+     * @return true if the {@link Monkey monkey} was deleted
+     * <br>
+     * false if monkey with the given id does not exist
+     * 
+     * @throws IOException if underlying storage cannot be accessed
+     */
+    boolean deleteMonkey(int id) throws IOException;
+main
 }
