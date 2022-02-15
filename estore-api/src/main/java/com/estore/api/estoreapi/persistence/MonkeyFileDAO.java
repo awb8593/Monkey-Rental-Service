@@ -2,11 +2,13 @@ package com.estore.api.estoreapi.persistence;
 
 import java.io.File;
 import java.io.IOException;
+import java.security.Key;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.logging.Logger;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -155,6 +157,21 @@ public class MonkeyFileDAO implements MonkeyDAO{
     }
 
     /**
+    ** {@inheritDoc}
+     */
+    @Override
+    public Monkey getMonkey(int id) {
+            synchronized(monkeys) {
+                if (monkeys.containsKey(id)) {
+                    return monkeys.get(id);
+                }
+                else {
+                    return null;
+                }
+            }
+    }
+  
+      /**
     ** {@inheritDoc}
      */
     @Override
