@@ -18,7 +18,7 @@ public class Monkey {
     @JsonProperty("name") private String name;
     @JsonProperty("price") float price;
     @JsonProperty("species") String species;
-    @JsonProperty("description") String desc;
+    @JsonProperty("description") String description;
     @JsonProperty("rented") boolean rented;
 
     /**
@@ -35,11 +35,12 @@ public class Monkey {
         @JsonProperty("name") String name, 
         @JsonProperty("price") float price, 
         @JsonProperty("species") String species, 
-        @JsonProperty("description") String desc) {
+        @JsonProperty("description") String description) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.species = species;
+        this.description = description;
 
         this.rented = false;
     }
@@ -91,15 +92,15 @@ public class Monkey {
 
     /**
      * Sets the description of the monkey - necessary for JSON object to Java object deserialization
-     * @param desc The description of the monkey
+     * @param description The description of the monkey
      */
-    public void setDescription(String desc) {this.desc = desc;}
+    public void setDescription(String description) {this.description = description;}
 
     /**
      * Retrieves the description of the monkey
      * @return The description of the monkey
      */
-    public String getDescription() {return desc;}
+    public String getDescription() {return description;}
 
     /**
      * Sets the rented status of the monkey - necessary for JSON object to Java object deserialization
@@ -118,6 +119,6 @@ public class Monkey {
      */
     @Override
     public String toString() {
-        return String.format(STRING_FORMAT,id,name,price,species,desc,rented);
+        return String.format(STRING_FORMAT,id,name,price,species,description,rented);
     }
 }
