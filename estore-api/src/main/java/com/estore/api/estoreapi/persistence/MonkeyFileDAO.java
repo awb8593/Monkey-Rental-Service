@@ -25,6 +25,7 @@ import com.estore.api.estoreapi.model.Monkey;
  * @author Adrian Burgos awb8593
  * @author Trent Wesley taw8452
  * @author Jack Hester jrh3397
+ * @author Jack Yakubison jcy4561
  */
 @Component
 public class MonkeyFileDAO implements MonkeyDAO{
@@ -150,7 +151,7 @@ public class MonkeyFileDAO implements MonkeyDAO{
         synchronized(monkeys) {
             // We create a new monkey object because the id field is immutable
             // and we need to assign the next unique id
-            Monkey newMonkey = new Monkey(nextId(),monkey.getName());
+            Monkey newMonkey = new Monkey(nextId(),monkey.getName(), monkey.getPrice(), monkey.getSpecies(), monkey.getDescription());
             monkeys.put(newMonkey.getId(),newMonkey);
             save(); // may throw an IOException
             return newMonkey;
