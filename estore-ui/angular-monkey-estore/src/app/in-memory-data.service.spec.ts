@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { Monkey } from './Monkey';
+import { Monkey } from './monkey';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    const monkey = [
+    const monkeys = [
       {id: 1, name: 'Aldo', price: 10.5, species: 'Baboon', description: 'Small monkey brought in 5 days ago', rented: false},
-      {id: 2, name: 'Rafiki', price: 20.5, species: 'Mandrill', description: 'Found on set of lion king', rented: false}]
+      {id: 2, name: 'Rafiki', price: 20.5, species: 'Mandrill', description: 'Found on set of lion king', rented: false}
     ];
     return {monkeys};
   }
