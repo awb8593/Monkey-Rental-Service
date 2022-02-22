@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BuyerProductListComponent } from './buyer-product-list/buyer-product-list.component';
 
 const routes : Routes = [
-  { path: 'buyerproductlist', component: BuyerProductListComponent }
+  { path: 'buyer-product-list', component: BuyerProductListComponent }
 ];
 
 @NgModule({
