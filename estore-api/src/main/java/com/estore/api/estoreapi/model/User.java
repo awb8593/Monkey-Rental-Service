@@ -18,11 +18,13 @@ public class User {
     @JsonProperty("id") private int id;
     @JsonProperty("username") private String username;
     @JsonProperty("cartList") private ArrayList<Integer> cartList;
+    @JsonProperty("rentedList") private ArrayList<Integer> rentedList;
 
     /**
      * Create a user with the given id and name
      * @param id The id of the user
-     * @param name The name of the user
+     * @param username The username of the user
+     * 
      * 
      * {@literal @}JsonProperty is used in serialization and deserialization
      * of the JSON object to the Java object in mapping the fields.  If a field
@@ -30,11 +32,11 @@ public class User {
      * value, i.e. 0 for int
      */
     public User(@JsonProperty("id") int id,
-        @JsonProperty("username") String username, 
-        @JsonProperty("cartList") ArrayList<Integer> cartList) {
-
+        @JsonProperty("username") String username) {
         this.id = id;
         this.username = username;
+        this.cartList = new ArrayList<Integer>();
+        this.rentedList = new ArrayList<Integer>();
 
     }
 
@@ -68,6 +70,19 @@ public class User {
      * @return The cartList of the user
      */
     public ArrayList<Integer> getCartList() {return cartList;}
+
+
+    /**
+     * Sets the rentedList of the user - necessary for JSON object to Java object deserialization
+     * @param rentedList The cartList of the user
+     */
+    public void setRentedList(ArrayList<Integer> rentedList) {this.rentedList= rentedList;}
+
+    /**
+     * Retrieves the rentedList of the user
+     * @return The rentedList of the user
+     */
+    public ArrayList<Integer> getRentedList() {return rentedList;}
     
 
 
@@ -76,6 +91,6 @@ public class User {
      */
     @Override
     public String toString() {
-        return String.format(STRING_FORMAT,id,username,cartList);
+        return String.format(STRING_FORMAT,id,username,cartList,rentedList);
     }
 }
