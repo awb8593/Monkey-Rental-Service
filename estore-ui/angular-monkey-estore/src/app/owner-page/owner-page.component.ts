@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Monkey } from '../monkey';
 import { MONKEYS } from './mock-monkey';
 
 @Component({
@@ -9,10 +10,14 @@ import { MONKEYS } from './mock-monkey';
 export class OwnerPageComponent implements OnInit {
 
   monkeys = MONKEYS;
+  selectedMonkey?: Monkey;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onSelect(monkey: Monkey): void {
+    this.selectedMonkey = monkey;
+  }
 }

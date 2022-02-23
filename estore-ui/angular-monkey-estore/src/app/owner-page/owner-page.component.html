@@ -1,6 +1,9 @@
 <h2>All Monkeys</h2>
 <ul class="monkeys">
-  <li>
-    <span class="badge">{{monkey.id}}</span> {{monkey.name}}
+  <li *ngFor="let monkey of monkeys">
+    <button [class.selected]="monkey === selectedMonkey" type="button" (click)="onSelect(hero)">
+      <span class="badge">{{monkey.id}}</span>
+      <span class="name">{{monkey.name}}</span>
+    </button>
   </li>
 </ul>
