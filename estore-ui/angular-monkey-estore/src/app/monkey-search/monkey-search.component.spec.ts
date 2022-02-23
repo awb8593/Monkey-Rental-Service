@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MonkeySearchComponent } from './monkey-search.component';
+import { NgModule } from '@angular/core';
+
 
 describe('MonkeySearchComponent', () => {
   let component: MonkeySearchComponent;
