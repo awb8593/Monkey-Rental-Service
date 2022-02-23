@@ -36,6 +36,22 @@ public class MonkeyControllerTest {
         monkeyController = new MonkeyController(mockMonkeyDAO);
     }
 
+    @Test
+    public void testCreateMonkey() throws IOException {  // createMonkey may throw IOException
+        // Setup
+        Monkey monkey = new Monkey(99, "Dankey Kang", 100.00f, "Kong", "Specializes in video-game themed birthday parties");
+        // when createMonkey is called, return true simulating successful
+        // creation and save
+        when(mockMonkeyDAO.createMonkey(monkey)).thenReturn(monkey);
+
+        // Invoke
+        ResponseEntity<Monkey> response = monkeyController.createMonkey(monkey);
+
+        // Analyze
+        assertEquals(HttpStatus.CREATED,response.getStatusCode());
+        assertEquals(monkey,response.getBody());
+    }
+
 
 
 }
