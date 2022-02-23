@@ -27,7 +27,7 @@ import org.junit.jupiter.api.Test;
  */
 @Tag("Persistence-tier")
 public class MonkeyFileDAOTest {
-    MonkeyFileDAO heroFileDAO;
+    MonkeyFileDAO monkeyFileDAO;
     Monkey[] testMonkeys;
     ObjectMapper mockObjectMapper;
 
@@ -45,11 +45,57 @@ public class MonkeyFileDAOTest {
         testMonkeys[2] = new Monkey(101,"TestMonkeyBeth", 102, "BETH SPECIES", "BETH DESC");
 
         // When the object mapper is supposed to read from the file
-        // the mock object mapper will return the hero array above
+        // the mock object mapper will return the monkey array above
         when(mockObjectMapper
             .readValue(new File("doesnt_matter.txt"),Monkey[].class))
                 .thenReturn(testMonkeys);
-        heroFileDAO = new MonkeyFileDAO("doesnt_matter.txt",mockObjectMapper);
+        monkeyFileDAO = new MonkeyFileDAO("doesnt_matter.txt",mockObjectMapper);
     }
+
+    @Test
+    public void testDeleteMonkey() {
+        // Invoke
+        boolean result = assertDoesNotThrow(() -> monkeyFileDAO.deleteMonkey(99), "Unexpected exception thrown");
+
+        // Analzye
+        assertEquals(result,true);
+        // We check the internal tree map size against the length
+        // of the test monkeys array - 1 (because of the delete)
+        // Because monkeys attribute of MonkeyFileDAO is package private
+        // we can access it directly
+        assertEquals(monkeyFileDAO.monkeys.size(),testMonkeys.length-1);
+    }
+
+    @Test
+    public void testCreateMonkey() {
+        // Setup
+        Monkey monkey = new Monkey(102 ,"TestMonkeyDonkeyKong", 1000, "KONG", "Specializes in video game-themed parties" );
+
+        // Invoke
+        Monkey result = assertDoesNotThrow(() -> monkeyFileDAO.createMonkey(monkey),
+                                "Unexpected exception thrown");
+
+        // Analyze
+        assertNotNull(result);
+        Monkey actual = monkeyFileDAO.getMonkey(monkey.getId());
+        assertEquals(actual.getId(),monkey.getId());
+        assertEquals(actual.getName(),monkey.getName());
+    }
+
+    @Test
+    public void testUpdateMonkey() {
+        // Setup
+        Monkey monkey = new Monkey(99,"TestMonkeyJimbo", 99, "JIMBO SPECIES", "JIMBO DESC" );
+
+        // Invoke
+        Monkey result = assertDoesNotThrow(() -> monkeyFileDAO.updateMonkey(monkey),
+                                "Unexpected exception thrown");
+
+        // Analyze
+        assertNotNull(result);
+        Monkey actual = monkeyFileDAO.getMonkey(monkey.getId());
+        assertEquals(actual,monkey);
+    }
+
 
 }

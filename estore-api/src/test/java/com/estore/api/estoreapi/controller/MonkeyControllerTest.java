@@ -39,7 +39,7 @@ public class MonkeyControllerTest {
     @Test
     public void testCreateMonkey() throws IOException {  // createMonkey may throw IOException
         // Setup
-        Monkey monkey = new Monkey(99, "Dankey Kang", 100.00f, "Kong", "Specializes in video-game themed birthday parties");
+        Monkey monkey = new Monkey(99,"TestMonkeyJames", 99, "JAMES SPECIES", "JAMES DESC");
         // when createMonkey is called, return true simulating successful
         // creation and save
         when(mockMonkeyDAO.createMonkey(monkey)).thenReturn(monkey);
@@ -55,7 +55,7 @@ public class MonkeyControllerTest {
     @Test
     public void testCreateMonkeyFailed() throws IOException {  // createMonkey may throw IOException
         // Setup
-        Monkey monkey = new Monkey(99, "Dankey Kang", 100.00f, "Kong", "Specializes in video-game themed birthday parties");
+        Monkey monkey = new Monkey(99,"TestMonkeyJames", 99, "JAMES SPECIES", "JAMES DESC");
         // when createMonkey is called, return false simulating failed
         // creation and save
         when(mockMonkeyDAO.createMonkey(monkey)).thenReturn(null);
@@ -70,7 +70,7 @@ public class MonkeyControllerTest {
     @Test
     public void testCreateMonkeyHandleException() throws IOException {  // createMonkey may throw IOException
         // Setup
-        Monkey monkey = new Monkey(99, "Dankey Kang", 100.00f, "Kong", "Specializes in video-game themed birthday parties");
+        Monkey monkey = new Monkey(99,"TestMonkeyJames", 99, "JAMES SPECIES", "JAMES DESC");
 
         // When createMonkey is called on the Mock Monkey DAO, throw an IOException
         doThrow(new IOException()).when(mockMonkeyDAO).createMonkey(monkey);
