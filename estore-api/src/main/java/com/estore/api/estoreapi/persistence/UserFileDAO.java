@@ -86,7 +86,6 @@ public class UserFileDAO implements UserDAO{
         for (User user : users.values()) {
             if (containsText == null || user.getUsername().contains(containsText)) {
                 userArrayList.add(user);
-                System.out.println(user.getUsername());
             }
         }
 
