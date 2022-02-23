@@ -52,6 +52,36 @@ public class MonkeyControllerTest {
         assertEquals(monkey,response.getBody());
     }
 
+    @Test
+    public void testCreateMonkeyFailed() throws IOException {  // createMonkey may throw IOException
+        // Setup
+        Monkey monkey = new Monkey(99, "Dankey Kang", 100.00f, "Kong", "Specializes in video-game themed birthday parties");
+        // when createMonkey is called, return false simulating failed
+        // creation and save
+        when(mockMonkeyDAO.createMonkey(monkey)).thenReturn(null);
+
+        // Invoke
+        ResponseEntity<Monkey> response = monkeyController.createMonkey(monkey);
+
+        // Analyze
+        assertEquals(HttpStatus.CONFLICT,response.getStatusCode());
+    }
+
+    @Test
+    public void testCreateMonkeyHandleException() throws IOException {  // createMonkey may throw IOException
+        // Setup
+        Monkey monkey = new Monkey(99, "Dankey Kang", 100.00f, "Kong", "Specializes in video-game themed birthday parties");
+
+        // When createMonkey is called on the Mock Monkey DAO, throw an IOException
+        doThrow(new IOException()).when(mockMonkeyDAO).createMonkey(monkey);
+
+        // Invoke
+        ResponseEntity<Monkey> response = monkeyController.createMonkey(monkey);
+
+        // Analyze
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR,response.getStatusCode());
+    }
+
 
 
 }
