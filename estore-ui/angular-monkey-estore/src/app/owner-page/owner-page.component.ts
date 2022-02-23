@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MONKEYS } from './mock-monkey';
 
 @Component({
   selector: 'app-owner-page',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./owner-page.component.css']
 })
 export class OwnerPageComponent implements OnInit {
+
+  monkeys = MONKEYS;
 
   constructor() { }
 
