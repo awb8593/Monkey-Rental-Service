@@ -98,7 +98,7 @@ public class MonkeyControllerTest {
     @Test
     public void testCreateMonkeyFailed() throws IOException {  // createMonkey may throw IOException
         // Setup
-        Monkey monkey = new Monkey(99,"TestMonkeyJames", 99, "JAMES SPECIES", "JAMES DESC");
+        Monkey monkey = new Monkey(99,"", 99, "JAMES SPECIES", "JAMES DESC");
         // when createMonkey is called, return false simulating failed
         // creation and save
         when(mockMonkeyDAO.createMonkey(monkey)).thenReturn(null);
