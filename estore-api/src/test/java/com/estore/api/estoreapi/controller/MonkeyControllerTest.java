@@ -36,6 +36,49 @@ public class MonkeyControllerTest {
         monkeyController = new MonkeyController(mockMonkeyDAO);
     }
 
+
+    @Test
+    public void testGetMonkey() throws IOException {
+        int id = 99;
+        String name = "TestMonkey";
+        float price = 90;
+        String species = "TestSpecies";
+        String description = "TestDescription";
+        Monkey monkey = new Monkey(id,name,price,species,description);
+
+        when(mockMonkeyDAO.getMonkey(monkey.getId())).thenReturn(monkey);
+
+        ResponseEntity<Monkey> response = monkeyController.getMonkey(monkey.getId());
+
+        assertEquals(HttpStatus.OK,response.getStatusCode());
+        assertEquals(monkey,response.getBody());
+    }
+
+    @Test
+    public void testgetMonkeyNotFound() throws Exception {
+        int id = 99;
+
+        when(mockMonkeyDAO.getMonkey(id)).thenReturn(null);
+
+        ResponseEntity<Monkey> response = monkeyController.getMonkey(id);
+
+        assertEquals(HttpStatus.NOT_FOUND,response.getStatusCode());
+    }
+
+    @Test
+    public void testGetMonkeyHandleException() throws Exception { 
+        // Setup
+        int id = 99;
+        // When getMonkey is called on the Mock Monkey DAO, throw an IOException
+        doThrow(new IOException()).when(mockMonkeyDAO).getMonkey(id);
+
+        // Invoke
+        ResponseEntity<Monkey> response = monkeyController.getMonkey(id);
+
+        // Analyze
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR,response.getStatusCode());
+    }
+
     @Test
     public void testCreateMonkey() throws IOException {  // createMonkey may throw IOException
         // Setup
