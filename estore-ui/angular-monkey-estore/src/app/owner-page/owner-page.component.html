@@ -1,10 +1,26 @@
 <h2>All Monkeys</h2>
+
+<div>
+  <label for="new-monkey">Monkey name: </label>
+  <input id="new-monkey" #monkeyName />
+  
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button type="button" class="add-button" (click)="add(monkeyName.value); monkeyName.value=''">
+    Add monkey
+  </button>
+</div>
+
 <ul class="monkeys">
   <li *ngFor="let monkey of monkeys">
     <button [class.selected]="monkey === selectedMonkey" type="button" (click)="onSelect(monkey)">
-      <span class="badge">{{monkey.id}}</span>
-      <span class="name">{{monkey.name}}</span>
+      <span class="badge">ID: {{monkey.id}} |</span>
+      <span class="name"> Name: {{monkey.name}} |</span>
+      <span class="price"> Price: {{monkey.price}} |</span>
+      <span class="species"> Species: {{monkey.species}} </span>
     </button>
+    <br>
+    <span class="description">{{monkey.description}} </span>
   </li>
 </ul>
 
@@ -14,7 +30,15 @@
   <div>id: {{selectedMonkey.id}}</div>
   <div>
     <label for="monkey-name">Monkey name: </label>
-    <input id="monkey-name" [(ngModel)]="selectedMonkey.name" placeholder="name">
+    <input id="monkey-name" [(ngModel)]="selectedMonkey.name" placeholder="Monkey name">
+    <label for="monkey-price">Monkey price: </label>
+    <input type="number" id="monkey-price" [(ngModel)]="selectedMonkey.price" placeholder="Monkey price">
+    <label for="monkey-species">Monkey species: </label>
+    <input id="monkey-species" [(ngModel)]="selectedMonkey.species" placeholder="Monkey species">
+    <label for="monkey-description">Monkey description: </label>
+    <input id="monkey-description" [(ngModel)]="selectedMonkey.description" placeholder="Monkey description ">
+    <button type="button" class="update" title="update monkey"
+        (click)="update(selectedMonkey)">Update</button>
+    <button type="button" class="delete" title="delete monkey"
+        (click)="delete(selectedMonkey)">Delete</button>
   </div>
-
-</div>
