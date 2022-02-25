@@ -220,4 +220,18 @@ public class MonkeyControllerTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(monkeys, response.getBody());
     }
+    @Test
+    public void testSearchMonkeysHandleException() throws IOException { // findMonkeys may throw IOException
+        // Setup
+        String searchString = "an";
+        // When createMonkey is called on the Mock Monkey DAO, throw an IOException
+        doThrow(new IOException()).when(mockMonkeyDAO).findMonkeys(searchString);
+
+        // Invoke
+        ResponseEntity<Monkey[]> response = monkeyController.searchMonkeys(searchString);
+
+        // Analyze
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR,response.getStatusCode());
+    }
+
 }
