@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Monkey } from '../monkey';
 import { MonkeyService } from '../monkey.service';
 
 @Component({
@@ -8,6 +9,7 @@ import { MonkeyService } from '../monkey.service';
 })
 export class ProductPageComponent implements OnInit {
   monkeys: Monkey[] = [];
+  selectedMonkey?: Monkey;
 
   constructor(private monkeyService: MonkeyService) { }
 
@@ -16,7 +18,12 @@ export class ProductPageComponent implements OnInit {
   }
 
   getMonkeys(): void {
-    this.monkeys = this.monkeyService.getMonkeys();
+    this.monkeyService.getMonkeys()
+    .subscribe(monkeys => this.monkeys = monkeys);
+  }
+
+  onSelect(monkey: Monkey): void {
+    this.selectedMonkey = monkey;
   }
 
   
