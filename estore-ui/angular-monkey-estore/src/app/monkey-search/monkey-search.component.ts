@@ -18,11 +18,21 @@ import { MonkeyService } from '../monkey.service'; // !!!
   styleUrls: ['./monkey-search.component.css']
 })
 export class MonkeySearchComponent implements OnInit {
+  monkey: Monkey | undefined;
 
-  monkeys$!: Observable<Monkey[]>;
+  monkeys$!:Observable<Monkey[]>;
+
+  monkeys: Monkey[] = [];
+
+  selectedMonkey?: Monkey;
+
   private searchTerms = new Subject<string>();
 
   constructor(private monkeyService: MonkeyService) { } // !!!
+
+  onSelect(monkey: Monkey): void {
+    this.selectedMonkey = monkey;
+  }
 
   // Push a search term into the observable stream.
   search(term: string): void {
@@ -30,6 +40,7 @@ export class MonkeySearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //this.getMonkeys();
     this.monkeys$ = this.searchTerms.pipe( // !!!
       // wait 300 ms after each keystroke before considering the term
       debounceTime(300),
@@ -42,5 +53,9 @@ export class MonkeySearchComponent implements OnInit {
       this.monkeyService.searchMonkeys(term)),
     );
   }
+
+ /* getMonkeys(): void {
+    this.monkeyService.getMonkeys().subscribe(monkeys => this.monkeys = monkeys);
+  } */
 
 }
