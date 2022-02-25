@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Monkey } from '../monkey';
-import { MONKEYS } from './mock-monkey';
 import { MonkeyService } from '../monkey.service';
 import { Location } from '@angular/common';
 
@@ -53,7 +52,8 @@ export class OwnerPageComponent implements OnInit {
   }
 
   update(monkey: Monkey): void {
-    this.monkeyService.updateMonkey(monkey).subscribe(monkey => {this.monkeys.push(monkey);
+    this.monkeyService.updateMonkey(monkey).subscribe(monkey => {
+      this.monkeys.push(monkey);
     });
   }
 }

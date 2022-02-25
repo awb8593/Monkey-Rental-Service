@@ -3,9 +3,6 @@
 <div>
   <label for="new-monkey">Monkey name: </label>
   <input id="new-monkey" #monkeyName />
-  
-
-  <!-- (click) passes input value to add() and then clears the input -->
   <button type="button" class="add-button" (click)="add(monkeyName.value); monkeyName.value=''">
     Add monkey
   </button>
@@ -38,7 +35,7 @@
     <label for="monkey-description">Monkey description: </label>
     <input id="monkey-description" [(ngModel)]="selectedMonkey.description" placeholder="Monkey description ">
     <button type="button" class="update" title="update monkey"
-        (click)="update(selectedMonkey)">Update</button>
+        (click)="update(selectedMonkey); this.getMonkeys(); this.getMonkeys();">Update</button>
     <button type="button" class="delete" title="delete monkey"
-        (click)="delete(selectedMonkey)">Delete</button>
+        (click)="delete(selectedMonkey); this.getMonkeys(); this.getMonkeys();">Delete</button>
   </div>
