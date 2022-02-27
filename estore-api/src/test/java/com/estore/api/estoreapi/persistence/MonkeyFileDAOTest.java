@@ -97,5 +97,34 @@ public class MonkeyFileDAOTest {
         assertEquals(actual,monkey);
     }
 
+    @Test
+    public void testGetAllMonkeys() throws IOException {
+        // Invoke
+        Monkey[] monkeys = monkeyFileDAO.getAllMonkeys();
 
+        // Analyze
+        assertEquals(monkeys.length,testMonkeys.length);
+        for (int i = 0; i < testMonkeys.length;++i)
+            assertEquals(monkeys[i],testMonkeys[i]);
+    }
+
+    @Test
+    public void testFindMonkeys() {
+        // Invoke
+        Monkey[] monkeys = monkeyFileDAO.findMonkeys("h");
+
+        // Analyze
+        assertEquals(monkeys.length,2);
+        assertEquals(monkeys[0], testMonkeys[1]);
+        assertEquals(monkeys[1], testMonkeys[2]);
+    }
+
+    @Test
+    public void testGetMonkey() {
+        // Invoke
+        Monkey monkey = monkeyFileDAO.getMonkey(99);
+
+        // Analyze
+        assertEquals(monkey, testMonkeys[0]);
+    }
 }

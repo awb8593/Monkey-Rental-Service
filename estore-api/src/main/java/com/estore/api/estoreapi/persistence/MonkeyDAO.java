@@ -66,7 +66,7 @@ public interface MonkeyDAO {
     /**
      * Retrieves all {@linkplain Monkey monkeys}
      * 
-     * @return An array of {@link Monkey hero} objects, may be empty
+     * @return An array of {@link Monkey monkey} objects, may be empty
      * 
      * @throws IOException if an issue with underlying storage
      */

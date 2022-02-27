@@ -125,6 +125,45 @@ public class MonkeyControllerTest {
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR,response.getStatusCode());
     }
 
+    @Test
+    public void testDeleteMonkey() throws IOException {
+        // Setup
+        int monkeyId = 99;
+        // when deleteMonkey is called return true, simulating successful deletion
+        when(mockMonkeyDAO.deleteMonkey(monkeyId)).thenReturn(true);
 
+        // Invoke
+        ResponseEntity<Monkey> response = monkeyController.deleteMonkey(monkeyId);
 
+        // Analyze
+        assertEquals(HttpStatus.OK,response.getStatusCode());
+    }
+
+    @Test
+    public void testDeleteMonkeyNotFound() throws IOException {
+        // Setup
+        int monkeyId = 99;
+        // when deleteMonkey is called return false, simulating failed deletion
+        when(mockMonkeyDAO.deleteMonkey(monkeyId)).thenReturn(false);
+
+        // Invoke
+        ResponseEntity<Monkey> response = monkeyController.deleteMonkey(monkeyId);
+
+        // Analyze
+        assertEquals(HttpStatus.NOT_FOUND,response.getStatusCode());
+    }
+
+    @Test
+    public void testDeleteMonkeyHandleException() throws IOException {
+        // Setup
+        int monkeyId = 99;
+        // When deleteMonkey is called on the Mock Monkey DAO, throw an IOException
+        doThrow(new IOException()).when(mockMonkeyDAO).deleteMonkey(monkeyId);
+
+        // Invoke
+        ResponseEntity<Monkey> response = monkeyController.deleteMonkey(monkeyId);
+
+        // Analyze
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR,response.getStatusCode());
+    }
 }
