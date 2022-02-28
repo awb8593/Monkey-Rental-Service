@@ -163,6 +163,10 @@ public class UserFileDAO implements UserDAO{
         synchronized(users) {
             if (users.containsKey(user.getId()) == false)
                 return null;  // user does not exist
+            if (!users.get(user.getId()).getUsername().equals(user.getUsername())){
+                // Rejects update if username changes
+                return users.get(user.getId());
+            }
 
             users.put(user.getId(),user);
             save(); // may throw an IOException
@@ -170,7 +174,7 @@ public class UserFileDAO implements UserDAO{
         }
     }
 
-    public User getUser(int id) {
+    public User getUserId(int id) {
             synchronized(users) {
                 if (users.containsKey(id)) {
                     return users.get(id);
@@ -185,26 +189,20 @@ public class UserFileDAO implements UserDAO{
     ** {@inheritDoc}
      */
     @Override
-    public User[] findUsers(String containsText) {
+    public User getUserName(String username) {
         synchronized(users) {
-            return getUsersArray(containsText);
+            User[] userArray = getUsersArray();
+
+            for(int i = 0; i < userArray.length; i++) {
+                if(userArray[i].getUsername().equals(username)) {
+                    return userArray[i];
+                }
+            }
+            return null;
+
         }
     }
 
-    /**
-    ** {@inheritDoc}
-     */
-    @Override
-    public boolean deleteUser(int id) throws IOException {
-        synchronized(users) {
-            if (users.containsKey(id)) {
-                users.remove(id);
-                return save();
-            }
-            else
-                return false;
-        }
-    }
 
     /**
      ** {@inheritDoc}

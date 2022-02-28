@@ -26,11 +26,13 @@ public interface UserDAO {
 
     /**
      * Updates and saves a {@linkplain User user}
+     * but rejects the update if the username changes
      * 
      * @param {@link User user} object to be updated and saved
      * 
      * @return updated {@link User user} if successful, null if
-     * {@link User user} could not be found
+     * {@link User user} could not be found, returns original user if 
+     * update is invalid
      * 
      * @throws IOException if underlying storage cannot be accessed
      */
@@ -43,32 +45,20 @@ public interface UserDAO {
      * 
      * @throws IOException if an issue with underlying storage
      */
-    User getUser(int id) throws IOException;
+    User getUserId(int id) throws IOException;
 
     
     /**
-     * Finds all {@linkplain User user} whose name contains the given text
+     * Finds all {@linkplain User user} whose name matches the name input
      * 
-     * @param containsText The text to match against
+     * @param username The text to match against
      * 
-     * @return An array of {@link User user} whose names contains the given text, may be empty
+     * @return A single {@link User user} whose name matches the username provided or null if the user doenst exist
      * 
      * @throws IOException if an issue with underlying storage
      */
-    User[] findUsers(String containsText) throws IOException;
+    User getUserName(String username) throws IOException;
 
-    /**
-     * Deletes a {@linkplain User user} with the given id
-     * 
-     * @param id The id of the {@link User user}
-     * 
-     * @return true if the {@link User user} was deleted
-     * <br>
-     * false if user with the given id does not exist
-     * 
-     * @throws IOException if underlying storage cannot be accessed
-     */
-    boolean deleteUser(int id) throws IOException;
     /**
      * Retrieves all {@linkplain User users}
      * 

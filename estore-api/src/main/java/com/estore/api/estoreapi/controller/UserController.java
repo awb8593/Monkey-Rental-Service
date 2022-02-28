@@ -92,7 +92,13 @@ public class UserController {
         try {
             User m = userDao.updateUser(user);
             if (m != null) {
-                return new ResponseEntity<User>(user, HttpStatus.OK);
+                if(!m.equals(user)) {
+                    return new ResponseEntity<User>(m, HttpStatus.NOT_ACCEPTABLE);
+                }   
+                else {
+                    return new ResponseEntity<User>(user, HttpStatus.OK);
+                }
+                
             } else {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
@@ -113,10 +119,10 @@ public class UserController {
      * ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
      */
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUser(@PathVariable int id) {
+    public ResponseEntity<User> getUserById(@PathVariable int id) {
         LOG.info("GET /users/" + id);
         try {
-            User user = userDao.getUser(id);
+            User user = userDao.getUserId(id);
             if (user != null) {
                 return new ResponseEntity<User>(user, HttpStatus.OK);
             }
@@ -134,55 +140,34 @@ public class UserController {
     }
 
     /**
-     * Responds to the GET request for all {@linkplain User user} whose username contains
-     * the text in username
+     * Responds to the GET request for the {@linkplain User user} whose username matches the input userame
      * 
      * @param username The username parameter which contains the text used to find the {@link User user}
      * 
-     * @return ResponseEntity with array of {@link User user} objects (may be empty) and
-     * HTTP status of OK
+     * @return ResponseEntity a {@link User user} and HTTP status of OK, or NOT_FOUND
      * ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
      * <p>
-     * Example: Find all users that contain the text "ma"
-     * GET http://localhost:8080/users/?name=ma
+     * Example: Find the user with the username bob125
+     * GET http://localhost:8080/users/?username=bob125
      */
     @GetMapping("/")
-    public ResponseEntity<User[]> searchUsers(@RequestParam String username) {
+    public ResponseEntity<User> getUserByName(@RequestParam String username) {
         LOG.info("GET /users/?username="+username);
         try{
-            User[] users = userDao.findUsers(username);
-            return new ResponseEntity<User[]>(users,HttpStatus.OK);
-        }
-        catch(IOException e) {
-            LOG.log(Level.SEVERE,e.getLocalizedMessage());
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    /**
-     * Deletes a {@linkplain User user} with the given id
-     * 
-     * @param id The id of the {@link User user} to deleted
-     * 
-     * @return ResponseEntity HTTP status of OK if deleted<br>
-     * ResponseEntity with HTTP status of NOT_FOUND if not found<br>
-     * ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
-     */
-    @DeleteMapping("/{id}")
-    public ResponseEntity<User> deleteUser(@PathVariable int id) {
-        LOG.info("DELETE /users/" + id);
-
-        try{
-            if( userDao.deleteUser(id)) {
-                return new ResponseEntity<>(HttpStatus.OK);
+            User user = userDao.getUserName(username);
+            if( user != null) {
+                return new ResponseEntity<User>(user,HttpStatus.OK);
             }
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            } 
         }
         catch(IOException e) {
             LOG.log(Level.SEVERE,e.getLocalizedMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     /**
     * Responds to the GET request for all {@linkplain User users}
      * 
