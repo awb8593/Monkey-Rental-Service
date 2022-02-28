@@ -59,13 +59,14 @@ public class UserController {
 
         try {
             User[] userList = userDao.getAllUsers();
-        
-            for(int i = 0; i < userList.length; i++){
-                if(userList[i].getUsername().equals(user.getUsername())) {
-                    return new ResponseEntity<>(HttpStatus.CONFLICT);
+            if(userList != null)
+            {
+                for(int i = 0; i < userList.length; i++){
+                    if(userList[i].getUsername().equals(user.getUsername())) {
+                        return new ResponseEntity<>(HttpStatus.CONFLICT);
+                    }
                 }
             }
-
             User newUser = userDao.createUser(user);
             return new ResponseEntity<User>(newUser, HttpStatus.CREATED);
 
