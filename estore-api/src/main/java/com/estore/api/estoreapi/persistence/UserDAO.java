@@ -62,7 +62,7 @@ public interface UserDAO {
     /**
      * Retrieves all {@linkplain User users}
      * 
-     * @return An array of {@link User hero} objects, may be empty
+     * @return An array of {@link User user} objects, may be empty
      * 
      * @throws IOException if an issue with underlying storage
      */
