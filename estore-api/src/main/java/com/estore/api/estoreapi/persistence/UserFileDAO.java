@@ -203,14 +203,4 @@ public class UserFileDAO implements UserDAO{
         }
     }
 
-
-    /**
-     ** {@inheritDoc}
-     */
-    @Override
-    public User[] getAllUsers() throws IOException {
-        synchronized(users) {
-            return getUsersArray();
-        }
-    }
 }

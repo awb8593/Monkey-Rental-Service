@@ -169,22 +169,4 @@ public class UserController {
         }
     }
 
-    /**
-    * Responds to the GET request for all {@linkplain User users}
-     * 
-     * @return ResponseEntity with array of {@link User user} objects (may be empty) and
-     * HTTP status of OK<br>
-     * ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
-     */
-    @GetMapping("")
-    public ResponseEntity<User[]> getAllUsers(){
-        LOG.info("GET /users");
-        try {
-            return new ResponseEntity<>(userDao.getAllUsers(), HttpStatus.OK);
-        }
-        catch(IOException e){
-            LOG.log(Level.SEVERE,e.getLocalizedMessage());
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
 }

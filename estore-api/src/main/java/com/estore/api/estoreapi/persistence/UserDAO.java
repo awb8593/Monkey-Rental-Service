@@ -59,12 +59,4 @@ public interface UserDAO {
      */
     User getUserName(String username) throws IOException;
 
-    /**
-     * Retrieves all {@linkplain User users}
-     * 
-     * @return An array of {@link User user} objects, may be empty
-     * 
-     * @throws IOException if an issue with underlying storage
-     */
-    User[] getAllUsers() throws IOException;
 }
