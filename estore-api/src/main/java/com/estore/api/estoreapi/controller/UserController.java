@@ -78,6 +78,8 @@ public class UserController {
     }
 
     /**
+     * Responds to the PUT request to update a {@linkplain User user} with a given id
+     * 
      * Updates the {@linkplain User user} with the provided {@linkplain User user} object, if it exists
      * 
      * @param user The {@link User user} to update
