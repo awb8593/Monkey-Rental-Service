@@ -71,7 +71,6 @@ public class User {
      */
     public ArrayList<Integer> getCartList() {return cartList;}
 
-
     /**
      * Sets the rentedList of the user - necessary for JSON object to Java object deserialization
      * @param rentedList The cartList of the user
@@ -83,8 +82,6 @@ public class User {
      * @return The rentedList of the user
      */
     public ArrayList<Integer> getRentedList() {return rentedList;}
-    
-
 
     /**
      * {@inheritDoc}
