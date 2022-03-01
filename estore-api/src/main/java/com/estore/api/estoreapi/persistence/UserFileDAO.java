@@ -203,7 +203,6 @@ public class UserFileDAO implements UserDAO{
         }
     }
 
-
     /**
      ** {@inheritDoc}
      */
@@ -215,4 +214,3 @@ public class UserFileDAO implements UserDAO{
     }
 }
 
-    
