@@ -68,3 +68,4 @@ public interface UserDAO {
      */
     User[] getAllUsers() throws IOException;
 }
+
