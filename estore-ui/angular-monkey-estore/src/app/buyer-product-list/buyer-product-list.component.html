@@ -1,9 +1,9 @@
-<h2>Monkeys?</h2>
-
 <ul class="monkeys">
     <li *ngFor="let monkey of monkeys">
-        <button type="button">
-            {{monkey.name}}
+        <button type="button" (click)="clickEvent(monkey)">
+            {{monkey.name}} the {{monkey.species}}
         </button>
     </li>
 </ul>
+
+{{message}}
