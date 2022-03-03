@@ -24,6 +24,6 @@ export class BuyerProductListComponent implements OnInit {
   }
 
   clickEvent(monkey: Monkey): void {
-    this.message = monkey.name + " has been clicked ";
+    this.message = monkey.name + " has been clicked";
   }
 }
