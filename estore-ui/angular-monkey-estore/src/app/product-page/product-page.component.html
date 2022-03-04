@@ -1,0 +1,24 @@
+<h2>Monkeys For Rent</h2>
+<ul class="monkeys">
+  <li *ngFor="let monkey of monkeys">
+    <button [class.selected]="monkey === selectedMonkey" type="button" (click)="onSelect(monkey)">
+      <span class="name">{{monkey.name}}</span>
+      <span class="price">{{monkey.price}}</span>
+    </button>
+  </li>
+</ul>
+
+<div *ngIf="selectedMonkey">
+
+  <h2>{{selectedMonkey.name | uppercase}} Details</h2>
+  <div>id: {{selectedMonkey.id}}</div>
+  <div>
+    <label for="monkey-name">Monkey Name: </label>
+    <input id="monkey-name" [(ngModel)]="selectedMonkey.name" placeholder="name">
+    <label for="monkey-species">Species: </label> 
+    <input id="monkey-species" [(ngModel)]="selectedMonkey.species" placeholder="species">
+    <label for="monkey-price">Price: </label> 
+    <input id="monkey-species" [(ngModel)]="selectedMonkey.price" placeholder="price">
+  </div>
+
+</div>
