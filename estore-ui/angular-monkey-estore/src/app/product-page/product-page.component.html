@@ -1,11 +1,9 @@
 <h2>Monkeys For Rent</h2>
 <ul class="monkeys">
-  <li *ngFor="let monkey of monkeys">
-    <button [class.selected]="monkey === selectedMonkey" type="button" (click)="onSelect(monkey)">
-      <span class="name">{{monkey.name}}</span>
-      <span class="price">{{monkey.price}}</span>
-    </button>
-  </li>
+  <a *ngFor="let monkey of monkeys"
+  routerLink="/detail/{{monkey.id}}">
+  {{monkey.name}}
+</a>
 </ul>
 
 <div *ngIf="selectedMonkey">
