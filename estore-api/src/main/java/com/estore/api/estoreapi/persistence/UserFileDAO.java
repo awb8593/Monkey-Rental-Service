@@ -63,30 +63,16 @@ public class UserFileDAO implements UserDAO{
     }
 
     /**
-     * Generates an array of {@linkplain User users} from the tree map
-     * 
-     * @return  The array of {@link User users}, may be empty
-     */
-    private User[] getUsersArray() {
-        return getUsersArray(null);
-    }
-
-    /**
-     * Generates an array of {@linkplain User user} from the tree map for any
-     * {@linkplain User user} that contains the text specified by containsText
-     * <br>
-     * If containsText is null, the array contains all of the {@linkplain User user}
-     * in the tree map
+     * Generates an array of {@linkplain User user} from every
+     * {@linkplain User user} in the tree map
      * 
      * @return  The array of {@link User user}, may be empty
      */
-    private User[] getUsersArray(String containsText) { // if containsText == null, no filter
+    private User[] getUsersArray() { 
         ArrayList<User> userArrayList = new ArrayList<>();
 
         for (User user : users.values()) {
-            if (containsText == null || user.getUsername().contains(containsText)) {
-                userArrayList.add(user);
-            }
+            userArrayList.add(user);   
         }
 
         User[] userArray = new User[userArrayList.size()];
