@@ -23,4 +23,10 @@ export class MonkeyService {
   getMonkeys(): Observable<Monkey[]> {
     return this.http.get<Monkey[]>(this.monkeysUrl)
   }
+
+  getMonkey(id: number): Observable<Monkey> {
+    const url = `${this.monkeysUrl}/${id}`;
+    return this.http.get<Monkey>(url);
+  }
+
 }
