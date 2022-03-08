@@ -3,17 +3,20 @@
         width: 250px;
         height: 40px;
     }
-
 </style>
 
-<ul class="monkeys">
-    <li *ngFor="let monkey of monkeys">
-        <button type="button" (click)="clickEvent(monkey)">
-            <div style="font-size:larger; font-weight:550; font-style: oblique;">
-                {{monkey.name}} the {{monkey.species}} <br>price: ${{monkey.price}}
-            </div>
-        </button>
-    </li>
-</ul>
+<div style="display: inline-block;">
+    <ul class="monkeys">
+        <li *ngFor="let monkey of monkeys">
+            <button type="button" (click)="clickEvent(monkey)">
+                <div style="font-size:larger; font-weight:550; font-style: oblique;">
+                    {{monkey.name}} the {{monkey.species}} <br>price: ${{monkey.price}}
+                </div>
+            </button>
+        </li>
+    </ul>
+</div>
 
-<app-product-page [monkeyID]="monkeyID"></app-product-page>
+<div style="display: inline-block; margin-left: 20px;">
+    <app-product-page [monkeyID]="monkeyID"></app-product-page>
+</div>
