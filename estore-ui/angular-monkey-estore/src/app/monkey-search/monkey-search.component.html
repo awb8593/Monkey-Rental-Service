@@ -1,0 +1,16 @@
+<div id="search-component">
+    <label for="search-box">Search Bar</label>
+    <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+  
+    <ul class="search-result">
+      <li *ngFor="let monkey of monkeys$| async" >
+        <button [class.selected]="monkey === selectedMonkey" type="button" (click)="onSelect(monkey)">
+          <span class="badge">ID: {{monkey.id}} |</span>
+          <span class="name"> Name: {{monkey.name}} |</span>
+          <span class="price"> Price: {{monkey.price}} |</span>
+          <span class="species"> Species: {{monkey.species}} </span>
+        </button>
+        <span class ="description">{{monkey.description}}</span>
+      </li>
+    </ul>
+  </div>
