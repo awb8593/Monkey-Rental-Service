@@ -1,4 +1,4 @@
 [{"id":1,"name":"Aldo","price":10.5,"species":"Baboon","description":"Small monkey brought in 5 days ago","rented":false},
 {"id":2,"name":"Rafiki","price":20.5,"species":"Mandrill","description":"Found on set of lion king","rented":false},
 {"id":3,"name":"Travis","price":6,"species":"Chimpanzee","description":"Please do not give Travis any Xanax","rented":false},
-{"id":4,"name":"Harambe","price":420,"species":"Gorilla","description":"Holy gorilla that shall live forever in our hearts","rented":true}]
+{"id":4,"name":"Harambe","price":420,"species":"Gorilla","description":"Holy gorilla that shall live forever in our hearts","rented":false}]
