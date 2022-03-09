@@ -29,4 +29,8 @@ export class ProductPageComponent implements OnInit{
     this.monkeyService.getMonkey(id)
     .subscribe(monkey => this.monkey = monkey);
   }
+
+  goBack(): void {
+    this.location.back();
+  }
 }

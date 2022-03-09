@@ -2,10 +2,11 @@
     ID: {{monkeyID}} <br>
     <div *ngFor="let monkey">
         <div *ngIf="monkey.id == monkeyID">
-            Name: {{monkey.name}} <br>
+            <h2> {{monkey.name | uppercase}} Details <br></h2>
             Species: {{monkey.species}} <br>
-            Price: ${{monkey.price}} <br>
+            Price Per Hour: ${{monkey.price}} <br>
             Description: {{monkey.description}} <br>
         </div>
+        <button type="button" (click)="goBack()">Back</button>
     </div>
 </div>
