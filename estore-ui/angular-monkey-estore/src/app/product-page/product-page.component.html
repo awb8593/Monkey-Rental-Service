@@ -1,22 +1,11 @@
-<h2>Monkeys For Rent</h2>
-<ul class="monkeys">
-  <a *ngFor="let monkey of monkeys"
-  routerLink="/detail/{{monkey.id}}">
-  {{monkey.name}}
-</a>
-</ul>
-
-<div *ngIf="selectedMonkey">
-
-  <h2>{{selectedMonkey.name | uppercase}} Details</h2>
-  <div>id: {{selectedMonkey.id}}</div>
-  <div>
-    <label for="monkey-name">Monkey Name: </label>
-    <input id="monkey-name" [(ngModel)]="selectedMonkey.name" placeholder="name">
-    <label for="monkey-species">Species: </label> 
-    <input id="monkey-species" [(ngModel)]="selectedMonkey.species" placeholder="species">
-    <label for="monkey-price">Price: </label> 
-    <input id="monkey-species" [(ngModel)]="selectedMonkey.price" placeholder="price">
-  </div>
-
+<div *ngIf="monkeyID != 0">
+    ID: {{monkeyID}} <br>
+    <div *ngFor="let monkey of monkeys">
+        <div *ngIf="monkey.id == monkeyID">
+            Name: {{monkey.name}} <br>
+            Species: {{monkey.species}} <br>
+            Price: ${{monkey.price}} <br>
+            Description: {{monkey.description}} <br>
+        </div>
+    </div>
 </div>

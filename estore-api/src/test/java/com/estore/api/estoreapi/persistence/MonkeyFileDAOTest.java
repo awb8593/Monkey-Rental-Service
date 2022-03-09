@@ -97,5 +97,99 @@ public class MonkeyFileDAOTest {
         assertEquals(actual,monkey);
     }
 
+    @Test
+    public void testGetAllMonkeys() throws IOException {
+        // Invoke
+        Monkey[] monkeys = monkeyFileDAO.getAllMonkeys();
 
+        // Analyze
+        assertEquals(monkeys.length,testMonkeys.length);
+        for (int i = 0; i < testMonkeys.length;++i)
+            assertEquals(monkeys[i],testMonkeys[i]);
+    }
+
+    @Test
+    public void testFindMonkeys() {
+        // Invoke
+        Monkey[] monkeys = monkeyFileDAO.findMonkeys("h");
+
+        // Analyze
+        assertEquals(monkeys.length,2);
+        assertEquals(monkeys[0], testMonkeys[1]);
+        assertEquals(monkeys[1], testMonkeys[2]);
+    }
+
+    @Test
+    public void testGetMonkey() {
+        // Invoke
+        Monkey monkey = monkeyFileDAO.getMonkey(99);
+
+        // Analyze
+        assertEquals(monkey, testMonkeys[0]);
+    }
+
+    public void testSaveException() throws IOException{
+        doThrow(new IOException())
+            .when(mockObjectMapper)
+                .writeValue(any(File.class),any(Monkey[].class));
+
+        Monkey monkey = new Monkey(121,"Sugriva", 42, "Chimpanzee", "Loves his dinner");
+
+        assertThrows(IOException.class,
+                        () -> monkeyFileDAO.createMonkey(monkey),
+                        "IOException not thrown");
+    }
+
+    @Test
+    public void testGetMonkeyNotFound() {
+        // Invoke
+        Monkey monkey = monkeyFileDAO.getMonkey(98);
+
+        // Analyze
+        assertEquals(monkey,null);
+    }
+
+    @Test
+    public void testDeleteMonkeyNotFound() {
+        // Invoke
+        boolean result = assertDoesNotThrow(() -> monkeyFileDAO.deleteMonkey(98),
+                                                "Unexpected exception thrown");
+
+        // Analyze
+        assertEquals(result,false);
+        assertEquals(monkeyFileDAO.monkeys.size(),testMonkeys.length);
+    }
+
+    @Test
+    public void testUpdateMonkeyNotFound() {
+        // Setup
+        Monkey monkey = new Monkey(98,"Ceasar", 33, "Chimpanzee", "Has big plans");
+
+        // Invoke
+        Monkey result = assertDoesNotThrow(() -> monkeyFileDAO.updateMonkey(monkey),
+                                                "Unexpected exception thrown");
+
+        // Analyze
+        assertNull(result);
+    }
+
+    @Test
+    public void testConstructorException() throws IOException {
+        // Setup
+        ObjectMapper mockObjectMapper = mock(ObjectMapper.class);
+        // We want to simulate with a Mock Object Mapper that an
+        // exception was raised during JSON object deseerialization
+        // into Java objects
+        // When the Mock Object Mapper readValue method is called
+        // from the MonkeyFileDAO load method, an IOException is
+        // raised
+        doThrow(new IOException())
+            .when(mockObjectMapper)
+                .readValue(new File("doesnt_matter.txt"),Monkey[].class);
+
+        // Invoke & Analyze
+        assertThrows(IOException.class,
+                        () -> new MonkeyFileDAO("doesnt_matter.txt",mockObjectMapper),
+                        "IOException not thrown");
+    }
 }

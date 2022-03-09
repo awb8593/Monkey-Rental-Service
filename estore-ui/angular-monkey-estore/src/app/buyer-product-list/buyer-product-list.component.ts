@@ -1,3 +1,4 @@
+import { NONE_TYPE } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 
 import { Monkey } from '../monkey';
@@ -10,6 +11,8 @@ import { MonkeyService } from '../monkey.service';
 })
 export class BuyerProductListComponent implements OnInit {
   monkeys: Monkey[] = [];
+  selectedMonkey?: Monkey;
+  monkeyID: number = 0;
 
   constructor(private monkeyService: MonkeyService) { }
 
@@ -20,5 +23,10 @@ export class BuyerProductListComponent implements OnInit {
   getMonkeys(): void {
     this.monkeyService.getMonkeys()
     .subscribe(monkeys => this.monkeys = monkeys);
+  }
+
+  clickEvent(monkey: Monkey): void {
+    this.selectedMonkey = monkey;
+    this.monkeyID = monkey.id;
   }
 }
