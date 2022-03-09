@@ -5,8 +5,29 @@
     }
 </style>
 
-<app-monkey-search></app-monkey-search>
+<div>
+    <label for="search-box">Search Monkeys </label>
+    <input #searchBox id="search-box" (input)="search(searchBox.value)">
+</div>
 
+<div style="display: inline-block;">
+    <ul class="monkeys">
+        <li *ngFor="let monkey of monkeys$ | async">
+            <button type="button" (click)="clickEvent(monkey)">
+                <div style="font-size:larger; font-weight:550; font-style: oblique;">
+                    {{monkey.name}} the {{monkey.species}} <br>price: ${{monkey.price}}
+                </div>
+            </button>
+        </li>
+    </ul>
+</div>
+
+<div style="display: inline-block; margin-left: 20px;">
+    <app-product-page [monkeyID]="monkeyID"></app-product-page>
+</div>
+
+<br>
+<h2>All Monkeys: </h2>
 <div style="display: inline-block;">
     <ul class="monkeys">
         <li *ngFor="let monkey of monkeys">
@@ -19,9 +40,6 @@
     </ul>
 </div>
 
-<div style="display: inline-block; margin-left: 20px;">
-    <a href="" style="position:fixed; top: 40px; right: 50px">
-        <img src="../../assets/cart_icon.png" style="height: 50px; width: 50px;">
-    </a>
-    <app-product-page [monkeyID]="monkeyID"></app-product-page>
-</div>
+<a href="" style="position:fixed; top: 40px; right: 50px">
+    <img src="../../assets/cart_icon.png" style="height: 50px; width: 50px;">
+</a>
