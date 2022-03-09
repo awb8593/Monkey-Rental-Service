@@ -31,7 +31,7 @@ export class UserService {
 
   getUserByName(username: string): Observable<User> {
     if (!username.trim()) {
-      // if not search term, return empty hero array.
+      // if not search term, return empty hero.
       return of();
     }
     return this.http.get<User>(`${this.usersUrl}/?username=${username}`).pipe(
