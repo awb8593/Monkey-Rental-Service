@@ -11,22 +11,22 @@ import { Location } from '@angular/common';
   styleUrls: ['./product-page.component.css']
 })
 export class ProductPageComponent implements OnInit{
-  monkeys: Monkey[] = [];
+  monkey: Monkey | undefined;
   @Input() monkeyID: number = 0;
 
   constructor(
     private monkeyService: MonkeyService,
     private route: ActivatedRoute,
     private location: Location
-    ) {}
+  ) {}
 
   ngOnInit(): void {
-    this.getMonkeys();
+    this.getMonkey();
   }
 
-  getMonkeys(): void {
+  getMonkey(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.monkeyService.getMonkeys()
-    .subscribe(monkeys => this.monkeys = monkeys);
+    this.monkeyService.getMonkey(id)
+    .subscribe(monkey => this.monkey = monkey);
   }
 }

@@ -1,6 +1,6 @@
 <div *ngIf="monkeyID != 0">
     ID: {{monkeyID}} <br>
-    <div *ngFor="let monkey of monkeys">
+    <div *ngFor="let monkey">
         <div *ngIf="monkey.id == monkeyID">
             Name: {{monkey.name}} <br>
             Species: {{monkey.species}} <br>
