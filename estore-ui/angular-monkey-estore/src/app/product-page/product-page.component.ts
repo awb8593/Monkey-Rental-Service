@@ -33,4 +33,8 @@ export class ProductPageComponent implements OnInit{
   goBack(): void {
     this.location.back();
   }
+
+  addToCart(): void {
+    
+  }
 }
