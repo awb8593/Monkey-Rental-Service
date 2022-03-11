@@ -26,4 +26,8 @@ export class CurrentUserService {
       this.userService.getUserById(this.user.id).subscribe(user => this.user = user);
     }
   }
+
+  resetDefault(): void {
+    this.user = {id:0, username:"default", cartList:[], rentedList:[]};
+  }
 }

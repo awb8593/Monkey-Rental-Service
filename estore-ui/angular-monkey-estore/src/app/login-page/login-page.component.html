@@ -1,4 +1,3 @@
-{{currentUserService.user.id}}{{currentUserService.user.username}}
 <div *ngIf="currentUserService.user.id === 0; else elseBlock">
     
 
@@ -18,4 +17,7 @@
     </div>
 
 </div>
-<ng-template #elseBlock>{{currentUserService.user.username}}</ng-template>
+<ng-template #elseBlock>
+    <label for="logout">User: {{currentUserService.user.username}} </label>
+    <button type="button" #logoutButton (click)="logout()">Logout</button>
+</ng-template>

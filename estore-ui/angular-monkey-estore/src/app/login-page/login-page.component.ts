@@ -30,9 +30,12 @@ export class LoginPageComponent{
     if(this.currentUserService.user.id == 0) {
       this.enterUsernameText = "Invalid Username, Please Try Again: ";
     }
-    else {
-      this.enterUsernameText = "Enter Username: ";
-    }
+  }
+
+  logout(): void{
+    this.currentUserService.resetDefault();
+    this.enterUsernameText = "Enter Username: ";
+    this.createUsernameText = "Enter Username: ";
   }
 
   newUser: User = {id:0, username:"", cartList:[], rentedList:[]};
@@ -42,9 +45,6 @@ export class LoginPageComponent{
 
     if(this.currentUserService.user.id == 0) {
       this.createUsernameText = "Invalid Username, Please Try Again: ";
-    }
-    else {
-      this.createUsernameText = "Enter Username: ";
     }
   }
 
