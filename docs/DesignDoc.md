@@ -9,12 +9,14 @@ geometry: margin=1in
 > and appear in the generated PDF in italics._
 
 ## Team Information
-* Team name: TEAMNAME
+* Team name: 5Guys
 * Team members
-  * MEMBER1
-  * MEMBER2
-  * MEMBER3
-  * MEMBER4
+  * Jack Yakubison jcy4561
+  * Adrian Burgos awb8593
+  * Eligh Ros edr5068
+  * Trent Wesley taw8452
+  * Jack Hester jrh339
+
 
 ## Executive Summary
 
