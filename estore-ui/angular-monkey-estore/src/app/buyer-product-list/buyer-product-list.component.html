@@ -1,7 +1,7 @@
 <style>
     button{
         width: 250px;
-        height: 40px;
+        height: 60px;
     }
 </style>
 
@@ -15,7 +15,13 @@
         <li *ngFor="let monkey of monkeys$ | async">
             <button type="button" (click)="clickEvent(monkey)">
                 <div style="font-size:larger; font-weight:550; font-style: oblique;">
-                    {{monkey.name}} the {{monkey.species}} <br>price: ${{monkey.price}}
+                    {{monkey.name}} the {{monkey.species}} <br>price: ${{monkey.price}}<br>
+                    <span *ngIf="monkey.rented == true">
+                        Unavailable
+                    </span>
+                    <span *ngIf="monkey.rented == false">
+                        Available
+                    </span>
                 </div>
             </button>
         </li>
@@ -33,7 +39,13 @@
         <li *ngFor="let monkey of monkeys">
             <button type="button" (click)="clickEvent(monkey)">
                 <div style="font-size:larger; font-weight:550; font-style: oblique;">
-                    {{monkey.name}} the {{monkey.species}} <br>price: ${{monkey.price}}
+                    {{monkey.name}} the {{monkey.species}} <br>price: ${{monkey.price}}<br>
+                    <span *ngIf="monkey.rented == true">
+                        Unavailable
+                    </span>
+                    <span *ngIf="monkey.rented == false">
+                        Available
+                    </span>
                 </div>
             </button>
         </li>
