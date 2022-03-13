@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { User } from '../user';
 import { UserService } from '../user.service';
 
-import { CurrentUserService } from 'app/current-user.service';
+import { CurrentUserService } from '../current-user.service';
 
 @Component({
   selector: 'app-login-page',
