@@ -6,11 +6,15 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { OwnerPageComponent } from './owner-page/owner-page.component';
 import { AppRoutingModule } from './app-routing.module';
+import { BuyerProductListComponent } from './buyer-product-list/buyer-product-list.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    OwnerPageComponent
+    OwnerPageComponent,
+    BuyerProductListComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
