@@ -4,4 +4,4 @@
 </app-owner-page>
 <nav>
 </nav>
-<router-outlet *ngIf="currentUserService.user.id !== 1;"></router-outlet>
+<router-outlet *ngIf="currentUserService.user.id !== 1 && currentUserService.user.id !== 0;"></router-outlet>
