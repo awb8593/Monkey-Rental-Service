@@ -2,6 +2,7 @@
 <app-login-page></app-login-page>
 <app-owner-page *ngIf="currentUserService.user.id === 1;">
 </app-owner-page>
+<app-buyer-product-list *ngIf="currentUserService.user.id !== 1 && currentUserService.user.id !== 0;"></app-buyer-product-list>
 <nav>
 </nav>
 <router-outlet *ngIf="currentUserService.user.id !== 1 && currentUserService.user.id !== 0;"></router-outlet>
