@@ -66,4 +66,22 @@ export class MonkeyService {
   getMonkeys(): Observable<Monkey[]> {
     return this.http.get<Monkey[]>(this.monkeysUrl)
   }
+
+  getMonkey(id: number): Observable<Monkey> {
+    const url = `${this.monkeysUrl}/${id}`;
+    return this.http.get<Monkey>(url);
+  }
+
+  searchMonkeys(term: string): Observable<Monkey[]> {
+    if (!term.trim()){
+      return of([]);
+    }
+    return this.http.get<Monkey[]>(`${this.monkeysUrl}/?name=${term}`).pipe(
+      tap(x => x.length ?
+        this.log(`no found monkeys matching "${term}"`) :
+        this.log(`no monkeys matching "${term}"`)),
+        catchError(this.handleError<Monkey[]>('searchMonkeys', []))
+    );
+
+  }
 }

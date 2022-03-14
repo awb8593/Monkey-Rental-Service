@@ -1,11 +1,6 @@
 <h1>{{title}}</h1>
-<nav>
-    <a routerLink="/shopping-cart"> Shopping Cart</a>
-</nav>
-
 <app-login-page></app-login-page>
 <app-owner-page *ngIf="currentUserService.user.id === 1;">
 </app-owner-page>
-<nav>
-</nav>
-<router-outlet *ngIf="currentUserService.user.id !== 1 && currentUserService.user.id !== 0;"></router-outlet>
+<app-buyer-product-list *ngIf="currentUserService.user.id !== 1 && currentUserService.user.id !== 0;"></app-buyer-product-list>
+
