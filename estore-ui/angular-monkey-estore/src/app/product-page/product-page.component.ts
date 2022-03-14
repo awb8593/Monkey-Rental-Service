@@ -4,6 +4,7 @@ import { Monkey } from '../monkey';
 import { MonkeyService } from '../monkey.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { ShoppingCartService } from '../shopping-cart.service';
 
 @Component({
   selector: 'app-product-page',
@@ -17,7 +18,8 @@ export class ProductPageComponent implements OnInit{
   constructor(
     private monkeyService: MonkeyService,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private shoppingCartService: ShoppingCartService
   ) {}
 
   ngOnInit(): void {
@@ -34,7 +36,7 @@ export class ProductPageComponent implements OnInit{
     this.location.back();
   }
 
-  addToCart(): void {
-    
+  addToCart(monkey: Monkey): void {
+    this.shoppingCartService.addToCart(monkey);
   }
 }
