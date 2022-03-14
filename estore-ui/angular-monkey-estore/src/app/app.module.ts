@@ -17,9 +17,9 @@ import { OwnerPageComponent } from './owner-page/owner-page.component';
     AppComponent,
     ProductPageComponent,
     MonkeySearchComponent,
-    BuyerProductListComponent,
     ShoppingCartComponent,
     OwnerPageComponent,
+    BuyerProductListComponent,
     LoginPageComponent
   ],
   imports: [
