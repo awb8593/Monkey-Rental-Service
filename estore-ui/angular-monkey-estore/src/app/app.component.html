@@ -1,6 +1,7 @@
-<h2>{{title}}</h2>
-
+<h1>{{title}}</h1>
+<app-login-page></app-login-page>
+<app-owner-page *ngIf="currentUserService.user.id === 1;">
+</app-owner-page>
 <nav>
-    <a routerLink="/buyer-product-list">Monkeys</a>
 </nav>
-<router-outlet></router-outlet>
+<router-outlet *ngIf="currentUserService.user.id !== 1 && currentUserService.user.id !== 0;"></router-outlet>
