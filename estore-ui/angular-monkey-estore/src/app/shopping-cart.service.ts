@@ -7,26 +7,12 @@ import { Monkey } from './monkey';
 export class ShoppingCartService {
   
   items: Monkey[] =[];
-  /**
-   * testMonkey is for testing purposes only
-   */
-   testMonkey: Monkey = {
-    id: 34,
-    name: 'Test Monkey',
-    price: 12,
-    species: 'Gorilla',
-    description: "He's helping us out",
-    rented: false
-  }
   
-
-  constructor() { 
-    this.items.push(this.testMonkey) //For testing purposes only, this can be deleted
-
-  }
+  constructor() {}
 
   addToCart(monkey: Monkey){
     this.items.push(monkey);
+    monkey.rented=true;
   }
 
   clearCart(){
