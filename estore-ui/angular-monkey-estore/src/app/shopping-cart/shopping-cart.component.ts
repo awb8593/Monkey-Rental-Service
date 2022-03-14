@@ -17,8 +17,9 @@ export class ShoppingCartComponent implements OnInit {
     for (let k = 0; k < this.items.length; k++){
       if (this.items[k].id == item.id){
         delete this.items[k];
-        button.parentElement.remove();
         item.rented=false;
+        button.style.display = 'none';
+        this.items = this.cartService.getMonkeys();
         break;
       }
     }
