@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Monkey } from '../monkey';
 import { ShoppingCartService } from '../shopping-cart.service';
 
 @Component({
@@ -12,10 +13,11 @@ export class ShoppingCartComponent implements OnInit {
 
   constructor(private cartService: ShoppingCartService) { }
 
-  removeFromCart(id: any): void{
+  removeFromCart(item: Monkey): void{
     for (let k = 0; k < this.items.length; k++){
-      if (this.items[k].id == id){
+      if (this.items[k].id == item.id){
         delete this.items[k];
+        item.rented=false;
         break;
       }
     }
