@@ -27,6 +27,7 @@ import com.estore.api.estoreapi.persistence.MonkeyDAO;
  * 
  * @author Trent Wesley taw8452
  * @author Jack Hester jrh3397
+ * @author Eligh Ros edr5068
  */
 @RestController
 @RequestMapping("monkeys")
@@ -51,7 +52,7 @@ public class MonkeyController {
      * @param monkey - The {@link Monkey monkey} to create
      * 
      * @return ResponseEntity with created {@link Monkey monkey} object and HTTP status of CREATED
-     * ResponseEntity with HTTP status of CONFLICT if {@link Monkey monkey} object already exists
+     * ResponseEntity with HTTP status of CONFLICT if {@link Monkey monkey} is set to have an empty name
      * ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
      */
     @PostMapping("")

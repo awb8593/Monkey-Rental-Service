@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { CurrentUserService } from './current-user.service';
+
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Monkey e-Store';
+  
+  constructor(
+    public currentUserService: CurrentUserService
+  ) {}
 }
+

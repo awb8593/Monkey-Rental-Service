@@ -1,14 +1,16 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { MonkeySearchComponent } from './monkey-search/monkey-search.component';
 import { BuyerProductListComponent } from './buyer-product-list/buyer-product-list.component';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { OwnerPageComponent } from './owner-page/owner-page.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,16 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     ProductPageComponent,
     MonkeySearchComponent,
     BuyerProductListComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    OwnerPageComponent,
+    LoginPageComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
+    AppRoutingModule,
     HttpClientModule,
-    AppRoutingModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
