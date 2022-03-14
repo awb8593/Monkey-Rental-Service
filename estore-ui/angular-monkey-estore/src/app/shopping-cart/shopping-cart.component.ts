@@ -13,10 +13,11 @@ export class ShoppingCartComponent implements OnInit {
 
   constructor(private cartService: ShoppingCartService) { }
 
-  removeFromCart(item: Monkey): void{
+  removeFromCart(item: Monkey, button: any): void{
     for (let k = 0; k < this.items.length; k++){
       if (this.items[k].id == item.id){
         delete this.items[k];
+        button.parentElement.remove();
         item.rented=false;
         break;
       }
