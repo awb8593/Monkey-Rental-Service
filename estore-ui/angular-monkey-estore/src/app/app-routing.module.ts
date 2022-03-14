@@ -3,9 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { BuyerProductListComponent } from './buyer-product-list/buyer-product-list.component';
 
-const routes : Routes = [
+const routes: Routes = [
   { path: 'buyer-product-list', component: BuyerProductListComponent }
 ];
+
 
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],

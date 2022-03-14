@@ -27,6 +27,7 @@ import com.estore.api.estoreapi.persistence.MonkeyDAO;
  * 
  * @author Trent Wesley taw8452
  * @author Jack Hester jrh3397
+ * @author Eligh Ros edr5068
  */
 @RestController
 @RequestMapping("monkeys")
