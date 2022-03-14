@@ -13,6 +13,7 @@ import { ShoppingCartService } from '../shopping-cart.service';
 })
 export class ProductPageComponent implements OnInit{
   monkey: Monkey | undefined;
+  monkeys: Monkey[] = [];
   @Input() monkeyID: number = 0;
 
   constructor(
@@ -23,7 +24,12 @@ export class ProductPageComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    this.getMonkey();
+    this.getMonkeys();
+  }
+
+  getMonkeys(): void {
+    this.monkeyService.getMonkeys()
+    .subscribe(monkeys => this.monkeys = monkeys);
   }
 
   getMonkey(): void {
