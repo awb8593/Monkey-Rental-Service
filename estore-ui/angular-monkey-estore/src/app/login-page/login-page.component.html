@@ -1,0 +1,23 @@
+<div *ngIf="currentUserService.user.id === 0; else elseBlock">
+    
+
+    <h2>Login</h2>
+
+    <div>
+        <label for="username">{{enterUsernameText}}</label>
+        <input id="username" #username />
+        <button type="button" autofocus (click)="login(username.value); username.value=''">Login</button>
+    </div>
+
+    <h2>Create User</h2>
+    <div>
+        <label for="newUsername">{{createUsernameText}}</label>
+        <input id="newUsername" #newUsername />
+        <button type="button" autofocus (click)="createUser(newUsername.value); newUsername.value=''">Create</button>
+    </div>
+
+</div>
+<ng-template #elseBlock>
+    <label for="logout">User: {{currentUserService.user.username}} </label>
+    <button type="button" #logoutButton (click)="logout()">Logout</button>
+</ng-template>
