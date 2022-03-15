@@ -38,10 +38,6 @@ export class ProductPageComponent implements OnInit{
     .subscribe(monkey => this.monkey = monkey);
   }
 
-  goBack(): void {
-    this.location.back();
-  }
-
   addToCart(monkey: Monkey): void {
     this.shoppingCartService.addToCart(monkey);
   }

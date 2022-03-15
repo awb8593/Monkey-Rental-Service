@@ -19,12 +19,6 @@ export class ShoppingCartService {
     this.currentUserService.save();
   }
 
- // deleteFromCart(index: number){  
- //   this.currentUserService.load();
- //   this.currentUserService.user.cartList.splice(index, 1);
- //   this.currentUserService.save();
- // }
-
   deleteFromCart(id: number){
     this.currentUserService.load();
     for (let k = 0; k < this.currentUserService.user.cartList.length; k++){
@@ -40,7 +34,5 @@ export class ShoppingCartService {
     this.currentUserService.user.cartList = [];
     this.currentUserService.save();
   }
-
-
 
 }
