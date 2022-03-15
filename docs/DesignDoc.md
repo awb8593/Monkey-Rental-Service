@@ -161,6 +161,9 @@ with the e-store application.
 > and the results of the testing._
 
 ### Acceptance Testing
+- 11 of stories that we finished pass all of their testing criteria
+- 0 of the stories partially pass acceptance criteria
+- 12 of the stories have yet to be tested
 > _Report on the number of user stories that have passed all their
 > acceptance criteria tests, the number that have some acceptance
 > criteria tests failing, and the number of user stories that
