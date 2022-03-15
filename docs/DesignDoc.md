@@ -150,8 +150,7 @@ The Model Tier of our project communicates with the ViewModel Tier by receiving 
 > screenshots from the tool and/or corresponding source code that was flagged._
 
 ## Testing
-> _This section will provide information about the testing performed
-> and the results of the testing._
+To ensure that the project is meeting our requirements, we conducted two types of tests. Acceptance testing allowed us to ensure that requirements related to the front-end of the e-store were working as expected, while Unit Testing allowed us to test the system itself and make sure it is handling everything correctly on the back-end. 
 
 ### Acceptance Testing
 - 11 of stories that we finished pass all of their testing criteria
