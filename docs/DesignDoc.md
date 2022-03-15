@@ -79,10 +79,7 @@ This section describes the application domain.
 
 ![Domain Model](domain-model.png)
 
-> _Provide a high-level overview of the domain for this application. You
-> can discuss the more important domain entities and their relationship
-> to each other._
-
+There are two ways to access the e-store. Using a username, the system authenticates each user as either a customer or an admin. Customers on the e-store can view a list of products and add or remove them from their shopping cart, from which they can later checkout from. Customers can also leave written reviews for monkeys that they have previously rented. Unlike customers, the owner, authenticated as admin, can manage the e-store's inventory, which contains all of the products in the e-store. The owner can manage the e-store by adding, removing, or updating the specific details of monkeys in the inventory. 
 
 
 ## Architecture and Design
