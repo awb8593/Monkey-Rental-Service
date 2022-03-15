@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CurrentUserService } from '../current-user.service';
 import { Monkey } from '../monkey';
 import { ShoppingCartService } from '../shopping-cart.service';
 
@@ -11,24 +12,22 @@ export class ShoppingCartComponent implements OnInit {
 
   items = this.cartService.getMonkeys();
 
-  constructor(private cartService: ShoppingCartService) { }
+  constructor(private cartService: ShoppingCartService,
+    public currentUserService: CurrentUserService) { }
 
   removeFromCart(item: Monkey, button: any): void{
     for (let k = 0; k < this.items.length; k++){
       if (this.items[k].id == item.id){
-        delete this.items[k];
+        this.cartService.deleteFromUser(k);
         item.rented=false;
-        button.style.display = 'none';
-        this.items = this.cartService.getMonkeys();
         break;
       }
     }
-
+    this.cartService.getMonkeys();
   }
 
   clearCart(){
-    this.items = [];
-    return this.items;
+    this.cartService.clearCart();
   }
 
 

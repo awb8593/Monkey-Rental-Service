@@ -1,8 +1,12 @@
 <h3>Your Shopping Cart</h3>
-
+<div>USER: {{currentUserService.user.cartList}}</div>
+<div></div>   
 <div class="cart-item" *ngFor="let item of items">
     <span> {{item.name}} </span>
     <span> ${{item.price}}</span>
-    <button (click)="removeFromCart(item, this)">  Remove from Cart</button>
+    <button (click)="removeFromCart(item, this)">Remove from Cart</button>
 </div>
 <button (click)="clearCart()"> Checkout </button>
+
+
+
