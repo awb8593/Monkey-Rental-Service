@@ -19,5 +19,5 @@
 </div>
 <ng-template #elseBlock>
     <label for="logout">User: {{currentUserService.user.username}} </label>
-    <button type="button" #logoutButton (click)="logout()">Logout</button>
+    <button type="button" #logoutButton onclick="location.href=''" (click)="logout()">Logout</button>
 </ng-template>

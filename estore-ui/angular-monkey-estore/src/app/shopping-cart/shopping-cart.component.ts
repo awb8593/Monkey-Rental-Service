@@ -12,13 +12,12 @@ import { MonkeyService } from '../monkey.service';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  monkey: Monkey | undefined;
   items: Monkey[] = [];
 
   constructor(private cartService: ShoppingCartService,
     public currentUserService: CurrentUserService,
     public monkeyService: MonkeyService) 
-    { }
+    {}
 
   getMonkeyList(){
     this.currentUserService.load();
@@ -27,7 +26,7 @@ export class ShoppingCartComponent implements OnInit {
       this.monkeyService.getMonkey(this.currentUserService.user.cartList[k]).subscribe(monkey => this.items.push(monkey))
     }
   }
-  
+
   removeFromCart(item: Monkey): void{
     for (let k = 0; k < this.items.length; k++){
       if (this.items[k].id == item.id){
