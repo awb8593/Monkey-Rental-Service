@@ -20,7 +20,7 @@ geometry: margin=1in
 
 ## Executive Summary
 
-This is a summary of the project.
+This projects purpose is to act as an E-Store used for renting monkeys. It is a website in which users can search, sort, and rent monkeys for specified dates. It can also be used by an admin account to create new monkey listings, edit monkey listings, or delete monkey listings. The E-Store will offer a review feature in which users who have rented a monkey in the past can write a review for it that other users can see.
 
 ### Purpose
 > _Provide a very brief statement about the project and the most
@@ -43,10 +43,24 @@ This section describes the features of the application.
 > maybe Epics and critical Stories._
 
 ### Definition of MVP
-> _Provide a simple description of the Minimum Viable Product._
+The minimum viable product for this project is a running website in which users have access to a variety of monkeys, which they can add to a shopping cart and request to rent. It should also have an admin account which has the ability to change the inventory on the website. Lastly, users should be able to write reviews for monkeys that they rented that can be accessed by other users.
 
 ### MVP Features
-> _Provide a list of top-level Epics and/or Stories of the MVP._
+- Login Backend
+- Login Page
+- Owner Features
+- Product Page
+- Search for product
+- Get a product
+- Update a product
+- Create a new product
+- Delete a product
+- Search bar
+- Enable Filters
+- Shopping Cart
+- Rental Backend
+- Post Review
+- Read reviews
 
 ### Roadmap of Enhancements
 > _Provide a list of top-level features in the order you plan to consider them._
