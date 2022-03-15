@@ -23,8 +23,7 @@ geometry: margin=1in
 This projects purpose is to act as an E-Store used for renting monkeys. It is a website in which users can search, sort, and rent monkeys for specified dates. It can also be used by an admin account to create new monkey listings, edit monkey listings, or delete monkey listings. The E-Store will offer a review feature in which users who have rented a monkey in the past can write a review for it that other users can see.
 
 ### Purpose
-> _Provide a very brief statement about the project and the most
-> important user group and user goals._
+The main goal of this project was to provide both a front-end for an e-store focused on renting monkeys for parties and an API to handle inventory management and data persistence. Another goal of this project is to handle authentication for both customers and owners, as well as a working shopping cart for customers to store desired products in until they are ready to proceed with renting.
 
 ### Glossary and Acronyms
 > _Provide a table of terms and acronyms._
@@ -36,11 +35,17 @@ This projects purpose is to act as an E-Store used for renting monkeys. It is a 
 
 ## Requirements
 
-This section describes the features of the application.
-
-> _In this section you do not need to be exhaustive and list every
-> story.  Focus on top-level features from the Vision document and
-> maybe Epics and critical Stories._
+Our application will provide users with the ability to rent various
+monkeys as well as allowing the owners to actively manage the site through
+admin control. In this project, we will be required to develop controls for
+the owners to utilize to effectively manage the e-store, such as as creating,
+deleting, and updating the monkeys within the store. We will also be required
+to effectively build a website from the front-end, developing product pages that
+show the details of each monkey, a way to search through the list of monkeys by means
+of a search bar and filters, and a shopping cart to checkout. In addition, we will
+have to create a system for users and admins to log in, as well as a way for users to
+post reviews of monkeys they previously rented, which will contribute to a rating system
+for the monkeys.
 
 ### Definition of MVP
 The minimum viable product for this project is a running website in which users have access to a variety of monkeys, which they can add to a shopping cart and request to rent. It should also have an admin account which has the ability to change the inventory on the website. Lastly, users should be able to write reviews for monkeys that they rented that can be accessed by other users.
@@ -63,18 +68,22 @@ The minimum viable product for this project is a running website in which users 
 - Read reviews
 
 ### Roadmap of Enhancements
-> _Provide a list of top-level features in the order you plan to consider them._
+Our biggest enhancement is the ability to rent a monkey for your event rather than simply purchasing one, which would be impractical to do through an e-store.
+
+We plan to implement the ability to read customer reviews on the monkey you are currently viewing, as well as the ability to write reviews for monkeys who you have previously rented.
 
 
 ## Application Domain
 
 This section describes the application domain.
 
-![Domain Model](domain-model-placeholder.png)
+![Domain Model](domain-model.png)
 
 > _Provide a high-level overview of the domain for this application. You
 > can discuss the more important domain entities and their relationship
 > to each other._
+
+
 
 
 ## Architecture and Design
