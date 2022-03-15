@@ -20,10 +20,10 @@ geometry: margin=1in
 
 ## Executive Summary
 
-This is a summary of the project.
+This project's purpose is to act as an E-Store used for renting monkeys. It is a website in which users can search, sort, and rent monkeys for specified dates. It can also be used by an admin account to create new monkey listings, edit monkey listings, or delete monkey listings. The E-Store will offer a review feature in which users who have rented a monkey in the past can write a review for it that other users can see.
 
 ### Purpose
->The main goal of this project was to provide both a front-end for an e-store focused on renting monkeys for parties and an API to handle inventory management and data persistence. Another goal of this project is to handle authentication for both customers and owners, as well as a working shopping cart for customers to store desired products in until they are ready to proceed with renting.
+The main goal of this project was to provide both a front-end for an e-store focused on renting monkeys for parties and an API to handle inventory management and data persistence. Another goal of this project is to handle authentication for both customers and owners, as well as a working shopping cart for customers to store desired products in until they are ready to proceed with renting.
 
 ### Glossary and Acronyms
 > _Provide a table of terms and acronyms._
@@ -35,20 +35,42 @@ This is a summary of the project.
 
 ## Requirements
 
-This section describes the features of the application.
-
-> _In this section you do not need to be exhaustive and list every
-> story.  Focus on top-level features from the Vision document and
-> maybe Epics and critical Stories._
+Our application will provide users with the ability to rent various
+monkeys as well as allowing the owners to actively manage the site through
+admin control. In this project, we will be required to develop controls for
+the owners to utilize to effectively manage the e-store, such as as creating,
+deleting, and updating the monkeys within the store. We will also be required
+to effectively build a website from the front-end, developing product pages that
+show the details of each monkey, a way to search through the list of monkeys by means
+of a search bar and filters, and a shopping cart to checkout. In addition, we will
+have to create a system for users and admins to log in, as well as a way for users to
+post reviews of monkeys they previously rented, which will contribute to a rating system
+for the monkeys.
 
 ### Definition of MVP
-> _Provide a simple description of the Minimum Viable Product._
+The minimum viable product for this project is a running website in which users have access to a variety of monkeys, which they can add to a shopping cart and request to rent. It should also have an admin account which has the ability to change the inventory on the website. Lastly, users should be able to write reviews for monkeys that they rented that can be accessed by other users.
 
 ### MVP Features
-> _Provide a list of top-level Epics and/or Stories of the MVP._
+- Login Backend
+- Login Page
+- Owner Features
+- Product Page
+- Search for product
+- Get a product
+- Update a product
+- Create a new product
+- Delete a product
+- Search bar
+- Enable Filters
+- Shopping Cart
+- Rental Backend
+- Post Review
+- Read reviews
 
 ### Roadmap of Enhancements
-> _Provide a list of top-level features in the order you plan to consider them._
+Our biggest enhancement is the ability to rent a monkey for your event rather than simply purchasing one, which would be impractical to do through an e-store.
+
+We plan to implement the ability to read customer reviews on the monkey you are currently viewing, as well as the ability to write reviews for monkeys who you have previously rented.
 
 
 ## Application Domain
@@ -60,7 +82,6 @@ This section describes the application domain.
 > _Provide a high-level overview of the domain for this application. You
 > can discuss the more important domain entities and their relationship
 > to each other._
-
 
 
 
@@ -85,11 +106,15 @@ Both the ViewModel and Model are built using Java and Spring Framework. Details 
 
 ### Overview of User Interface
 
-This section describes the web interface flow; this is how the user views and interacts
-with the e-store application.
-
-> _Provide a summary of the application's user interface.  Describe, from
-> the user's perspective, the flow of the pages in the web application._
+When launching the e-store, the user will first be greeted to a login page where the user will
+be prompted to login with their username or create a new account. Once the user has either logged in
+or created an account, they will be redirected to the productlist page, where the list of monkeys
+is displayed, as well as a search box to find specific monkeys. If the user is an admin, they can also 
+edit and add monkeys while on this page via text boxes and buttons. When clicking on a monkey, the monkey's 
+page will be displayed, showing information regarding the species, name, id, description, cost, and 
+availability of the monkey, as well as an option to add it to the user's cart. When on the productlist 
+page the user can be redirected to their cart by clicking on the cart icon and from their they will be 
+taken to a page where they can remove monkeys from their cart as well as checkout.
 
 
 ### View Tier
@@ -123,12 +148,8 @@ The Shopping Cart Component is shown on the Buyer Product List. This displays th
 
 
 ### Model Tier
-> _Provide a summary of this tier of your architecture. This
-> section will follow the same instructions that are given for the View
-> Tier above._
 
-> _At appropriate places as part of this narrative provide one or more
-> static models (UML class diagrams) with some details such as critical attributes and methods._
+The Model Tier of our project communicates with the ViewModel Tier by receiving updates regarding user actions and requests, and in return sending it notifications relating to the back-end functions of the e-store and its inventory. It also houses our business logic and handles the system's data persistence. The logic is specifically concerned with managing the e-store's monkeys and users. The component concerned with product management gives the abilities of creating and removing monkeys from the inventory, as well as updating a monkey's specific details, such as one's species, description, and price. The user component provides the necessary abilities to create or manage specific users, manage the items in a user's shopping cart, and managing a user's list of currently rented monkeys.
 
 ### Static Code Analysis/Design Improvements
 > _Discuss design improvements that you would make if the project were
@@ -147,6 +168,9 @@ The Shopping Cart Component is shown on the Buyer Product List. This displays th
 > and the results of the testing._
 
 ### Acceptance Testing
+- 11 of stories that we finished pass all of their testing criteria
+- 0 of the stories partially pass acceptance criteria
+- 12 of the stories have yet to be tested
 > _Report on the number of user stories that have passed all their
 > acceptance criteria tests, the number that have some acceptance
 > criteria tests failing, and the number of user stories that
