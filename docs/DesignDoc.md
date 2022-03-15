@@ -175,6 +175,10 @@ The Model Tier of our project communicates with the ViewModel Tier by receiving 
 > acceptance testing and if there are any concerns._
 
 ### Unit Testing and Code Coverage
+The way that we have handled unit testing is by creating a doc of all tests that need to be written and allowing team members to evenly split the work among themselves. We have 100% coverage in the model tier and 97% coverage total. Our goal for overall coverage is 90% minimum but we like to strive for higher if we have time, we chose this number because it results in a balance of having enough testing without wasting time working on tests when more important parts of the project need to be done. Our lowest current element is estoreapi with a current coverage of 88%, the coverage is only this low because main is not currently tested.
+
+![Code Coverage](estore-coverage.png)
+
 > _Discuss your unit testing strategy. Report on the code coverage
 > achieved from unit testing of the code base. Discuss the team's
 > coverage targets, why you selected those values, and how well your
