@@ -116,16 +116,6 @@ taken to a page where they can remove monkeys from their cart as well as checkou
 
 
 ### View Tier
-> _Provide a summary of the View Tier UI of your architecture.
-> Describe the types of components in the tier and describe their
-> responsibilities.  This should be a narrative description, i.e. it has
-> a flow or "story line" that the reader can follow._
-
-> _You must also provide sequence diagrams as is relevant to a particular aspects 
-> of the design that you are describing.  For example, in e-store you might create a 
-> sequence diagram of a customer searching for an item and adding to their cart. 
-> Be sure to include an relevant HTTP reuqests from the client-side to the server-side 
-> to help illustrate the end-to-end flow._
 
 When opening the website UI, the first thing a user will see is the Login Page Component which will give an option to enter your username or create a new one. If the username "admin" is typed, the Owner Features Page will be opened. This page contains a user interface which allows the admin to update monkey information, create a new monkey for the estore, or delete a monkey from the estore.
 
@@ -137,12 +127,10 @@ The Shopping Cart Component is shown on the Buyer Product List. This displays th
 
 
 ### ViewModel Tier
-> _Provide a summary of this tier of your architecture. This
-> section will follow the same instructions that are given for the View
-> Tier above._
 
-> _At appropriate places as part of this narrative provide one or more
-> static models (UML class diagrams) with some details such as critical attributes and methods._
+The ViewModel Tier consists of the MonkeyController Class, the UserController Class, the Monkey Service Component, and the User Service Component. The MonkeyController class handles REST API requests involving monkeys in the e-store. The UserController Class handles REST API requests involving user accounts. 
+
+The Monkey Service Component sends REST API requests to the MonkeyController to obtain information from the monkeys.json file where monkey information is stored. The User Service Component sends REST API requests to the UserController to obtain user information.
 
 
 ### Model Tier
