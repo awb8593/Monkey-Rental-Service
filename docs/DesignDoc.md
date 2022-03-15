@@ -104,6 +104,14 @@ with the e-store application.
 > Be sure to include an relevant HTTP reuqests from the client-side to the server-side 
 > to help illustrate the end-to-end flow._
 
+When opening the website UI, the first thing a user will see is the Login Page Component which will give an option to enter your username or create a new one. If the username "admin" is typed, the Owner Features Page will be opened. This page contains a user interface which allows the admin to update monkey information, create a new monkey for the estore, or delete a monkey from the estore.
+
+If the user logs in with a customer account or creates a new account (which will automatically be a customer account) at the Login Page, the Buyer Product List Component will be opened up. The Buyer Product List contains a list of all the monkeys in the estore and another list of monkeys which is generated based on the search using the search bar.
+
+After clicking a button for a specific monkey from the Buyer Product List, the Product Page Component will be opened on the same page. This will contain information about the selected monkey and an option to add to cart.
+
+The Shopping Cart Component is shown on the Buyer Product List. This displays the monkeys currently in the user's shopping cart as well as a button to checkout and a button for each monkey to remove from the shopping cart.
+
 
 ### ViewModel Tier
 > _Provide a summary of this tier of your architecture. This
