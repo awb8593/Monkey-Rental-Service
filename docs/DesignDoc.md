@@ -85,7 +85,6 @@ This section describes the application domain.
 
 
 
-
 ## Architecture and Design
 
 This section describes the application architecture.
@@ -107,11 +106,15 @@ Both the ViewModel and Model are built using Java and Spring Framework. Details 
 
 ### Overview of User Interface
 
-This section describes the web interface flow; this is how the user views and interacts
-with the e-store application.
-
-> _Provide a summary of the application's user interface.  Describe, from
-> the user's perspective, the flow of the pages in the web application._
+When launching the e-store, the user will first be greeted to a login page where the user will
+be prompted to login with their username or create a new account. Once the user has either logged in
+or created an account, they will be redirected to the productlist page, where the list of monkeys
+is displayed, as well as a search box to find specific monkeys. If the user is an admin, they can also 
+edit and add monkeys while on this page via text boxes and buttons. When clicking on a monkey, the monkey's 
+page will be displayed, showing information regarding the species, name, id, description, cost, and 
+availability of the monkey, as well as an option to add it to the user's cart. When on the productlist 
+page the user can be redirected to their cart by clicking on the cart icon and from their they will be 
+taken to a page where they can remove monkeys from their cart as well as checkout.
 
 
 ### View Tier
