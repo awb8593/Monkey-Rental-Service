@@ -156,14 +156,11 @@ Our project's backend also uses the Spring Framework. The Spring Framework creat
 To ensure that the project is meeting our requirements, we conducted two types of tests. Acceptance testing allowed us to ensure that requirements related to the front-end of the e-store were working as expected, while Unit Testing allowed us to test the system itself and make sure it is handling everything correctly on the back-end. 
 
 ### Acceptance Testing
-- 11 of stories that we finished pass all of their testing criteria
-- 0 of the stories partially pass acceptance criteria
-- 12 of the stories have yet to be tested
-> _Report on the number of user stories that have passed all their
-> acceptance criteria tests, the number that have some acceptance
-> criteria tests failing, and the number of user stories that
-> have not had any testing yet. Highlight the issues found during
-> acceptance testing and if there are any concerns._
+- 30 of stories that we finished pass all of their testing criteria
+- 2 of the stories partially pass acceptance criteria
+- 6 of the stories have yet to be tested
+
+Most of the stories are currently passing their acceptance criteria tests. The issues found in the stories that are currently partially passing or failing came about when we noticed thta they work or do not work in specific scenarios. For example, the buyer product list's rented status does not currently update until the page is left and and returned to. These issues do not concern us as we are confident that we will be able to get these stories to a passing status in little time. The stories that have not been tested are the stories related to customer reviews, as they have not been implemented yet.
 
 ### Unit Testing and Code Coverage
 The way that we have handled unit testing is by creating a doc of all tests that need to be written and allowing team members to evenly split the work among themselves. We have 100% coverage in the model tier and 97% coverage total. Our goal for overall coverage is 90% minimum but we like to strive for higher if we have time, we chose this number because it results in a balance of having enough testing without wasting time working on tests when more important parts of the project need to be done. Our lowest current element is estoreapi with a current coverage of 88%, the coverage is only this low because main is not currently tested.
