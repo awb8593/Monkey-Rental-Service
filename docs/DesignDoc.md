@@ -48,7 +48,9 @@ This section describes the features of the application.
 > _Provide a list of top-level Epics and/or Stories of the MVP._
 
 ### Roadmap of Enhancements
-> _Provide a list of top-level features in the order you plan to consider them._
+Our biggest enhancement is the ability to rent a monkey for your event rather than simply purchasing one, which would be impractical to do through an e-store.
+
+We plan to implement the ability to read customer reviews on the monkey you are currently viewing, as well as the ability to write reviews for monkeys who you have previously rented.
 
 
 ## Application Domain
