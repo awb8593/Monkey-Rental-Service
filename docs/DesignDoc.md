@@ -23,8 +23,7 @@ geometry: margin=1in
 This is a summary of the project.
 
 ### Purpose
-> _Provide a very brief statement about the project and the most
-> important user group and user goals._
+The main goal of this project was to provide both a front-end for an e-store focused on renting monkeys for parties and an API to handle inventory management and data persistence. Another goal of this project is to handle authentication for both customers and owners, as well as a working shopping cart for customers to store desired products in until they are ready to proceed with renting.
 
 ### Glossary and Acronyms
 > _Provide a table of terms and acronyms._
@@ -55,7 +54,9 @@ for the monkeys.
 > _Provide a list of top-level Epics and/or Stories of the MVP._
 
 ### Roadmap of Enhancements
-> _Provide a list of top-level features in the order you plan to consider them._
+Our biggest enhancement is the ability to rent a monkey for your event rather than simply purchasing one, which would be impractical to do through an e-store.
+
+We plan to implement the ability to read customer reviews on the monkey you are currently viewing, as well as the ability to write reviews for monkeys who you have previously rented.
 
 
 ## Application Domain
