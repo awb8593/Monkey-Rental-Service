@@ -27,7 +27,10 @@ The main goal of this project was to provide both a front-end for an e-store foc
 |------|------------|
 | SPA | Single Page Application |
 | MVP | Minimum Viable Product |
-
+| DAO | Data Access Object | 
+| API | Application Programming Interface |
+| REST | Representational State Transfer |
+| MVVM | Model–View–ViewModel |
 
 ## Requirements
 
@@ -162,8 +165,4 @@ The way that we have handled unit testing is by creating a doc of all tests that
 
 ![Code Coverage](estore-coverage.png)
 
-> _Discuss your unit testing strategy. Report on the code coverage
-> achieved from unit testing of the code base. Discuss the team's
-> coverage targets, why you selected those values, and how well your
-> code coverage met your targets. If there are any anomalies, discuss
-> those._
+Our strategy in creating unit tests is to attempt to cover every method by checking its possible success and failure conditions ensuring that they match what we expect them to. For example when writing unit tests for the creation of a monkey in the MonkeyController class, we tested the output from the MonkeyController Creation method when the monkey is created correctly, when the monkey creation is rejected, and when the MonkeyDAO throws an error. 
