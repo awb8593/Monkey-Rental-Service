@@ -32,13 +32,9 @@ export class ProductPageComponent implements OnInit{
     .subscribe(monkeys => this.monkeys = monkeys);
   }
 
-  getMonkey(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.monkeyService.getMonkey(id)
-    .subscribe(monkey => this.monkey = monkey);
-  }
-
   addToCart(monkey: Monkey): void {
+    monkey.rented = true;
+    this.monkeyService.updateMonkey(monkey).subscribe();
     this.shoppingCartService.addToCart(monkey);
   }
 }

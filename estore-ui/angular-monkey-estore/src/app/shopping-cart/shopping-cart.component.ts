@@ -30,6 +30,8 @@ export class ShoppingCartComponent implements OnInit {
   removeFromCart(item: Monkey): void{
     for (let k = 0; k < this.items.length; k++){
       if (this.items[k].id == item.id){
+        item.rented = false;
+        this.monkeyService.updateMonkey(item).subscribe();;
         this.cartService.deleteFromCart(this.items[k].id);
         break;
       }
@@ -38,6 +40,10 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   clearCart(){
+    for (let k = 0; k < this.items.length; k++){
+      this.items[k].rented = false;
+      this.monkeyService.updateMonkey(this.items[k]).subscribe();
+    }
     this.cartService.clearCart();
     this.getMonkeyList();
   }
