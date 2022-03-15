@@ -157,10 +157,10 @@ To ensure that the project is meeting our requirements, we conducted two types o
 
 ### Acceptance Testing
 - 30 of stories that we finished pass all of their testing criteria
-- 2 of the stories partially pass acceptance criteria
+- 4 of the stories partially pass acceptance criteria
 - 6 of the stories have yet to be tested
 
-Most of the stories are currently passing their acceptance criteria tests. The issues found in the stories that are currently partially passing or failing came about when we noticed thta they work or do not work in specific scenarios. For example, the buyer product list's rented status does not currently update until the page is left and and returned to. These issues do not concern us as we are confident that we will be able to get these stories to a passing status in little time. The stories that have not been tested are the stories related to customer reviews, as they have not been implemented yet.
+Most of the stories are currently passing their acceptance criteria tests. The issues found in the stories that are currently partially passing or failing came about when we noticed that they work or do not work in specific scenarios, or there is simply a small detail that is technically not correct. For example, the buyer product list's rented status does not currently update until the page is left and and returned to. These issues do not concern us as we are confident that we will be able to get these stories to a passing status in little time. The stories that have not been tested are the stories related to customer reviews, as they have not been implemented yet.
 
 ### Unit Testing and Code Coverage
 The way that we have handled unit testing is by creating a doc of all tests that need to be written and allowing team members to evenly split the work among themselves. We have 100% coverage in the model tier and 97% coverage total. Our goal for overall coverage is 90% minimum but we like to strive for higher if we have time, we chose this number because it results in a balance of having enough testing without wasting time working on tests when more important parts of the project need to be done. Our lowest current element is estoreapi with a current coverage of 88%, the coverage is only this low because main is not currently tested.
