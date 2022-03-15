@@ -36,11 +36,17 @@ This is a summary of the project.
 
 ## Requirements
 
-This section describes the features of the application.
-
-> _In this section you do not need to be exhaustive and list every
-> story.  Focus on top-level features from the Vision document and
-> maybe Epics and critical Stories._
+Our application will provide users with the ability to rent various
+monkeys as well as allowing the owners to actively manage the site through
+admin control. In this project, we will be required to develop controls for
+the owners to utilize to effectively manage the e-store, such as as creating,
+deleting, and updating the monkeys within the store. We will also be required
+to effectively build a website from the front-end, developing product pages that
+show the details of each monkey, a way to search through the list of monkeys by means
+of a search bar and filters, and a shopping cart to checkout. In addition, we will
+have to create a system for users and admins to log in, as well as a way for users to
+post reviews of monkeys they previously rented, which will contribute to a rating system
+for the monkeys.
 
 ### Definition of MVP
 > _Provide a simple description of the Minimum Viable Product._
