@@ -31,6 +31,7 @@ The main goal of this project was to provide both a front-end for an e-store foc
 | Term | Definition |
 |------|------------|
 | SPA | Single Page |
+| MVP | Minimum Viable Product |
 
 
 ## Requirements
