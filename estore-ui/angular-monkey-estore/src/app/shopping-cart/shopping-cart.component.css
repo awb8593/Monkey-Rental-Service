@@ -1,0 +1,32 @@
+.header h3 {
+    font-family:Arial;
+    font-size: 20pt;
+}
+
+.cart-item {
+    font-size: larger;
+    font-family: 'Franklin Gothic';
+    margin-bottom: 10px;
+}
+
+.cart-item button{
+    margin-left: 10px
+
+}
+
+.checkout button{
+    font-family:'Arial';
+    font-weight:bold;
+    font-size: 16pt;
+    color:white;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: rgb(17, 166, 17);
+    width:10%;
+}
+
+.checkout button:hover{
+    color:rgb(255, 255, 255);
+    background-color:rgb(26, 121, 26);
+
+}

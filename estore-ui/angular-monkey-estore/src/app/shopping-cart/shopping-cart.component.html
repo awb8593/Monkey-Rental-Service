@@ -1,11 +1,15 @@
-<h3>Your Shopping Cart</h3>
-<div></div>   
+<link rel="stylesheet" href="shopping-cart.component.css">
+<div class ="header">
+    <h3>My Shopping Cart</h3>
+</div>   
 <div class="cart-item" *ngFor="let item of items">
-    <span> {{item.name}} </span>
-    <span> ${{item.price}}</span>
+    <span id = "name"> {{item.name}} </span>
+    <span id = "price"> ${{item.price}}</span>
     <button (click)="removeFromCart(item)">Remove from Cart</button>
 </div>
-<button (click)="clearCart()"> Checkout </button>
+<div class="checkout">
+    <button (click)="clearCart()"> Checkout </button>
+</div>
 
 
 
