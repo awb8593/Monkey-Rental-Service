@@ -13,6 +13,7 @@ import { MonkeyService } from '../monkey.service';
 export class ShoppingCartComponent implements OnInit {
 
   items: Monkey[] = [];
+  total: number = 0;
 
   constructor(private cartService: ShoppingCartService,
     public currentUserService: CurrentUserService,
@@ -22,8 +23,11 @@ export class ShoppingCartComponent implements OnInit {
   getMonkeyList(){
     this.currentUserService.load();
     this.items = [];
+    this.total = 0;
     for (let k = 0; k < this.currentUserService.user.cartList.length; k++){
-      this.monkeyService.getMonkey(this.currentUserService.user.cartList[k]).subscribe(monkey => this.items.push(monkey))
+      let monkey =  this.monkeyService.getMonkey(this.currentUserService.user.cartList[k]);
+      monkey.subscribe(monkey => this.items.push(monkey));
+      monkey.subscribe(monkey => this.total = this.total + monkey.price);
     }
   }
 

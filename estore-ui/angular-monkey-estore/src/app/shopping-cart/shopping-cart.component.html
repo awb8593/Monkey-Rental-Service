@@ -1,14 +1,21 @@
 <link rel="stylesheet" href="shopping-cart.component.css">
-<div class ="header">
-    <h3>My Shopping Cart</h3>
-</div>   
-<div class="cart-item" *ngFor="let item of items">
-    <span id = "name"> {{item.name}} </span>
-    <span id = "price"> ${{item.price}}</span>
-    <button (click)="removeFromCart(item)">Remove from Cart</button>
-</div>
-<div class="checkout">
-    <button (click)="clearCart()"> Checkout </button>
+<div class="cart">
+    <div class ="header">
+        <h3>My Shopping Cart</h3>
+    </div>   
+    <div class="cart-item" *ngFor="let item of items">
+        <span id = "name"> {{item.name}} </span>
+        <span id = "price"> ${{item.price}}</span>
+        <button (click)="removeFromCart(item)">Remove from Cart</button>
+    </div>
+    <div class="total">
+        <p>
+            Grand Total: <span> ${{this.total}}</span>
+        </p>
+    </div>
+    <div class="checkout">
+        <button (click)="clearCart()"> Checkout </button>
+    </div>
 </div>
 
 
