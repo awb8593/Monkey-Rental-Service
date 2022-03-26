@@ -1,18 +1,14 @@
-<div *ngIf="monkeyID != 0">
-    <br>
-    <div *ngFor="let monkey of monkeys">
-        <div *ngIf="monkey.id == monkeyID">
-            <h2> {{monkey.name | uppercase}} Details <br></h2>
-            Species: {{monkey.species}} <br>
-            Price Per Hour: ${{monkey.price}} <br>
-            Description: {{monkey.description}} <br>
-            <span *ngIf="monkey.rented">
-                Currently Not Available
-            </span>
-            <span *ngIf="!monkey.rented">
-                Available for Rent<br>
-                <button type="button" (click)="addToCart(monkey)">Add To Cart</button>
-            </span>
-        </div>
-    </div>
+<div *ngIf="monkey">
+    <h2> {{monkey.name | uppercase}} Details <br></h2>
+    Species: {{monkey.species}} <br>
+    Price Per Hour: ${{monkey.price}} <br>
+    Description: {{monkey.description}} <br>
+    <span *ngIf="monkey.rented || checkCart(monkey)">
+        Currently Not Available
+    </span>
+    <span *ngIf="!(monkey.rented || checkCart(monkey))">
+        Available for Rent<br>
+        <button type="button" (click)="addToCart(monkey)">Add To Cart</button>
+    </span>
+    <button type="button" (click)="goBack()">Back</button>
 </div>

@@ -1,1 +1,1 @@
-[{"id":1,"username":"admin","cartList":[],"rentedList":[]},{"id":2,"username":"userJ1","cartList":[1,7,4],"rentedList":[]},{"id":3,"username":"monkeyLover","cartList":[],"rentedList":[]},{"id":4,"username":"adrian","cartList":[],"rentedList":[]}]
+[{"id":1,"username":"admin","cartList":[],"rentedList":[]},{"id":2,"username":"userJ1","cartList":[1,7,4],"rentedList":[]},{"id":3,"username":"monkeyLover","cartList":[2],"rentedList":[]},{"id":4,"username":"adrian","cartList":[],"rentedList":[]}]

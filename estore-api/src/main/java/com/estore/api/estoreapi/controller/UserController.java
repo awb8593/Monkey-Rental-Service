@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 
 import com.estore.api.estoreapi.model.User;
 import com.estore.api.estoreapi.persistence.UserDAO;
+import com.estore.api.estoreapi.model.Monkey;
 
 /**
  * Handles the REST API requests for the User
@@ -183,6 +184,18 @@ public class UserController {
         LOG.info("GET /users");
         try {
             return new ResponseEntity<>(userDao.getAllUsers(), HttpStatus.OK);
+        }
+        catch(IOException e){
+            LOG.log(Level.SEVERE,e.getLocalizedMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/cart/{id}")
+    public ResponseEntity<Monkey[]> getUserCart(@PathVariable int id){
+        LOG.info("GET /users/cart/" + id);
+        try {
+            return new ResponseEntity<Monkey[]>(userDao.getUserCart(id), HttpStatus.OK);
         }
         catch(IOException e){
             LOG.log(Level.SEVERE,e.getLocalizedMessage());

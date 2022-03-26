@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.estore.api.estoreapi.model.User;
+import com.estore.api.estoreapi.model.Monkey;
 
 /**
  * Implements the functionality for JSON file-based peristance for Users
@@ -36,6 +37,7 @@ public class UserFileDAO implements UserDAO{
                                         // to the file
     private static int nextId;  // The next Id to assign to a new user
     private String filename;    // Filename to read from and write to
+    private MonkeyDAO monkeyDAO;
     
     /**
      * Creates a User File Data Access Object
@@ -45,9 +47,10 @@ public class UserFileDAO implements UserDAO{
      * 
      * @throws IOException when file cannot be accessed or read from
      */
-    public UserFileDAO(@Value("${users.file}") String filename,ObjectMapper objectMapper) throws IOException {
+    public UserFileDAO(@Value("${users.file}") String filename,ObjectMapper objectMapper,MonkeyDAO monkeyDAO) throws IOException {
         this.filename = filename;
         this.objectMapper = objectMapper;
+        this.monkeyDAO = monkeyDAO;
         load();  // load the users from the file
     }
 
@@ -197,6 +200,16 @@ public class UserFileDAO implements UserDAO{
         synchronized(users) {
             return getUsersArray();
         }
+    }
+
+    @Override
+    public Monkey[] getUserCart(int id) throws IOException {
+        User user = this.getUserId(id);
+        ArrayList<Integer> cartList = user.getCartList();
+        Monkey[] monkeyArray = new Monkey[cartList.size()];
+        for (int i=0; i < cartList.size(); i++){
+            monkeyArray[i] = monkeyDAO.getMonkey(cartList.get(i));}
+        return monkeyArray;
     }
 }
 
