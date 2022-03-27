@@ -1,6 +1,8 @@
 package com.estore.api.estoreapi.persistence;
 
 import java.io.IOException;
+
+import com.estore.api.estoreapi.model.Monkey;
 import com.estore.api.estoreapi.model.Review;
 
 /**
@@ -11,16 +13,17 @@ import com.estore.api.estoreapi.model.Review;
 public interface ReviewDAO {
     
     /**
-     * Creates and saves a {@linkplain Review review}
+     * Creates and saves a {@linkplain Review review} and assigns a specified {@linkplain Monkey monkey}  to it
      * 
      * @param review {@linkplain Review review} object to be created and saved
-     * <br>
+     * 
+     * @param monkey {@linkplain Monkey monkey} monkey who the review belongs to
      *
      * @return new {@link Review review} if successful, false otherwise 
      * 
      * @throws IOException if an issue with underlying storage
      */
-    Review createReview(Review review) throws IOException;
+    Review createReview(Review review, Monkey monkey) throws IOException;
 
     /**
      * Updates and saves a {@linkplain Review review}
