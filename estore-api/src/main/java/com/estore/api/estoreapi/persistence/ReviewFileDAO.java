@@ -137,5 +137,49 @@ public class ReviewFileDAO implements ReviewDAO{
         }
     }
 
-    
+    /**
+    ** {@inheritDoc}
+     */
+    @Override
+    public Review updateReview(Review review) throws IOException {
+        synchronized(reviews) {
+            if (reviews.containsKey(review.getId()) == false)
+                return null;  // review does not exist
+
+            reviews.put(review.getId(),review);
+            save(); // may throw an IOException
+            return review;
+        }
+    }
+
+    /**
+    ** {@inheritDoc}
+     */
+    public Review getReviews(int id) {
+        synchronized(reviews) {
+            if (reviews.containsKey(id)) {
+                return reviews.get(id);
+            }
+            else {
+                return null;
+            }
+        }
+    }
+
+    /**
+    ** {@inheritDoc}
+     */
+    @Override
+    public boolean deleteReview(int id) throws IOException {
+        synchronized(reviews) {
+            if (reviews.containsKey(id)) {
+                reviews.remove(id);
+                return save();
+            }
+            else
+                return false;
+        }
+    }
+
+
 }
