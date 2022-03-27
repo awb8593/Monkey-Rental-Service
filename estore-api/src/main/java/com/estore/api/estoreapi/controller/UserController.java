@@ -191,6 +191,14 @@ public class UserController {
         }
     }
 
+    /**
+     * Responds to GET request for all monkeys in a user cart
+     * 
+     * @param id ID of a User
+     * @return ResponseEntity with array of {@link Monkey monkey} objects and 
+     * HTTP status of OK
+     * ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
+     */
     @GetMapping("/cart/{id}")
     public ResponseEntity<Monkey[]> getUserCart(@PathVariable int id){
         LOG.info("GET /users/cart/" + id);

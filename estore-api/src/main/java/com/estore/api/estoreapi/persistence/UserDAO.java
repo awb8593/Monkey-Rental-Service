@@ -73,7 +73,7 @@ public interface UserDAO {
      * Gets Cart of User with specified ID
      * 
      * @param id ID of user
-     * @return cart full of monkey ID's
+     * @return cart full of monkeys
      * @throws IOException
      */
     Monkey[] getUserCart(int id) throws IOException;

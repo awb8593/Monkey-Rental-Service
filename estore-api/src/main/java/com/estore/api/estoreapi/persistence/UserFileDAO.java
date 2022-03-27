@@ -202,6 +202,9 @@ public class UserFileDAO implements UserDAO{
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Monkey[] getUserCart(int id) throws IOException {
         User user = this.getUserId(id);
