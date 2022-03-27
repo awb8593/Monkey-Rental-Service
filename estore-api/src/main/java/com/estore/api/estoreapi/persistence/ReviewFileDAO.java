@@ -57,7 +57,7 @@ public class ReviewFileDAO implements ReviewDAO{
      * @return  The array of {@link Review reviews}, may be empty
      */
     private Review[] getReviewsArray() {
-        return getReviewsArray(null);
+        return getReviewsArray(-1);
     }
 
     /**
@@ -69,7 +69,7 @@ public class ReviewFileDAO implements ReviewDAO{
      * 
      * @return  The array of {@link Review review}, may be empty
      */
-    private Review[] getReviewsArray(int id) { // if containsText == null, no filter
+    private Review[] getReviewsArray(int id) {
         ArrayList<Review> reviewArrayList= new ArrayList<>();
 
         for (Review review : reviews.values()) {
