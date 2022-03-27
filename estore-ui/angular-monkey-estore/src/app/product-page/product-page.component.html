@@ -3,8 +3,11 @@
     Species: {{monkey.species}} <br>
     Price Per Hour: ${{monkey.price}} <br>
     Description: {{monkey.description}} <br>
-    <span *ngIf="monkey.rented || checkCart(monkey)">
-        Currently Not Available
+    <span *ngIf="monkey.rented">
+        Unavailable
+    </span>
+    <span *ngIf="!monkey.rented && checkCart(monkey)">
+        Currently in Cart
     </span>
     <span *ngIf="!(monkey.rented || checkCart(monkey))">
         Available for Rent<br>
