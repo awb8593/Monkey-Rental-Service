@@ -40,4 +40,12 @@ export class ShoppingCartComponent implements OnInit {
     this.userService.getUserCart(this.currentUserService.user.id)
     .subscribe(cartArray => this.items = cartArray);
   }
+
+  checkCart(monkey: Monkey): boolean {
+    for (let m of this.items){
+      if (m.id == monkey.id)
+        return true;
+    }
+    return false;
+  }
 }
