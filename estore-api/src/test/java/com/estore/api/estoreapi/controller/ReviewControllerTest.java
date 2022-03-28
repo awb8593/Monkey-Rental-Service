@@ -149,7 +149,7 @@ public class ReviewControllerTest {
 
         Review review = new Review(99, ratings, reviews);
 
-        // When createReview is called on the Mock Monkey DAO, throw an IOException
+        // When createReview is called on the Mock Review DAO, throw an IOException
         doThrow(new IOException()).when(mockReviewDAO).createReview(review, review.getId());
 
         // Invoke
@@ -218,7 +218,7 @@ public class ReviewControllerTest {
 
         Review review = new Review(99, ratings, reviews);
 
-        // When updateReview is called on the Mock Monkey DAO, throw an IOException
+        // When updateReview is called on the Mock Review DAO, throw an IOException
         doThrow(new IOException()).when(mockReviewDAO).updateReview(review);
 
         // Invoke
