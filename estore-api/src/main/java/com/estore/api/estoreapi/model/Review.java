@@ -12,7 +12,7 @@ public class Review {
     // implement Logger here when needed
 
     // package private for tests
-    static final String STRING_FORMAT = "Reviews For Monkey [id=%d, ratings=%d, reviews=%s]";
+    static final String STRING_FORMAT = "Reviews For Monkey [id=%d, ratings=%s, reviews=%s]";
 
     @JsonProperty("id") private int id;
     @JsonProperty("ratings") private ArrayList<Integer> ratings;

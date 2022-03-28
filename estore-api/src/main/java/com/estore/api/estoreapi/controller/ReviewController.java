@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,6 +26,8 @@ import com.estore.api.estoreapi.persistence.ReviewDAO;
  * 
  * @author Adrian Burgos awb8593
  */
+@RestController
+@RequestMapping("reviews")
 public class ReviewController {
     private static final Logger LOG = Logger.getLogger(ReviewController.class.getName());
     private ReviewDAO reviewDAO;
