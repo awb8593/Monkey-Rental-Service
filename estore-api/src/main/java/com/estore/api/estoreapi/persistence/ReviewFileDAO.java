@@ -70,7 +70,7 @@ public class ReviewFileDAO implements ReviewDAO{
         ArrayList<Review> reviewArrayList= new ArrayList<>();
 
         for (Review review : reviews.values()) {
-            if (review.getId() == id) {
+            if (review.getId() == id || id == -1) {
                 reviewArrayList.add(review);
             }
         }
