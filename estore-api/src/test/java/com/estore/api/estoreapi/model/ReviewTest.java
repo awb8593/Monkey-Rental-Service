@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -11,6 +12,7 @@ import org.junit.jupiter.api.Test;
  * 
  * @author Adrian Burgos awb8593
  */
+@Tag("Model-tier")
 public class ReviewTest {
     @Test
     public void testCtor() {
