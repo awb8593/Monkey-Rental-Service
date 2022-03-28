@@ -17,13 +17,13 @@ public interface ReviewDAO {
      * 
      * @param review {@linkplain Review review} object to be created and saved
      * 
-     * @param monkey {@linkplain Monkey monkey} monkey who the review belongs to
+     * @param id id of the monkey who the review belongs to
      *
      * @return new {@link Review review} if successful, false otherwise 
      * 
      * @throws IOException if an issue with underlying storage
      */
-    Review createReview(Review review, Monkey monkey) throws IOException;
+    Review createReview(Review review, int id) throws IOException;
 
     /**
      * Updates and saves a {@linkplain Review review}
@@ -60,4 +60,13 @@ public interface ReviewDAO {
      * @throws IOException if underlying storage cannot be accessed
      */
     boolean deleteReview(int id) throws IOException;
+
+    /**
+     * Retrieves all {@linkplain Review reviews}
+     * 
+     * @return An array of {@link Review review} objects, may be empty
+     * 
+     * @throws IOException if an issue with underlying storage
+     */
+    Review[] getAllReviews() throws IOException;
 }

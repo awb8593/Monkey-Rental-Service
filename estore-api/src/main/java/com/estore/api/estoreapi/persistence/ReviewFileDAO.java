@@ -126,11 +126,11 @@ public class ReviewFileDAO implements ReviewDAO{
     ** {@inheritDoc}
      */
     @Override
-    public Review createReview (Review review, Monkey monkey) throws IOException {
+    public Review createReview (Review review, int id) throws IOException {
         synchronized(reviews) {
             // we use the passed in Monkey's ID to assign the ID of the review object
             // this way, reviews are easily grouped together and found for a specific monkey
-            Review newReview = new Review(monkey.getId(), review.getRatings(), review.getReviews());
+            Review newReview = new Review(id, review.getRatings(), review.getReviews());
             reviews.put(newReview.getId(),newReview);
             save(); // may throw an IOException
             return newReview;
@@ -178,6 +178,16 @@ public class ReviewFileDAO implements ReviewDAO{
             }
             else
                 return false;
+        }
+    }
+
+    /**
+     ** {@inheritDoc}
+     */
+    @Override
+    public Review[] getAllReviews() throws IOException {
+        synchronized(reviews) {
+            return getReviewsArray();
         }
     }
 
