@@ -49,7 +49,7 @@ export class OwnerPageComponent implements OnInit {
   delete(monkey: Monkey): void {
     this.monkeys = this.monkeys.filter(m => m !== monkey);
     this.monkeyService.deleteMonkey(monkey.id).subscribe();
-    this.getMonkeys();
+    setTimeout(()=>{this.getMonkeys();}, 100);
   }
 
   goBack(): void {
