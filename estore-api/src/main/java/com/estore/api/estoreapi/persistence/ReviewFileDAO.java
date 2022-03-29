@@ -31,8 +31,6 @@ public class ReviewFileDAO implements ReviewDAO{
                                         // objects and JSON text format written
                                         // to the file
     private String filename;    // Filename to read from and write to
-
-    private static int nextId;  // The next Id to assign to a new monkey
     
     /**
      * Creates a Review File Data Access Object
@@ -106,7 +104,6 @@ public class ReviewFileDAO implements ReviewDAO{
      */
     private boolean load() throws IOException {
         reviews = new TreeMap<>();
-        nextId = 0;
 
         // Deserializes the JSON objects from the file into an array of reviews
         // readValue will throw an IOException if there's an issue with the file
@@ -116,8 +113,6 @@ public class ReviewFileDAO implements ReviewDAO{
         // Add each review to the tree map and keep track of the greatest id
         for (Review review : reviewArray) {
             reviews.put(review.getId(), review);
-            if (review.getId() > nextId)
-                nextId = review.getId();
         }
         return true;
     }
@@ -133,7 +128,6 @@ public class ReviewFileDAO implements ReviewDAO{
             Review newReview = new Review(id, review.getRatings(), review.getReviews());
             reviews.put(newReview.getId(),newReview);
             save(); // may throw an IOException
-            System.out.println("success!");
             return newReview;
         }
     }
