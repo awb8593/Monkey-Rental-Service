@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 import com.estore.api.estoreapi.model.Rental;
 
 /**
- * Implements the functionality for JSON file-based peristance for Monkeys
+ * Implements the functionality for JSON file-based peristance for Rentals
  * 
  * {@literal @}Component Spring annotation instantiates a single instance of this
  * class and injects the instance into other classes as needed
