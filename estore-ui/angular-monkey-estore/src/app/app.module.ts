@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { OwnerPageComponent } from './owner-page/owner-page.component';
+import { RentalPageComponent } from './rental-page/rental-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { OwnerPageComponent } from './owner-page/owner-page.component';
     ShoppingCartComponent,
     OwnerPageComponent,
     BuyerProductListComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    RentalPageComponent
   ],
   imports: [
     FormsModule,
