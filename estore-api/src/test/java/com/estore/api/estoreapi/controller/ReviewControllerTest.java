@@ -119,7 +119,7 @@ public class ReviewControllerTest {
         reviews.add("Seriously not a cool monkey");
         reviews.add("Pooped on the floor");
 
-        Review review = new Review(99, ratings, reviews);
+        Review review = new Review(-1, ratings, reviews);
 
         // when createReview is called, return false simulating failed
         // creation and save

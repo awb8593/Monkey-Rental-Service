@@ -228,7 +228,7 @@ public class ReviewFileDAOTest {
 
         // Invoke & Analyze
         assertThrows(IOException.class,
-                        () -> new MonkeyFileDAO("doesnt_matterReviews.txt",mockObjectMapper),
+                        () -> new ReviewFileDAO("doesnt_matterReviews.txt",mockObjectMapper),
                         "IOException not thrown");
     }
 

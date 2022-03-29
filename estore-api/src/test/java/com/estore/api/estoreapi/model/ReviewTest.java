@@ -109,7 +109,7 @@ public class ReviewTest {
 
         Review review = new Review(id, ratings, reviews);
 
-        String expected_string = String.format(Review.STRING_FORMAT,id,ratings,review,false);
+        String expected_string = String.format(Review.STRING_FORMAT,id,ratings,reviews,false);
 
         String actual_string = review.toString();
 
