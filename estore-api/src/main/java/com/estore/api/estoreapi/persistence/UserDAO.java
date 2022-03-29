@@ -2,6 +2,7 @@ package com.estore.api.estoreapi.persistence;
 
 import java.io.IOException;
 import com.estore.api.estoreapi.model.User;
+import com.estore.api.estoreapi.model.Monkey;
 
 /**
  * Defines the interface for User object persistence
@@ -67,5 +68,14 @@ public interface UserDAO {
      * @throws IOException if an issue with underlying storage
      */
     User[] getAllUsers() throws IOException;
+
+    /**
+     * Gets Cart of User with specified ID
+     * 
+     * @param id ID of user
+     * @return cart full of monkeys
+     * @throws IOException
+     */
+    Monkey[] getUserCart(int id) throws IOException;
 }
 

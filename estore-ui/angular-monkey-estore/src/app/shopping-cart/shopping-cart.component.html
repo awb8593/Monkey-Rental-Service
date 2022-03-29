@@ -1,9 +1,17 @@
 <h3>Your Shopping Cart</h3>
-<div></div>   
+
 <div class="cart-item" *ngFor="let item of items">
-    <span> {{item.name}} </span>
-    <span> ${{item.price}}</span>
-    <button (click)="removeFromCart(item)">Remove from Cart</button>
+    <span *ngIf="item.rented && checkCart(item)">
+        <span style="background-color:#f52d51;">
+            {{item.name}} ${{item.price}}
+        </span>
+        <button (click)="removeFromCart(item)">Remove from Cart</button>
+        This monkey has been rented and is unavailable
+    </span>
+    <span *ngIf="!(item.rented && checkCart(item))">
+        {{item.name}} ${{item.price}}
+        <button (click)="removeFromCart(item)">Remove from Cart</button>
+    </span>
 </div>
 <button (click)="clearCart()"> Checkout </button>
 

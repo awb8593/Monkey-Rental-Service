@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CurrentUserService } from '../current-user.service';
 import { Monkey } from '../monkey';
 import { ShoppingCartService } from '../shopping-cart.service';
-
-import { MonkeyService } from '../monkey.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -12,44 +11,41 @@ import { MonkeyService } from '../monkey.service';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  items: Monkey[] = [];
+  items : Monkey[] = [];
 
   constructor(private cartService: ShoppingCartService,
     public currentUserService: CurrentUserService,
-    public monkeyService: MonkeyService) 
-    {}
-
-  getMonkeyList(){
-    this.currentUserService.load();
-    this.items = [];
-    for (let k = 0; k < this.currentUserService.user.cartList.length; k++){
-      this.monkeyService.getMonkey(this.currentUserService.user.cartList[k]).subscribe(monkey => this.items.push(monkey))
-    }
-  }
+    private userService: UserService) { }
 
   removeFromCart(item: Monkey): void{
+    this.getMonkeys();
     for (let k = 0; k < this.items.length; k++){
       if (this.items[k].id == item.id){
-        item.rented = false;
-        this.monkeyService.updateMonkey(item).subscribe();;
-        this.cartService.deleteFromCart(this.items[k].id);
+        this.cartService.deleteFromUser(k);
         break;
       }
     }
-    this.getMonkeyList();
+    setTimeout(()=>{this.getMonkeys();},100);
   }
 
   clearCart(){
-    for (let k = 0; k < this.items.length; k++){
-      this.items[k].rented = false;
-      this.monkeyService.updateMonkey(this.items[k]).subscribe();
-    }
     this.cartService.clearCart();
-    this.getMonkeyList();
   }
 
   ngOnInit(): void {
-    this.getMonkeyList();
+    this.getMonkeys();
   }
 
+  getMonkeys(): void{
+    this.userService.getUserCart(this.currentUserService.user.id)
+    .subscribe(cartArray => this.items = cartArray);
+  }
+
+  checkCart(monkey: Monkey): boolean {
+    for (let m of this.items){
+      if (m.id == monkey.id)
+        return true;
+    }
+    return false;
+  }
 }
