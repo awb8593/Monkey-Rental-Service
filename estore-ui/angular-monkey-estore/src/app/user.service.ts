@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { User } from './user';
+import { Monkey } from './monkey';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,10 @@ export class UserService {
       //tap((newUser: User) => this.log(`found user w/ id=${newUser.id}`)),
       catchError(this.handleError<User>('getUserById'))
     );
+  }
+
+  getUserCart(id: number): Observable<Monkey[]>{
+    return this.http.get<Monkey[]>(`${this.usersUrl}/cart/${id}`);
   }
 
   getUserByName(username: string): Observable<User> {
@@ -77,4 +82,3 @@ export class UserService {
     //private messageService: MessageService
     ) { }
 }
-

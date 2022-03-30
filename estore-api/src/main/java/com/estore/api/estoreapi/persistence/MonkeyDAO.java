@@ -25,7 +25,6 @@ public interface MonkeyDAO {
      */
     Monkey createMonkey(Monkey monkey) throws IOException;
 
-
     /**
      * Updates and saves a {@linkplain Monkey monkey}
      * 
@@ -64,6 +63,7 @@ public interface MonkeyDAO {
      * @throws IOException if underlying storage cannot be accessed
      */
     boolean deleteMonkey(int id) throws IOException;
+
     /**
      * Retrieves all {@linkplain Monkey monkeys}
      * 

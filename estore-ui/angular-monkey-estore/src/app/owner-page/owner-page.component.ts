@@ -23,6 +23,10 @@ export class OwnerPageComponent implements OnInit {
     this.selectedMonkey = monkey;
   }
 
+  deselect(): void{
+    this.selectedMonkey = undefined;
+  }
+
   monkey: Monkey | undefined;
 
   monkeys: Monkey[] = [];
@@ -45,6 +49,7 @@ export class OwnerPageComponent implements OnInit {
   delete(monkey: Monkey): void {
     this.monkeys = this.monkeys.filter(m => m !== monkey);
     this.monkeyService.deleteMonkey(monkey.id).subscribe();
+    setTimeout(()=>{this.getMonkeys();}, 100);
   }
 
   goBack(): void {
@@ -55,5 +60,6 @@ export class OwnerPageComponent implements OnInit {
     this.monkeyService.updateMonkey(monkey).subscribe(monkey => {
       this.monkeys.push(monkey);
     });
+    this.getMonkeys();
   }
 }

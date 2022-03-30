@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CurrentUserService } from '../current-user.service';
 import { Monkey } from '../monkey';
 import { ShoppingCartService } from '../shopping-cart.service';
-
+import { UserService } from '../user.service';
 import { MonkeyService } from '../monkey.service';
 
 @Component({
@@ -17,7 +17,8 @@ export class ShoppingCartComponent implements OnInit {
 
   constructor(private cartService: ShoppingCartService,
     public currentUserService: CurrentUserService,
-    public monkeyService: MonkeyService) 
+    public monkeyService: MonkeyService,
+    private userService: UserService) 
     {}
 
   getMonkeyList(){
@@ -32,28 +33,34 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   removeFromCart(item: Monkey): void{
+    this.getMonkeys();
     for (let k = 0; k < this.items.length; k++){
       if (this.items[k].id == item.id){
-        item.rented = false;
-        this.monkeyService.updateMonkey(item).subscribe();;
-        this.cartService.deleteFromCart(this.items[k].id);
+        this.cartService.deleteFromUser(k);
         break;
       }
     }
-    this.getMonkeyList();
+    setTimeout(()=>{this.getMonkeys();},100);
   }
 
   clearCart(){
-    for (let k = 0; k < this.items.length; k++){
-      this.items[k].rented = false;
-      this.monkeyService.updateMonkey(this.items[k]).subscribe();
-    }
     this.cartService.clearCart();
-    this.getMonkeyList();
   }
 
   ngOnInit(): void {
-    this.getMonkeyList();
+    this.getMonkeys();
   }
 
+  getMonkeys(): void{
+    this.userService.getUserCart(this.currentUserService.user.id)
+    .subscribe(cartArray => this.items = cartArray);
+  }
+
+  checkCart(monkey: Monkey): boolean {
+    for (let m of this.items){
+      if (m.id == monkey.id)
+        return true;
+    }
+    return false;
+  }
 }
