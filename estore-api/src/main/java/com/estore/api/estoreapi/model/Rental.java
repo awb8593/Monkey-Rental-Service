@@ -1,6 +1,5 @@
 package com.estore.api.estoreapi.model;
 
-import java.util.Date;
 import java.util.logging.Logger;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -13,14 +12,14 @@ public class Rental {
     private static final Logger LOG = Logger.getLogger(Rental.class.getName());
 
     @JsonProperty("id") private int id;
-    @JsonProperty("rentalDate") Date rentalDate;
-    @JsonProperty("returnDate") Date returnDate;
+    @JsonProperty("rentalDate") String rentalDate;
+    @JsonProperty("returnDate") String returnDate;
     @JsonProperty("userId") int userId;
     @JsonProperty("monkeyId") int monkeyId;
     @JsonProperty("active") boolean active;
 
     // Package private for tests
-    static final String STRING_FORMAT = "Rental [id=%d, rentalDate=%t, returnDate=%t, userId=%d, monkeyId=%d, active=%b]";
+    static final String STRING_FORMAT = "Rental [id=%d, rentalDate=%s, returnDate=%s, userId=%d, monkeyId=%d, active=%b]";
     
     /**
      * Create a rental with the given id, rentalDate, returnDate, userId, and monkeyId
@@ -36,8 +35,8 @@ public class Rental {
      * value, i.e. 0 for int
      */
     public Rental(@JsonProperty("id") int id,
-        @JsonProperty("rentalDate") Date rentalDate, 
-        @JsonProperty("returnDate") Date returnDate, 
+        @JsonProperty("rentalDate") String rentalDate, 
+        @JsonProperty("returnDate") String returnDate, 
         @JsonProperty("userId") int userId, 
         @JsonProperty("monkeyId") int monkeyId) {
         
@@ -61,25 +60,25 @@ public class Rental {
      * Sets the date of the rental - necessary for JSON object to Java object deserialization
      * @param rentalDate The date of the rental
      */
-    public void setRentalDate(Date rentalDate) {this.rentalDate = rentalDate;}
+    public void setRentalDate(String rentalDate) {this.rentalDate = rentalDate;}
 
     /**
      * Retrieves the date of the rental
      * @return The date of the rental
      */
-    public Date getRentalDate() {return rentalDate;}
+    public String getRentalDate() {return rentalDate;}
 
     /**
      * Sets the date of the rental return - necessary for JSON object to Java object deserialization
      * @param returnDate The expected date of the rental return
      */
-    public void setReturnDate(Date returnDate) {this.returnDate = returnDate;}
+    public void setReturnDate(String returnDate) {this.returnDate = returnDate;}
 
     /**
      * Retrieves the date of the rental return
      * @return The date of the rental return
      */
-    public Date getReturnDate() {return returnDate;}
+    public String getReturnDate() {return returnDate;}
 
     /**
      * Sets the userId - necessary for JSON object to Java object deserialization
