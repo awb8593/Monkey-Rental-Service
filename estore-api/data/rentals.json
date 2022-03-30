@@ -1,1 +1,1 @@
-[{"id":1,"rentalDate":"2022-3-30","returnDate":"2022-4-15","userId":5,"monkeyId":2,"active":true}]
+[{"id":1,"rentalDate":"2020-03-09T22:18:26.625Z","returnDate":"2024-05-09T22:18:26.625Z","userId":2,"monkeyId":2,"active":false},{"id":2,"rentalDate":"2020-03-09T22:18:26.625Z","returnDate":"2021-03-09T22:18:26.625Z","userId":2,"monkeyId":2,"active":true},{"id":3,"rentalDate":"2020-03-09T22:18:26.625Z","returnDate":"2022-05-12T22:18:26.625Z","userId":2,"monkeyId":5,"active":true}]
