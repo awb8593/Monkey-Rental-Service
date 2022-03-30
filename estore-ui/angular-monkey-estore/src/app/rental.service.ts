@@ -78,11 +78,21 @@ export class RentalService {
     return this.http.get<Rental[]>(url);
   }
 
-  convertRentalDate(rental: Rental): Observable<Date> { 
-    return of(new Date(rental.rentalDate))
+  setRentalDateString(rental: Rental, dateStr: string): Observable<Rental> {
+    rental.rentalDate = new Date(dateStr).toJSON()
+    return of(rental);
   }
 
-  convertReturnDate(rental: Rental): Observable<Date> { 
-    return of(new Date(rental.returnDate))
+  setReturnDateString(rental: Rental, dateStr: string): Observable<Rental> {
+    rental.returnDate = new Date(dateStr).toJSON()
+    return of(rental);
+  }
+
+  getRentalDateString(rental: Rental): Observable<string> { 
+    return of(new Date(rental.rentalDate).toDateString());
+  }
+
+  getReturnDateString(rental: Rental): Observable<string> { 
+    return of(new Date(rental.returnDate).toDateString());
   }
 }
