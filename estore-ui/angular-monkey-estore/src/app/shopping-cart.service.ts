@@ -7,6 +7,8 @@ import { CurrentUserService } from './current-user.service';
 
 import { RentalService } from './rental.service';
 import { Rental } from './rental';
+import { of } from 'rxjs';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 @Injectable({
   providedIn: 'root'
@@ -49,10 +51,11 @@ export class ShoppingCartService {
         active: true
       }
       this.items[i].rented = true;
+      this.monkeyService.updateMonkey(this.items[i]).subscribe();
       this.rentalService.addRental(rental).subscribe();
       this.currentUserService.user.rentedList.push(rental.id);
-
     }
+    
     this.items = [];
     this.currentUserService.user.cartList = [];
     this.currentUserService.save();
