@@ -1,1 +1,5 @@
-<p>rental-page works!</p>
+<div class="rental-item" *ngFor="let item of items">
+    <span *ngIf="getRentedList()">
+        <span style="background-color:#f52d51;">
+            {{monkeyService.getMonkey(item.monkeyId)}}
+            <button (click)="returnFromRented(item)">Return Monkey</button>

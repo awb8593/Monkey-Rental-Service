@@ -7,6 +7,7 @@
 -->
 <nav *ngIf="currentUserService.user.id !== 1 && currentUserService.user.id !== 0;">
     <a routerLink="/buyer-product-list"> Product Page</a><br>
-    <a routerLink="/shopping-cart"> Shopping Cart</a> 
+    <a routerLink="/shopping-cart"> Shopping Cart</a><br>
+    <a routerLink="/rental-page"> Rental Page</a>
 </nav>
 <router-outlet *ngIf="currentUserService.user.id !== 1 && currentUserService.user.id !== 0;"></router-outlet>

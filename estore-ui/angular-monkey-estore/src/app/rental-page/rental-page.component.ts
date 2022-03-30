@@ -3,10 +3,12 @@ import { ReviewService } from '../review.service';
 import { UserService } from '../user.service';
 import { CurrentUserService } from '../current-user.service';
 import { Review } from '../review';
+import { Rental } from '../rental'
 import { Location } from '@angular/common';
 import { MonkeyService } from '../monkey.service';
 import { ShoppingCartService } from '../shopping-cart.service';
 import { Monkey } from '../monkey';
+import { RentalService } from '../rental.service';
 
 @Component({
   selector: 'app-rental-page',
@@ -17,10 +19,11 @@ export class RentalPageComponent implements OnInit {
 
   constructor(private cartService: ShoppingCartService,
     public currentUserService: CurrentUserService,
-    public monkeyService: MonkeyService) 
+    public monkeyService: MonkeyService,
+    public rentalService: RentalService) 
     {}
 
-  items: Monkey[] = [];
+  items: Rental[] = [];
 
   ngOnInit(): void {
     this.getRentedList();
@@ -29,17 +32,17 @@ export class RentalPageComponent implements OnInit {
   getRentedList(){
     this.currentUserService.load();
     this.items = [];
-    for (let k = 0; k < this.currentUserService.user.cartList.length; k++){
-      this.monkeyService.getMonkey(this.currentUserService.user.cartList[k]).subscribe(monkey => this.items.push(monkey))
+    for (let k = 0; k < this.currentUserService.user.rentedList.length; k++){
+      this.rentalService.getRentalsUser(this.currentUserService.user.id, true).subscribe(rentals => this.items = rentals)
     }
   }
 
-  returnFromRented(item: Monkey): void{
+  returnFromRented(item: Rental): void{
     for (let k = 0; k < this.items.length; k++){
       if (this.items[k].id == item.id){
-        item.rented = false;
-        this.monkeyService.updateMonkey(item).subscribe();;
-        this.cartService.deleteFromCart(this.items[k].id);
+        this.items[k].active = false
+        this.rentalService.updateRental(this.items[k]).subscribe();;
+        this.rentalService.deleteRental(this.items[k].id);
         break;
       }
     }
