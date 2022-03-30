@@ -69,7 +69,8 @@ The minimum viable product for this project is a running website in which users 
 ### Roadmap of Enhancements
 Our biggest enhancement is the ability to rent a monkey for your event rather than simply purchasing one, which would be impractical to do through an e-store.
 
-We plan to implement the ability to read customer reviews on the monkey you are currently viewing, as well as the ability to write reviews for monkeys who you have previously rented.
+We have also implemented the ability to write reviews after you return a monkey that you have rented. Each monkey's
+product page displays their average rating, as well as a list of written reviews from users who have rented them.
 
 
 ## Application Domain
@@ -78,7 +79,7 @@ This section describes the application domain.
 
 ![Domain Model](domain-model.png)
 
-There are two ways to access the e-store. Using a username, the system authenticates each user as either a customer or an admin. Customers on the e-store can view a list of products and add or remove them from their shopping cart, from which they can later checkout from. Customers can also leave written reviews for monkeys that they have previously rented. Unlike customers, the owner, authenticated as admin, can manage the e-store's inventory, which contains all of the products in the e-store. The owner can manage the e-store by adding, removing, or updating the specific details of monkeys in the inventory. 
+There are two ways to access the e-store. Using a username, the system authenticates each user as either a customer or an admin. Customers on the e-store can view a list of products and add or remove them from their shopping cart, from which they can later checkout from. Customers can then return monkeys that they are currently renting, and are prompted to leave a review for other users to see. Unlike customers, the owner, authenticated as admin, can manage the e-store's inventory, which contains all of the products in the e-store. The owner can manage the e-store by adding, removing, or updating the specific details of monkeys in the inventory. 
 
 
 ## Architecture and Design
@@ -108,9 +109,9 @@ or created an account, they will be redirected to the productlist page, where th
 is displayed, as well as a search box to find specific monkeys. If the user is an admin, they can also 
 edit and add monkeys while on this page via text boxes and buttons. When clicking on a monkey, the monkey's 
 page will be displayed, showing information regarding the species, name, id, description, cost, and 
-availability of the monkey, as well as an option to add it to the user's cart. When on the productlist 
-page the user can be redirected to their cart by clicking on the cart icon and from their they will be 
-taken to a page where they can remove monkeys from their cart as well as checkout.
+availability of the monkey, as well as an option to add it to the user's cart. This page also displays the monkey's
+average rating and a list of user-written reviews. When on the productlist page the user can be redirected to their cart by clicking on the cart icon and from their they will be taken to a page where they can remove monkeys from 
+their cart as well as checkout using the Checkout button, which updates the status of each rented monkey's availability and adds each of them to the user's current rentals list.
 
 
 ### View Tier
@@ -119,7 +120,7 @@ When opening the website UI, the first thing a user will see is the Login Page C
 
 If the user logs in with a customer account or creates a new account (which will automatically be a customer account) at the Login Page, the Buyer Product List Component will be opened up. The Buyer Product List contains a list of all the monkeys in the estore and another list of monkeys which is generated based on the search using the search bar.
 
-After clicking a button for a specific monkey from the Buyer Product List, the Product Page Component will be opened on the same page. This will contain information about the selected monkey and an option to add to cart.
+After clicking a button for a specific monkey from the Buyer Product List, the Product Page Component will be opened on the same page. This will contain information about the selected monkey and an option to add to cart. This information includes their price, species, description, average rating, and list of user-written reviews.
 
 The Shopping Cart Component is shown on the Buyer Product List. This displays the monkeys currently in the user's shopping cart as well as a button to checkout and a button for each monkey to remove from the shopping cart.
 
@@ -137,7 +138,7 @@ The Model Tier of our project communicates with the ViewModel Tier by receiving 
 
 ![UML Diagram depicting back-end relationships](MonkeySpringUML.drawio.png)
 
-Our project's backend also uses the Spring Framework. The Spring Framework creates the Monkey Controller, which depends on the Monkey DAO, which defines the interface for Monkey objects in the system. The MonkeyFileDAO inherits the Monkey DAO and implements the functionalities defined in the DAO. Upon instantiation of the MonkeyController object, the system will inject the MonkeyFileDAO into the MonkeyController object so that the MonkeyController can handle REST API requests relating to Monkey objects.
+Our project's backend also uses the Spring Framework. The Spring Framework creates the Monkey Controller, which depends on the Monkey DAO, which defines the interface for Monkey objects in the system. The MonkeyFileDAO inherits the Monkey DAO and implements the functionalities defined in the DAO. Upon instantiation of the MonkeyController object, the system will inject the MonkeyFileDAO into the MonkeyController object so that the MonkeyController can handle REST API requests relating to Monkey objects. Similarly, the Spring Framework creates the Review Controller and Rental Controller, which depend on their respective DAO's. The ReviewDAO defines the interface for Review objects, which each include an ID that matches the ID of the monkey whose list of reviews are contained in the object. Rental objects are similarly defined in its DAO. They also have their own ReviewFileDAO and RentalFileDAO to implement the DAO's functionalities. 
 
 
 ### Static Code Analysis/Design Improvements
@@ -163,8 +164,8 @@ To ensure that the project is meeting our requirements, we conducted two types o
 Most of the stories are currently passing their acceptance criteria tests. The issues found in the stories that are currently partially passing or failing came about when we noticed that they work or do not work in specific scenarios, or there is simply a small detail that is technically not correct. For example, the buyer product list's rented status does not currently update until the page is left and and returned to. These issues do not concern us as we are confident that we will be able to get these stories to a passing status in little time. The stories that have not been tested are the stories related to customer reviews, as they have not been implemented yet.
 
 ### Unit Testing and Code Coverage
-The way that we have handled unit testing is by creating a doc of all tests that need to be written and allowing team members to evenly split the work among themselves. We have 100% coverage in the model tier and 97% coverage total. Our goal for overall coverage is 90% minimum but we like to strive for higher if we have time, we chose this number because it results in a balance of having enough testing without wasting time working on tests when more important parts of the project need to be done. Our lowest current element is estoreapi with a current coverage of 88%, the coverage is only this low because main is not currently tested.
+The way that we have handled unit testing is by creating a doc of all tests that need to be written and allowing team members to evenly split the work among themselves. We have 100% coverage in the model tier and 95% coverage total. Our goal for overall coverage is 90% minimum but we like to strive for higher if we have time. We chose this number because it results in a balance of having enough testing without wasting time working on tests when more important parts of the project need to be done. Our lowest current element is estoreapi with a current coverage of 88%. The coverage is this low because main is not fully tested currently.
 
 ![Code Coverage](estore-coverage.png)
 
-Our strategy in creating unit tests is to attempt to cover every method by checking its possible success and failure conditions ensuring that they match what we expect them to. For example when writing unit tests for the creation of a monkey in the MonkeyController class, we tested the output from the MonkeyController Creation method when the monkey is created correctly, when the monkey creation is rejected, and when the MonkeyDAO throws an error. 
+Our strategy in creating unit tests is to attempt to cover every method by checking its possible success and failure conditions ensuring that they match what we expect them to. For example, when writing unit tests for the creation of a monkey in the MonkeyController class, we tested the output from the MonkeyController Creation method when the monkey is created correctly, when the monkey creation is rejected, and when the MonkeyDAO throws an error. 
