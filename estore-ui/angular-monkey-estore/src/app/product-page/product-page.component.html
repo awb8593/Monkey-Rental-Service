@@ -14,4 +14,10 @@
         <button type="button" (click)="addToCart(monkey)">Add To Cart</button>
     </span>
     <button type="button" (click)="goBack()">Back</button>
+
+    <br>
+    <h3>REVIEWS</h3>
+    <div *ngFor="let review of getReviews()">
+        {{review}}
+    </div>
 </div>

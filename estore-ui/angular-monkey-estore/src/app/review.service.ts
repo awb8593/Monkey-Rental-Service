@@ -18,10 +18,10 @@ export class ReviewService {
   };
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
   ) { }
 
-  getReviews(id: number): Observable<Review[]> {
-    return this.http.get<Review[]>(this.reviewsUrl);
+  getReviewObject(id: number): Observable<Review> {
+    return this.http.get<Review>(`${this.reviewsUrl}/${id}`);
   }
 }
