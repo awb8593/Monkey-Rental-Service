@@ -12,7 +12,7 @@ public class Review {
     // implement Logger here when needed
 
     // package private for tests
-    static final String STRING_FORMAT = "Reviews For Monkey [id=%d, ratings=%d, reviews=%s]";
+    static final String STRING_FORMAT = "[id=%d, ratings=%s, reviews=%s]";
 
     @JsonProperty("id") private int id;
     @JsonProperty("ratings") private ArrayList<Integer> ratings;
@@ -56,10 +56,22 @@ public class Review {
     public void setRatings(ArrayList<Integer> ratings) {this.ratings = ratings;}
 
     /**
+     * gets the list of ratings stored in this object
+     * @return this object's ratings
+     */
+    public ArrayList<Integer> getRatings() {return this.ratings;}
+
+    /**
      * Sets the current list of written reviews to the specified one
      * @param reviews the list of written reviews being set
      */
     public void setReviews(ArrayList<String> reviews) {this.reviews = reviews;}
+
+    /**
+     * gets the list of reviews stored in this object
+     * @return this object's reviews
+     */
+    public ArrayList<String> getReviews() {return this.reviews;}
 
     /**
      * {@inheritDoc}
