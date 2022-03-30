@@ -4,11 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { BuyerProductListComponent } from './buyer-product-list/buyer-product-list.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { PostReturnPageComponent } from './post-return-page/post-return-page.component';
 
 const routes : Routes = [
   { path: 'buyer-product-list', component: BuyerProductListComponent },
   { path: 'product-page/:id', component: ProductPageComponent },
-  { path: 'shopping-cart', component: ShoppingCartComponent}
+  { path: 'shopping-cart', component: ShoppingCartComponent},
+  { path: 'post-return-page/:id', component: PostReturnPageComponent}
 ];
 
 @NgModule({

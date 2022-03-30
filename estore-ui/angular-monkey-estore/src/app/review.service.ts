@@ -24,4 +24,8 @@ export class ReviewService {
   getReviewObject(id: number): Observable<Review> {
     return this.http.get<Review>(`${this.reviewsUrl}/${id}`);
   }
+
+  updateReviewObject(review: Review): Observable<any> {
+    return this.http.put(this.reviewsUrl, review, this.httpOptions);
+  }
 }
