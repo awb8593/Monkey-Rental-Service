@@ -1,12 +1,19 @@
+<link rel="stylesheet" href="app.component.css">
 <h1>{{title}}</h1>
-<app-login-page></app-login-page>
+<div id = "login" *ngIf = "currentUserService.user.id === 0;">
+    <app-login-page></app-login-page>
+</div>
 <app-owner-page *ngIf="currentUserService.user.id === 1;">
 </app-owner-page>
-<!-- 
-<app-buyer-product-list *ngIf="currentUserService.user.id !== 1 && currentUserService.user.id !== 0;"></app-buyer-product-list>
--->
-<nav *ngIf="currentUserService.user.id !== 1 && currentUserService.user.id !== 0;">
-    <a routerLink="/buyer-product-list"> Product Page</a><br>
-    <a routerLink="/shopping-cart"> Shopping Cart</a> 
+<nav id = "navBar" *ngIf="currentUserService.user.id !== 1 && currentUserService.user.id !== 0;">
+    <a id = "user">User: {{currentUserService.user.username}} </a>
+    <a routerLink="/buyer-product-list"> Product Page</a>
+    <a routerLink="/shopping-cart"> Shopping Cart</a>
+    <a style = "cursor:pointer">
+        <app-login-page></app-login-page>
+    </a>
 </nav>
 <router-outlet *ngIf="currentUserService.user.id !== 1 && currentUserService.user.id !== 0;"></router-outlet>
+<!--<label for="logout">User: {{currentUserService.user.username}} </label>
+    <button type="button" #logoutButton onclick="location.href=''" (click)="logout()">Logout</button>
+-->

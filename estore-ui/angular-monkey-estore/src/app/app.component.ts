@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CurrentUserService } from './current-user.service';
-
-
+import {LoginPageComponent} from './login-page/login-page.component';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +11,12 @@ export class AppComponent {
   title = 'Monkey e-Store';
   
   constructor(
-    public currentUserService: CurrentUserService
+    public currentUserService: CurrentUserService,
+    
   ) {}
+
+  hide(){
+    document.getElementById('productPage')!.style.display='none';
+  }
 }
 
