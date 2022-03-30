@@ -16,6 +16,14 @@
     <button type="button" (click)="goBack()">Back</button>
 
     <br>
+    <h3>RATING</h3>
+    <span *ngIf="getAverageRating() == -1">
+        No Ratings Yet
+    </span>
+    <span *ngIf="getAverageRating() != -1">
+        {{getAverageRating()}}/5
+    </span>
+    <br>
     <h3>REVIEWS</h3>
     <span *ngIf="getReviews().length == 0">
         No Reviews Currently

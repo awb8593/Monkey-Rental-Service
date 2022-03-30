@@ -80,4 +80,16 @@ export class ProductPageComponent implements OnInit{
       return [];
     }
   }
+
+  getAverageRating(): number {
+    if (this.review != undefined){
+      let numArray: number[] = this.review.ratings;
+      let total = 0;
+      for (let i=0; i < numArray.length; i++){
+        total += numArray[i];
+      }
+      return total/numArray.length;
+    }
+    else return -1;
+  }
 }
