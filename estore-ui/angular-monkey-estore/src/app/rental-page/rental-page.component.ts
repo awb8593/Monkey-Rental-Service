@@ -32,9 +32,7 @@ export class RentalPageComponent implements OnInit {
   getRentedList(){
     this.currentUserService.load();
     this.items = [];
-    for (let k = 0; k < this.currentUserService.user.rentedList.length; k++){
-      this.rentalService.getRentalsUser(this.currentUserService.user.id, true).subscribe(rentals => this.items = rentals)
-    }
+    this.rentalService.getRentalsUser(this.currentUserService.user.id, true).subscribe(rentals => this.items = rentals)
   }
 
   returnFromRented(item: Rental): void{
