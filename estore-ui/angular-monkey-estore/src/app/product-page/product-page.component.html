@@ -17,7 +17,12 @@
 
     <br>
     <h3>REVIEWS</h3>
-    <div *ngFor="let review of getReviews()">
-        {{review}}
-    </div>
+    <span *ngIf="getReviews().length == 0">
+        No Reviews Currently
+    </span>
+    <span *ngIf="getReviews().length != 0">    
+        <li *ngFor="let review of getReviews()">
+            {{review}}
+        </li>
+    </span>
 </div>
