@@ -2,6 +2,8 @@
  .cart {
     width: 500px;
     border: 5px solid black;
+    margin:auto;
+    margin-top: 60px;
 }
 
 .header h3 {

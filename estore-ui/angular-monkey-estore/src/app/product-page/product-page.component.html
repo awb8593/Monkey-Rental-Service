@@ -1,17 +1,19 @@
-<div *ngIf="monkey">
+<div class = "productPage" *ngIf="monkey">
+    <button id="back" type="button" (click)="goBack()">Back</button>
     <h2> {{monkey.name | uppercase}} Details <br></h2>
     Species: {{monkey.species}} <br>
     Price Per Hour: ${{monkey.price}} <br>
     Description: {{monkey.description}} <br>
-    <span *ngIf="monkey.rented">
-        Unavailable
-    </span>
-    <span *ngIf="!monkey.rented && checkCart(monkey)">
-        Currently in Cart
-    </span>
-    <span *ngIf="!(monkey.rented || checkCart(monkey))">
-        Available for Rent<br>
-        <button type="button" (click)="addToCart(monkey)">Add To Cart</button>
-    </span>
-    <button type="button" (click)="goBack()">Back</button>
+    <div id = "status">
+        <span *ngIf="monkey.rented">
+            Unavailable
+        </span>
+        <span *ngIf="!monkey.rented && checkCart(monkey)">
+            Currently in Cart
+        </span>
+        <span *ngIf="!(monkey.rented || checkCart(monkey))">
+            Available for Rent<br>
+            <button id="add" type="button" (click)="addToCart(monkey)">Add To Cart</button>
+        </span>
+    </div>
 </div>

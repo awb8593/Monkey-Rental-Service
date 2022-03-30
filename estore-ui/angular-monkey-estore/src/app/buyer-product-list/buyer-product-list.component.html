@@ -5,7 +5,7 @@
     }
 </style>
 
-<div>
+<div id = "search">
     <label for="search-box">Search Monkeys </label>
     <input #searchBox id="search-box" (input)="search(searchBox.value)">
 </div>
@@ -58,8 +58,8 @@
     </ul>
 </div>
 
-<a routerLink="/shopping-cart" style="position:fixed; top: 40px; right: 50px">
+<!--<a routerLink="/shopping-cart" style="position:fixed; top: 40px; right: 50px">
     <img src="../../assets/cart_icon.png" style="height: 50px; width: 50px;">
-</a>
+</a> -->
 
 <router-outlet></router-outlet>

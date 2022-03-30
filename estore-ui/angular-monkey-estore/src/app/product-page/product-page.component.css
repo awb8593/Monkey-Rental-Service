@@ -5,9 +5,9 @@ h1 {
     font-size: 250%;
   }
   h2, h3 {
-    color: #444;
+    color: rgb(27, 27, 27);
     font-family: Arial, Helvetica, sans-serif;
-    font-weight: lighter;
+    font-weight:bold;
   }
   body {
     margin: 2em;
@@ -16,6 +16,52 @@ h1 {
     color: #333;
     font-family: Cambria, Georgia, serif;
   }
+
+  .productPage {
+    margin:auto;
+    width: 500px;
+    border: 5px solid black;
+    margin-top: 60px;
+  }
+
+  #add {
+    font-family:'Arial';
+    font-weight:bold;
+    font-size: 16pt;
+    color:white;
+    padding: 10px;
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    background-color: rgb(236, 168, 9);
+    width:480px;
+  }
+
+  #add:hover {
+    color:rgb(255, 255, 255);
+    background-color:rgb(185, 132, 9)
+  }
+
+  #back {
+    display:flex;
+    margin-left: auto;
+    margin-right: 2px;
+    margin-bottom:-30px;
+    background-color: rgb(85, 85, 85);
+    color:white;
+    width:60px;
+    font-family:'Arial';
+  }
+
+  #back:hover {
+    background-color:#333
+  }
+
+  #status span{
+    font-weight: bold;
+  }
+
   /* everywhere else */
   * {
     font-family: Arial, Helvetica, sans-serif;
