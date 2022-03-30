@@ -48,7 +48,10 @@ export class ShoppingCartService {
         monkeyId: monkeyid,
         active: true
       }
+      this.items[i].rented = true;
       this.rentalService.addRental(rental).subscribe();
+      this.currentUserService.user.rentedList.push(rental.id);
+
     }
     this.items = [];
     this.currentUserService.user.cartList = [];
