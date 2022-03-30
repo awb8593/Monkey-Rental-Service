@@ -31,6 +31,7 @@ public class UserFileDAOTest {
     UserFileDAO userFileDAO;
     User[] testUsers;
     ObjectMapper mockObjectMapper;
+    MonkeyDAO mockMonkeyDAO;
 
     /**
      * Before each test, we will create and inject a Mock Object Mapper to
@@ -40,6 +41,7 @@ public class UserFileDAOTest {
     @BeforeEach
     public void setupUserFileDAO() throws IOException {
         mockObjectMapper = mock(ObjectMapper.class);
+        mockMonkeyDAO = mock(MonkeyDAO.class);
         testUsers = new User[3];
         testUsers[0] = new User(98, "TestUser1");
         testUsers[1] = new User(99, "TestUser2");
@@ -50,7 +52,7 @@ public class UserFileDAOTest {
         when(mockObjectMapper
             .readValue(new File("doesnt_matter.txt"),User[].class))
                 .thenReturn(testUsers);
-        userFileDAO = new UserFileDAO("doesnt_matter.txt",mockObjectMapper);
+        userFileDAO = new UserFileDAO("doesnt_matter.txt",mockObjectMapper,mockMonkeyDAO);
     }
 
 
@@ -201,7 +203,7 @@ public class UserFileDAOTest {
 
         // Invoke & Analyze
         assertThrows(IOException.class,
-                        () -> new UserFileDAO("doesnt_matter.txt",mockObjectMapper),
+                        () -> new UserFileDAO("doesnt_matter.txt",mockObjectMapper,mockMonkeyDAO),
                         "IOException not thrown");
     }
 }

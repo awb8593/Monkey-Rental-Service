@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Monkey } from './monkey';
 
+import { MonkeyService } from './monkey.service';
 
 import { CurrentUserService } from './current-user.service';
 
@@ -9,30 +10,41 @@ import { CurrentUserService } from './current-user.service';
 })
 export class ShoppingCartService {
   
+  items: Monkey[] =[];
+  
   constructor(
-    private currentUserService: CurrentUserService
+    private currentUserService: CurrentUserService,
+    private monkeyService: MonkeyService
     ) {}
 
   addToCart(monkey: Monkey){
-    this.currentUserService.load();
-    this.currentUserService.user.cartList.push(monkey.id);
+    this.items.push(monkey);
+    this.currentUserService.user.cartList.push(monkey.id)
+
     this.currentUserService.save();
   }
 
-  deleteFromCart(id: number){
-    this.currentUserService.load();
-    for (let k = 0; k < this.currentUserService.user.cartList.length; k++){
-      if (this.currentUserService.user.cartList[k] == id){
-        this.currentUserService.user.cartList.splice(k, 1);
-        break;
-      }
-    }
+  deleteFromUser(index: number){
+    
+    this.currentUserService.user.cartList.splice(index, 1);
+    
     this.currentUserService.save();
   }
 
   clearCart(){
+    this.items = [];
     this.currentUserService.user.cartList = [];
     this.currentUserService.save();
+    return this.items;
+  }
+
+  getMonkeys(){
+    this.currentUserService.load();
+    this.items = [];
+    for (let k = 0; k < this.currentUserService.user.cartList.length; k++){
+      this.monkeyService.getMonkey(this.currentUserService.user.cartList[k]).subscribe(monkey => this.items[k])
+    }
+    return this.items;
   }
 
 }
