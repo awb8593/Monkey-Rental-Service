@@ -23,9 +23,10 @@
             Grand Total: <span> ${{getTotalCost()}}</span>
         </p>
     </div> 
-    <div class="checkout">
+    <div class="checkout" *ngIf="checkIfAnyRented()"> 
         <button (click)="clearCart()"> Checkout </button>
     </div>
+    
 </div>
 
 

@@ -53,6 +53,7 @@ export class ShoppingCartComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMonkeys();
+    this.checkIfAnyRented()
   }
 
   getMonkeys(): void{
@@ -80,4 +81,12 @@ export class ShoppingCartComponent implements OnInit {
     return this.total;
   }
 
+  checkIfAnyRented(): boolean {
+    for(var i = 0; i < this.items.length; i++){
+      if(this.items[i].rented){
+        return false;
+      }
+    }
+    return true;
+  } 
 }
