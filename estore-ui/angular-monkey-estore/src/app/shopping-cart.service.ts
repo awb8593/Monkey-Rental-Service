@@ -37,7 +37,8 @@ export class ShoppingCartService {
     this.currentUserService.save();
   }
 
-  clearCart(){
+  clearCart(monkeyList: Monkey[]){
+    this.items = monkeyList
     for(let i = 0; i < this.items.length; i ++) { // add each item to the user's rentals
       let monkeyid = this.items[i].id
       let tempDate = new Date();
@@ -68,7 +69,7 @@ export class ShoppingCartService {
     this.currentUserService.load();
     this.items = [];
     for (let k = 0; k < this.currentUserService.user.cartList.length; k++){
-      this.monkeyService.getMonkey(this.currentUserService.user.cartList[k]).subscribe(monkey => this.items[k])
+      this.monkeyService.getMonkey(this.currentUserService.user.cartList[k]).subscribe(monkey => this.items[k] = monkey)
     }
     return this.items;
   }

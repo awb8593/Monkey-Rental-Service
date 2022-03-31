@@ -47,7 +47,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   clearCart(){
-    this.cartService.clearCart();
+    this.cartService.clearCart(this.items);
     setTimeout(()=>{this.getMonkeys();},100);
   }
 
