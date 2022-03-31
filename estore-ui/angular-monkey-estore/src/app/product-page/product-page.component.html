@@ -16,4 +16,26 @@
             <button id="add" type="button" (click)="addToCart(monkey)">Add To Cart</button>
         </span>
     </div>
+    <br>
+    <h3>RATING</h3>
+    <span *ngIf="getAverageRating() == -1">
+        No Ratings Yet
+    </span>
+    <span *ngIf="getAverageRating() != -1">
+        {{getAverageRating()}}/5
+    </span>
+    <br>
+    <h3>REVIEWS</h3>
+    <span *ngIf="getReviews().length == 0">
+        No Reviews Currently
+    </span>
+    <span *ngIf="getReviews().length != 0">    
+        <li *ngFor="let review of getReviews()">
+            {{review}}
+        </li>
+    </span>
+    <br>
+    DELETE ME 
+    <a routerLink="/post-return-page/{{monkey.id}}">POST REVIEW PAGE</a>
 </div>
+<router-outlet></router-outlet>

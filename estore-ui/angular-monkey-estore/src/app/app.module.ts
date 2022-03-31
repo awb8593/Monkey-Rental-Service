@@ -12,6 +12,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { OwnerPageComponent } from './owner-page/owner-page.component';
 import { RentalPageComponent } from './rental-page/rental-page.component';
+import { PostReturnPageComponent } from './post-return-page/post-return-page.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RentalPageComponent } from './rental-page/rental-page.component';
     OwnerPageComponent,
     BuyerProductListComponent,
     LoginPageComponent,
-    RentalPageComponent
+    RentalPageComponent,
+    PostReturnPageComponent
   ],
   imports: [
     FormsModule,
