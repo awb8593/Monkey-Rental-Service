@@ -9,6 +9,7 @@ import { MonkeyService } from '../monkey.service';
 import { ShoppingCartService } from '../shopping-cart.service';
 import { Monkey } from '../monkey';
 import { RentalService } from '../rental.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-rental-page',
@@ -21,15 +22,18 @@ export class RentalPageComponent implements OnInit {
   constructor(private cartService: ShoppingCartService,
     public currentUserService: CurrentUserService,
     public monkeyService: MonkeyService,
-    public rentalService: RentalService) 
+    public rentalService: RentalService,
+    private router: Router) 
     {}
 
   items: Rental[] = [];
 
   selectedMonkey?: Monkey;
+  id: number = 0;
 
   onSelect(monkey: Monkey): void {
     this.selectedMonkey = monkey;
+    this.id = monkey.id;
   }
 
   deselect(): void{
@@ -56,19 +60,31 @@ export class RentalPageComponent implements OnInit {
     for (let k = 0; k < this.items.length; k++){
       if (this.monkeys[k].id == id){
         this.monkeys[k].rented = false;
-        this.monkeyService.updateMonkey(this.monkeys[k]).subscribe
+        this.monkeyService.updateMonkey(this.monkeys[k]).subscribe()
       }
       if (this.items[k].monkeyId == id){
         this.items[k].active = false
-        this.rentalService.updateRental(this.items[k]).subscribe();;
-        this.rentalService.deleteRental(this.items[k].id).subscribe;
+        this.rentalService.updateRental(this.items[k]).subscribe();
+        this.rentalService.deleteRental(this.items[k].id).subscribe();
         break;
       }
     }
     this.getRentedList();
   }
 
-  //getRentalMonkey(id: number): void{
-    //this.monkeyService.getMonkey(id).subscribe(monkey => this.monkey = monkey)
-  //}
+  getRentalDate(rental: Rental){
+    var returnStr: string = "DATE";
+    this.rentalService.getRentalDateString(rental).subscribe(str => returnStr = str);
+    return returnStr;
+  }
+
+  getReturnDate(rental: Rental){
+    var returnStr: string = "DATE"
+    this.rentalService.getReturnDateString(rental).subscribe(str => returnStr = str);
+    return returnStr;
+  }
+
+  switchPage(): void {
+    this.router.navigate(["/post-return-page/" + this.id]);
+  }
 }

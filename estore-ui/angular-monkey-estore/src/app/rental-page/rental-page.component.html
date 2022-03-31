@@ -6,7 +6,12 @@
                 <span class="name"> Name: {{monkey.name}} |</span>
                 <span class="species"> Species: {{monkey.species}} </span>
               </button>
-        </li>
+            <li *ngFor="let item of items">
+                <span *ngIf="item.monkeyId == monkey.id">
+                    <p>Rented on:</p>{{getRentalDate(item)}} | <p>Return by:</p>{{getReturnDate(item)}}
+                </span>
+            </li>
+        </span>
     </ul>
 </div>
 
@@ -17,6 +22,7 @@
         <div>Description: {{selectedMonkey.description}}</div>
         <div>Price Per Hour: ${{selectedMonkey.price}}</div>
         <div>
-            <button id = "return" type="button" class="return" title="return monkey"
-            (click)="returnFromRented(selectedMonkey.id); this.getRentedList(); this.getMonkeyList(); ngOnInit(); deselect();">Return Monkey</button>
+            <button type="button" class="return" title="return monkey"
+            (click)="returnFromRented(selectedMonkey.id); this.getRentedList(); this.getMonkeyList(); deselect(); this.switchPage();">Return Monkey</button>
     </div>
+

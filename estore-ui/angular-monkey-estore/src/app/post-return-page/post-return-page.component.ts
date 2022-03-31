@@ -18,7 +18,7 @@ export class PostReturnPageComponent implements OnInit {
   review?: Review;
   message: String = "";
   rating: number = 1;
-  comment: String = "";
+  comment: string = "";
 
   constructor(
     private monkeyService : MonkeyService,
