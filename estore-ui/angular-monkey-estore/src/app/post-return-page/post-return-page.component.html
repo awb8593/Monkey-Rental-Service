@@ -1,10 +1,13 @@
-<div *ngIf="monkey">
+<div class = "review" *ngIf="monkey">
     <br>
+    <h2>
     You have successfully returned {{monkey.name}}
-    <br> <br>
+    </h2>
+    <h3>
     Leave a Review <br>
-    Rating: <input type="number" min="1" max="5" [(ngModel)]="rating"> <br>
+    </h3>
+    Rating: <input id ="rating" type="number" min="1" max="5" [(ngModel)]="rating"> <br>
     Review: <input type="String" [(ngModel)]="comment"> <br>
-    <button (click)="updateReview()">Submit</button> <br>
     {{message}}
+    <button (click)="updateReview()">Submit</button>
 </div>
