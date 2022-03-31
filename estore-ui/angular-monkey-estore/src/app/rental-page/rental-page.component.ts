@@ -67,4 +67,12 @@ export class RentalPageComponent implements OnInit {
     }
     this.getRentedList();
   }
+
+  getRentalDate(rental: Rental){
+    this.rentalService.getRentalDateString(rental).subscribe(str => {return str});
+  }
+
+  getReturnDate(rental: Rental){
+    return this.rentalService.getReturnDateString(rental).subscribe(str => {return str});
+  }
 }
