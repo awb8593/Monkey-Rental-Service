@@ -34,7 +34,9 @@
             </li>
         </span>
         <br>
-        <button id="add" type="button" (click)="addToCart(monkey)">Add To Cart</button>
+        <span *ngIf="!(monkey.rented || checkCart(monkey))">
+            <button id="add" type="button" (click)="addToCart(monkey)">Add To Cart</button>
+        </span>
     </div>
 </div>
 <router-outlet></router-outlet>
