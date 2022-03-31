@@ -59,7 +59,7 @@ public class MonkeyController {
     public ResponseEntity<Monkey> createMonkey(@RequestBody Monkey monkey) {
         LOG.info("POST /monkeys " + monkey);
 
-        if (monkey.getName() == "") {
+        if (monkey.getName().equals("")) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
         try {
