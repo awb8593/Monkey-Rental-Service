@@ -7,7 +7,7 @@
               </button>
             <li *ngFor="let item of items">
                 <span *ngIf="item.monkeyId == monkey.id">
-                    {{getRentalDate(item)}}     {{getReturnDate(item)}}
+                    <p>Rented on:</p>{{getRentalDate(item)}} | <p>Return by:</p>{{getReturnDate(item)}}
                 </span>
             </li>
         </span>
