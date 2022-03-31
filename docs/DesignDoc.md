@@ -64,7 +64,7 @@ The minimum viable product for this project is a running website in which users 
 - Shopping Cart
 - Rental Backend
 - Post Review
-- Read reviews
+- Read Reviews
 
 ### Roadmap of Enhancements
 Our biggest enhancement is the ability to rent a monkey for your event rather than simply purchasing one, which would be impractical to do through an e-store.
@@ -145,16 +145,12 @@ Our project's backend also uses the Spring Framework. The Spring Framework creat
 
 
 ### Static Code Analysis/Design Improvements
-> _Discuss design improvements that you would make if the project were
-> to continue. These improvement should be based on your direct
-> analysis of where there are problems in the code base which could be
-> addressed with design changes, and describe those suggested design
-> improvements._
+Some improvements we would make if the project were to continue involve design decisions causing consistent code smells throguhout the code. A majority of our code smells involve an early design choice to use 'map' instead of 'foreach' in several places, whose uses of map are now going unused. If the project were to continue, we would most likely remove these instances and either leave them as removed or replace them with a 'foreach' statement to increase reliability.
 
-> _With the results from the Static Code Analysis exercise, 
-> discuss the resulting issues/metrics measurements along with your analysis
-> and recommendations for further improvements. Where relevant, include 
-> screenshots from the tool and/or corresponding source code that was flagged._
+One of our biggest current issues is our code's readability. This is due to several old outdated comments that either housed code that was not working or TODO tasks that were never deleted, which has hurt our code's readability. In the future, we would remove these to improve our readabiliy and code style consistency. We also had consistent code smells relating to minor unncessary add-ons, such as including type specifications where they are not needed. We would replace these type specifications with the diamon operator "<>" in the future because they are unnecessary in the version of Java we are using and are making the code longer and more verbose than it needs to be.  
+
+![Commented Code Causing Readability Issues](codeSmellExample1.png)
+![Unnecessary Type Specifications](codeSmellExample2.png)
 
 ## Testing
 To ensure that the project is meeting our requirements, we conducted two types of tests. Acceptance testing allowed us to ensure that requirements related to the front-end of the e-store were working as expected, while Unit Testing allowed us to test the system itself and make sure it is handling everything correctly on the back-end. 
