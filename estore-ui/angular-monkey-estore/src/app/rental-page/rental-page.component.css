@@ -1,7 +1,14 @@
-.rental-item li{
+.rental-item span{
     margin-bottom: 5px;
     text-align: center;
+}
+
+.rental-item{
     margin-right: 30px;
+}
+
+.rental-item span button {
+    margin-top: 10px;
 }
 
 h2 {
@@ -36,7 +43,7 @@ h2 {
     text-align: justify;
 }
 
-#return {
+.return {
     font-family:'Arial';
     font-weight:bold;
     font-size: 16pt;
@@ -50,7 +57,7 @@ h2 {
     width:480px;
   }
 
-  #return:hover {
+  .return:hover {
     color:rgb(255, 255, 255);
     background-color:rgb(181, 7, 7);
   }
