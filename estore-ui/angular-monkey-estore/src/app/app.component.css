@@ -39,7 +39,30 @@ h1 {
   #navBar #user:hover{
     background-color: rgb(22, 22, 22);
     color:white;
+  }
 
+  #navBar {
+    overflow: hidden;
+    background-color: rgb(22, 22, 22)
+  }
+
+  #navBar a {
+    float:left;
+    display:block;
+    color: white;
+    text-align:center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  #navBar a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  #navBar #user:hover{
+    background-color: rgb(22, 22, 22);
+    color:white;
   }
   /* everywhere else */
   * {

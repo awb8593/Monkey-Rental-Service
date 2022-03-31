@@ -3,8 +3,13 @@
 <div id = "login" *ngIf = "currentUserService.user.id === 0;">
     <app-login-page></app-login-page>
 </div>
-<app-owner-page *ngIf="currentUserService.user.id === 1;">
-</app-owner-page>
+<nav id = "navBar" *ngIf="currentUserService.user.id === 1">
+    <a id = "user">User: {{currentUserService.user.username}} </a>
+    <a style = "cursor:pointer">
+        <app-login-page></app-login-page>
+    </a>
+</nav>
+<app-owner-page *ngIf="currentUserService.user.id === 1"></app-owner-page>
 <nav id = "navBar" *ngIf="currentUserService.user.id !== 1 && currentUserService.user.id !== 0;">
     <a id = "user">User: {{currentUserService.user.username}} </a>
     <a routerLink="/buyer-product-list"> Browse Monkeys</a>
