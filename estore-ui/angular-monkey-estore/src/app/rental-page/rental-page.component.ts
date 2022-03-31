@@ -16,6 +16,7 @@ import { RentalService } from '../rental.service';
   styleUrls: ['./rental-page.component.css']
 })
 export class RentalPageComponent implements OnInit {
+  monkeys: Monkey[] = [];
 
   constructor(private cartService: ShoppingCartService,
     public currentUserService: CurrentUserService,
@@ -25,19 +26,36 @@ export class RentalPageComponent implements OnInit {
 
   items: Rental[] = [];
 
+  selectedMonkey?: Monkey;
+
+  onSelect(monkey: Monkey): void {
+    this.selectedMonkey = monkey;
+  }
+
+  deselect(): void{
+    this.selectedMonkey = undefined;
+  }
+
   ngOnInit(): void {
     this.getRentedList();
+    setTimeout(()=>{this.getMonkeyList();}, 100);
   }
 
   getRentedList(){
     this.currentUserService.load();
-    this.items = [];
     this.rentalService.getRentalsUser(this.currentUserService.user.id, true).subscribe(rentals => this.items = rentals)
+    setTimeout(()=>{this.getMonkeyList();}, 100);
   }
 
-  returnFromRented(item: Rental): void{
+  getMonkeyList(){
     for (let k = 0; k < this.items.length; k++){
-      if (this.items[k].id == item.id){
+      this.monkeyService.getMonkey(this.items[k].monkeyId).subscribe(monkey => this.monkeys[k] = monkey)
+    }
+  }
+
+  returnFromRented(id: number): void{
+    for (let k = 0; k < this.items.length; k++){
+      if (this.items[k].monkeyId == id){
         this.items[k].active = false
         this.rentalService.updateRental(this.items[k]).subscribe();;
         this.rentalService.deleteRental(this.items[k].id);
@@ -46,4 +64,8 @@ export class RentalPageComponent implements OnInit {
     }
     this.getRentedList();
   }
+
+  //getRentalMonkey(id: number): void{
+    //this.monkeyService.getMonkey(id).subscribe(monkey => this.monkey = monkey)
+  //}
 }

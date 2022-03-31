@@ -1,5 +1,18 @@
-<div class="rental-item" *ngFor="let item of items">
-    <span *ngIf="getRentedList()">
-        <span style="background-color:#f52d51;">
-            {{monkeyService.getMonkey(item.monkeyId)}}
-            <button (click)="returnFromRented(item)">Return Monkey</button>
+<p>Your Rented Monkeys</p>
+    <ul class="rental-item">
+        <li *ngFor="let monkey of monkeys">
+                <button [class.selected]="monkey === selectedMonkey" type="button" (click)="onSelect(monkey)">
+                <span class="name"> Name: {{monkey.name}} |</span>
+                <span class="species"> Species: {{monkey.species}} </span>
+              </button>
+        </li>
+    </ul>
+
+    <div *ngIf="selectedMonkey">
+
+        <h2>{{selectedMonkey.name | uppercase}} Details</h2>
+        <div>Name: {{selectedMonkey.name}}</div>
+        <div>
+            <button type="button" class="return" title="return monkey"
+            (click)="returnFromRented(selectedMonkey.id); this.getRentedList(); deselect();">Return Monkey</button>
+    </div>
