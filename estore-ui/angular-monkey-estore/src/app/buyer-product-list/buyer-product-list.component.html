@@ -5,16 +5,16 @@
     }
 </style>
 
-<div>
+<div id = "search">
     <label for="search-box">Search Monkeys </label>
     <input #searchBox id="search-box" (input)="search(searchBox.value)">
 </div>
 
-<div style="display: inline-block;">
+<div id = "searchMonkey" >
     <ul class="monkeys">
-        <li *ngFor="let monkey of monkeys$ | async">
+        <li style="list-style-type:none;" *ngFor="let monkey of monkeys$ | async">
             <a routerLink="/product-page/{{monkey.id}}">
-            <button type="button" (click)="clickEvent(monkey)">
+            <button style = "cursor:pointer" type="button" (click)="clickEvent(monkey)">
                 <div style="font-size:larger; font-weight:550; font-style: oblique;">
                     {{monkey.name}} the {{monkey.species}} <br>price: ${{monkey.price}}<br>
                     <span *ngIf="monkey.rented">
@@ -34,12 +34,13 @@
 </div>
 
 <br>
-<h2>All Monkeys: </h2>
+<div id = "monkeyList">
+<h2>All Monkeys</h2>
 <div style="display: inline-block;">
     <ul class="monkeys">
-        <li *ngFor="let monkey of monkeys">
+        <li style="list-style-type:none;" *ngFor="let monkey of monkeys">
             <a routerLink="/product-page/{{monkey.id}}">
-            <button type="button" (click)="clickEvent(monkey)">
+            <button style = "cursor:pointer" type="button" (click)="clickEvent(monkey)">
                 <div style="font-size:larger; font-weight:550; font-style: oblique;">
                     {{monkey.name}} the {{monkey.species}} <br>price: ${{monkey.price}}<br>
                     <span *ngIf="monkey.rented">
@@ -57,9 +58,9 @@
         </li>
     </ul>
 </div>
-
-<a routerLink="/shopping-cart" style="position:fixed; top: 40px; right: 50px">
+</div>
+<!--<a routerLink="/shopping-cart" style="position:fixed; top: 40px; right: 50px">
     <img src="../../assets/cart_icon.png" style="height: 50px; width: 50px;">
-</a>
+</a> -->
 
 <router-outlet></router-outlet>

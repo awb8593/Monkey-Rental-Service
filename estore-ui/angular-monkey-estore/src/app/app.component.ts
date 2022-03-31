@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { CurrentUserService } from './current-user.service';
 
-
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,8 +9,10 @@ import { CurrentUserService } from './current-user.service';
 export class AppComponent {
   title = 'Monkey e-Store';
   
+  
   constructor(
-    public currentUserService: CurrentUserService
+    public currentUserService: CurrentUserService,
+    
   ) {}
 }
 

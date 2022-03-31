@@ -7,6 +7,8 @@ import { Location } from '@angular/common';
 import { ShoppingCartService } from '../shopping-cart.service';
 import { UserService } from '../user.service';
 import { CurrentUserService } from '../current-user.service';
+import { ReviewService } from '../review.service';
+import { Review } from '../review';
 
 @Component({
   selector: 'app-product-page',
@@ -16,6 +18,7 @@ import { CurrentUserService } from '../current-user.service';
 export class ProductPageComponent implements OnInit{
   monkey: Monkey | undefined;
   cartMonkeys: Monkey[] = [];
+  review?: Review;
 
   constructor(
     private monkeyService: MonkeyService,
@@ -23,12 +26,14 @@ export class ProductPageComponent implements OnInit{
     private location: Location,
     private shoppingCartService: ShoppingCartService,
     private userService: UserService,
-    private currentUserService: CurrentUserService
+    private currentUserService: CurrentUserService,
+    private reviewService: ReviewService
   ) {}
 
   ngOnInit(): void {
     this.getMonkey();
     this.getCartMonkeys();
+    this.getReviewObject();
   }
 
   getMonkey(): void {
@@ -59,5 +64,32 @@ export class ProductPageComponent implements OnInit{
         return true;
     }
     return false;
+  }
+
+  getReviewObject(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.reviewService.getReviewObject(id)
+    .subscribe(review => this.review = review);
+  }
+
+  getReviews(): String[] {
+    if (this.review != undefined){
+      return this.review?.reviews;
+    }
+    else {
+      return [];
+    }
+  }
+
+  getAverageRating(): number {
+    if (this.review != undefined){
+      let numArray: number[] = this.review.ratings;
+      let total = 0;
+      for (let i=0; i < numArray.length; i++){
+        total += numArray[i];
+      }
+      return Number((total/numArray.length).toFixed(2));
+    }
+    else return -1;
   }
 }

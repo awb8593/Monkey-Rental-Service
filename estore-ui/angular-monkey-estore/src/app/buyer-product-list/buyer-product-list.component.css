@@ -1,0 +1,60 @@
+#search {
+    margin-top: -32px;
+    overflow: hidden;
+    font-family:'Arial';
+    background-color: rgb(22, 22, 22);
+    color:white;
+    float:right;
+    display:block;
+    text-align:center;
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+#searchMonkey .monkeys {
+    float:right;
+    margin-top: auto;
+    margin-bottom:0%;
+    position:relative;
+}
+
+#searchMonkey .monkeys li button {
+    width: 300px;
+}
+
+h2 {
+    font-family: 'Franklin Gothic';
+    font-weight: bold;
+    text-decoration: underline;
+    text-align:center;
+    float:left;
+    margin-left: 198px;
+    position:absolute;
+}
+
+#monkeyList {
+    margin: 0 auto;
+    display:flex;
+    text-align:center;
+    width: 500px;
+    border: 5px solid black;
+    margin-top: 60px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#monkeyList div .monkeys{
+    margin-top: 100px;
+    margin-left: 95px;
+}
+
+#monkeyList div .monkeys li {
+    margin-bottom: 5px;
+}
+
+#monkeyList div .monkeys li a {
+    font-family: 'Arial';
+}

@@ -1,6 +1,7 @@
 package com.estore.api.estoreapi.model;
 
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 /**
@@ -9,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author Adrian Burgos awb8593
  */
 public class Review {
+    private static final Logger LOG = Logger.getLogger(Review.class.getName());
     // implement Logger here when needed
 
     // package private for tests

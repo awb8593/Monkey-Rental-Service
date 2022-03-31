@@ -1,0 +1,28 @@
+<div class = "box">
+<h2>Your Rented Monkeys</h2>
+    <ul class="rental-item">
+        <span style="list-style-type: none;" *ngFor="let monkey of monkeys">
+                <button [class.selected]="monkey === selectedMonkey" type="button" (click)="onSelect(monkey)">
+                <span class="name"> Name: {{monkey.name}} |</span>
+                <span class="species"> Species: {{monkey.species}} </span>
+              </button>
+            <li *ngFor="let item of items">
+                <span *ngIf="item.monkeyId == monkey.id">
+                    <p>Rented on:</p>{{getRentalDate(item)}} | <p>Return by:</p>{{getReturnDate(item)}}
+                </span>
+            </li>
+        </span>
+    </ul>
+</div>
+
+    <div class = "monkey" *ngIf="selectedMonkey">
+
+        <h2>{{selectedMonkey.name | uppercase}} Details</h2>
+        <div>Name: {{selectedMonkey.name}}</div>
+        <div>Description: {{selectedMonkey.description}}</div>
+        <div>Price Per Hour: ${{selectedMonkey.price}}</div>
+        <div>
+            <button type="button" class="return" title="return monkey"
+            (click)="returnFromRented(selectedMonkey.id); this.getRentedList(); this.getMonkeyList(); deselect(); this.switchPage();">Return Monkey</button>
+    </div>
+

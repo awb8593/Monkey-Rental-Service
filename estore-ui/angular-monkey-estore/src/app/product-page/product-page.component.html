@@ -1,17 +1,42 @@
-<div *ngIf="monkey">
+<div class = "productPage" *ngIf="monkey">
+    <button id="back" style = "cursor:pointer" type="button" (click)="goBack()">Back</button>
     <h2> {{monkey.name | uppercase}} Details <br></h2>
     Species: {{monkey.species}} <br>
     Price Per Hour: ${{monkey.price}} <br>
     Description: {{monkey.description}} <br>
-    <span *ngIf="monkey.rented">
-        Unavailable
-    </span>
-    <span *ngIf="!monkey.rented && checkCart(monkey)">
-        Currently in Cart
-    </span>
-    <span *ngIf="!(monkey.rented || checkCart(monkey))">
-        Available for Rent<br>
-        <button type="button" (click)="addToCart(monkey)">Add To Cart</button>
-    </span>
-    <button type="button" (click)="goBack()">Back</button>
+    <div id = "status">
+        <span id = "bold" *ngIf="monkey.rented">
+            Unavailable<br>
+        </span>
+        <span id = "bold" *ngIf="!monkey.rented && checkCart(monkey)">
+            Currently in Cart<br>
+        </span>
+        <span id = "bold" *ngIf="!(monkey.rented || checkCart(monkey))">
+            Available for Rent<br>
+        </span>
+        <h3>RATING</h3>
+        <span *ngIf="getAverageRating() == -1">
+            No Ratings Yet
+        </span>
+        <span *ngIf="getAverageRating() != -1">
+            {{getAverageRating()}}/5
+        </span>
+        <br>
+        <span id = "bold">
+            <h3>REVIEWS</h3>
+        </span>
+        <span *ngIf="getReviews().length == 0">
+            No Reviews Currently
+        </span>
+        <span *ngIf="getReviews().length != 0">    
+            <li *ngFor="let review of getReviews()">
+                {{review}}
+            </li>
+        </span>
+        <br>
+        <span *ngIf="!(monkey.rented || checkCart(monkey))">
+            <button id="add" type="button" (click)="addToCart(monkey)">Add To Cart</button>
+        </span>
+    </div>
 </div>
+<router-outlet></router-outlet>

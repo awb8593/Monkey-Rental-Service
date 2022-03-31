@@ -1,0 +1,47 @@
+.loginPage {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    font-family: 'Franklin Gothic';
+    margin-top: 50px;
+
+}
+
+.loginPage p{
+    font-size: larger;
+    color: rgb(91, 91, 91);
+}
+
+#createUser {
+    margin-top: 35px;
+}
+
+.login {
+    margin-bottom: 45px;
+}
+
+.login label{
+    display:flex;
+    margin-left: 35.8%;
+
+}
+
+.signUp label{
+    display:flex;
+    margin-left: 35.5%;
+}
+
+.loginPage button{
+    font-family:'Arial';
+    font-weight:bold;
+    font-size: 10pt;
+    color:white;
+    margin-left: 2px;
+    background-color: rgb(17, 166, 17);
+}
+
+.loginPage button:hover{
+    color:rgb(255, 255, 255);
+    background-color:rgb(26, 121, 26);
+
+}

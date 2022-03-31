@@ -1,19 +1,32 @@
-<h3>Your Shopping Cart</h3>
-
-<div class="cart-item" *ngFor="let item of items">
-    <span *ngIf="item.rented && checkCart(item)">
-        <span style="background-color:#f52d51;">
-            {{item.name}} ${{item.price}}
-        </span>
-        <button (click)="removeFromCart(item)">Remove from Cart</button>
+<link rel="stylesheet" href="shopping-cart.component.css">
+<div class="cart">
+    <button id="back" style = "cursor:pointer" type="button" (click)="goBack()">Back</button>
+    <div class ="header">
+        <h3>My Shopping Cart</h3>
+    </div>   
+    <div class="cart-item" *ngFor="let item of items">
+        <span *ngIf="item.rented && checkCart(item)">
+            <span style="background-color:#f52d51;">
+                <span id = "name"> {{item.name}} </span>
+                <span id = "price"> ${{item.price}}</span>
+            </span>
+        <button (click)="removeFromCart(item)">Remove</button>
         This monkey has been rented and is unavailable
-    </span>
-    <span *ngIf="!(item.rented && checkCart(item))">
-        {{item.name}} ${{item.price}}
-        <button (click)="removeFromCart(item)">Remove from Cart</button>
-    </span>
+        </span>
+        <span *ngIf="!(item.rented && checkCart(item))">
+            {{item.name}} ${{item.price}}
+            <button (click)="removeFromCart(item)">Remove</button>
+        </span>
+    </div>
+    <div class="total">
+        <p>
+            Grand Total: <span> ${{getTotalCost()}}</span>
+        </p>
+    </div> 
+    <div class="checkout" *ngIf="checkIfAnyRented()"> 
+        <button (click)="clearCart()"> Checkout </button>
+    </div>
+    
 </div>
-<button (click)="clearCart()"> Checkout </button>
-
 
 

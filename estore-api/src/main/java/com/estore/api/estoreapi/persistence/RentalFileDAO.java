@@ -149,7 +149,7 @@ public class RentalFileDAO implements RentalDAO{
      */
     @Override
     public Rental createRental(Rental rental) throws IOException {
-        synchronized(rental) {
+        synchronized(rentals) {
             // We create a new rental object because the id field is immutable
             // and we need to assign the next unique id
             Rental newRental = new Rental(nextId(),rental.getRentalDate(), rental.getReturnDate(), rental.getUserId(), rental.getMonkeyId());
