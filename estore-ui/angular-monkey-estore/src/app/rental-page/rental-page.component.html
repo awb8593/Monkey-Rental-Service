@@ -18,8 +18,7 @@
         <h2>{{selectedMonkey.name | uppercase}} Details</h2>
         <div>Name: {{selectedMonkey.name}}</div>
         <div>
-            <a location.href="post-return-page/:selectedMonkey.id">
             <button type="button" class="return" title="return monkey"
-            (click)="returnFromRented(selectedMonkey.id); this.getRentedList(); this.getMonkeyList(); deselect();">Return Monkey</button>
-            </a>
+            (click)="returnFromRented(selectedMonkey.id); this.getRentedList(); this.getMonkeyList(); deselect(); this.switchPage();">Return Monkey</button>
     </div>
+

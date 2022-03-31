@@ -9,6 +9,7 @@ import { MonkeyService } from '../monkey.service';
 import { ShoppingCartService } from '../shopping-cart.service';
 import { Monkey } from '../monkey';
 import { RentalService } from '../rental.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-rental-page',
@@ -21,15 +22,18 @@ export class RentalPageComponent implements OnInit {
   constructor(private cartService: ShoppingCartService,
     public currentUserService: CurrentUserService,
     public monkeyService: MonkeyService,
-    public rentalService: RentalService) 
+    public rentalService: RentalService,
+    private router: Router) 
     {}
 
   items: Rental[] = [];
 
   selectedMonkey?: Monkey;
+  id: number = 0;
 
   onSelect(monkey: Monkey): void {
     this.selectedMonkey = monkey;
+    this.id = monkey.id;
   }
 
   deselect(): void{
@@ -78,5 +82,9 @@ export class RentalPageComponent implements OnInit {
     var returnStr: string = "DATE"
     this.rentalService.getReturnDateString(rental).subscribe(str => returnStr = str);
     return returnStr;
+  }
+
+  switchPage(): void {
+    this.router.navigate(["/post-return-page/" + this.id]);
   }
 }
