@@ -14,5 +14,5 @@
         <div>Name: {{selectedMonkey.name}}</div>
         <div>
             <button type="button" class="return" title="return monkey"
-            (click)="returnFromRented(selectedMonkey.id); this.getRentedList(); deselect();">Return Monkey</button>
+            (click)="returnFromRented(selectedMonkey.id); this.getRentedList(); this.getMonkeyList(); ngOnInit(); deselect();">Return Monkey</button>
     </div>

@@ -44,7 +44,6 @@ export class RentalPageComponent implements OnInit {
   getRentedList(){
     this.currentUserService.load();
     this.rentalService.getRentalsUser(this.currentUserService.user.id, true).subscribe(rentals => this.items = rentals)
-    setTimeout(()=>{this.getMonkeyList();}, 100);
   }
 
   getMonkeyList(){
@@ -55,10 +54,14 @@ export class RentalPageComponent implements OnInit {
 
   returnFromRented(id: number): void{
     for (let k = 0; k < this.items.length; k++){
+      if (this.monkeys[k].id == id){
+        this.monkeys[k].rented = false;
+        this.monkeyService.updateMonkey(this.monkeys[k]).subscribe
+      }
       if (this.items[k].monkeyId == id){
         this.items[k].active = false
         this.rentalService.updateRental(this.items[k]).subscribe();;
-        this.rentalService.deleteRental(this.items[k].id);
+        this.rentalService.deleteRental(this.items[k].id).subscribe;
         break;
       }
     }
