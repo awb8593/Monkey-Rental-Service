@@ -51,9 +51,11 @@ export class ShoppingCartService {
         active: true
       }
       this.items[i].rented = true;
-      this.monkeyService.updateMonkey(this.items[i]).subscribe();
       this.rentalService.addRental(rental).subscribe();
-      this.currentUserService.user.rentedList.push(rental.id);
+      
+      // Needs to be after addRental because of check in backend 
+      this.monkeyService.updateMonkey(this.items[i]).subscribe(); 
+      this.currentUserService.user.rentedList.push(rental.monkeyId);
     }
     
     this.items = [];
