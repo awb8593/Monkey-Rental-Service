@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpEventType, HttpHeaders, HttpResponse } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -45,10 +45,58 @@ export class UserService {
     );
   }
 
+  getUserByNameWithResponse(username: string): Observable<HttpResponse<User>> {
+    const defaultUser: User = {id:0, username:"default", cartList:[], rentedList:[]};
+    
+    if (!username.trim()) {
+      // if not search term, return empty response.
+      return of();
+    }
+    return this.http.get<User>(`${this.usersUrl}/?username=${username}`, { observe: 'response'}).pipe(
+      catchError(err => {      
+        var errResponse: HttpResponse<User> = {
+          body: defaultUser,
+          status: err.status,
+          statusText: "",
+          url: "",
+          type: HttpEventType.Response,
+          clone: function (): HttpResponse<User> {
+            throw new Error('Function not implemented.');
+          },
+          ok: false,
+          headers: new HttpHeaders
+        };
+        return of(errResponse);
+      })
+    );
+  }
+
   addUser(user: User): Observable<User> {
     return this.http.post<User>(this.usersUrl, user, this.httpOptions).pipe(
       //tap((newUser: User) => this.log(`added user w/ id=${newUser.id}`)),
       catchError(this.handleError<User>('addUser'))
+    );
+  }
+
+  addUserWithResponse(user: User): Observable<HttpResponse<User>> {
+    const defaultUser: User = {id:0, username:"default", cartList:[], rentedList:[]};
+    
+    return this.http.post<User>(this.usersUrl, user, { observe: 'response'}).pipe(
+      catchError(err => {      
+        var errResponse: HttpResponse<User> = {
+          body: defaultUser,
+          status: err.status,
+          statusText: "",
+          url: "",
+          type: HttpEventType.Response,
+          clone: function (): HttpResponse<User> {
+            throw new Error('Function not implemented.');
+          },
+          ok: false,
+          headers: new HttpHeaders
+        };
+        return of(errResponse);
+      })
     );
   }
 
