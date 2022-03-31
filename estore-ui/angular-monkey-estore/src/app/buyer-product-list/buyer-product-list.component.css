@@ -11,18 +11,15 @@
     margin-right: 5px;
 }
 
-#searchMonkey .monkeys li {
-  position:relative;
-  left: 542%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+#searchMonkey .monkeys {
+    float:right;
+    margin-top: auto;
+    margin-bottom:0%;
+    position:relative;
 }
 
-#searchMonkey .monkeys {
-    margin-top:15px;
-    margin-left: 15px;
-    margin-bottom:0%;
-    position:absolute;
+#searchMonkey .monkeys li button {
+    width: 300px;
 }
 
 h2 {
@@ -36,12 +33,17 @@ h2 {
 }
 
 #monkeyList {
+    margin: 0 auto;
     display:flex;
     text-align:center;
-    margin:auto;
     width: 500px;
     border: 5px solid black;
     margin-top: 60px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #monkeyList div .monkeys{

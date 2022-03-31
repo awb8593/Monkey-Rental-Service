@@ -5,37 +5,38 @@
     Price Per Hour: ${{monkey.price}} <br>
     Description: {{monkey.description}} <br>
     <div id = "status">
-        <span *ngIf="monkey.rented">
-            Unavailable
+        <span id = "bold" *ngIf="monkey.rented">
+            Unavailable<br>
         </span>
-        <span *ngIf="!monkey.rented && checkCart(monkey)">
-            Currently in Cart
+        <span id = "bold" *ngIf="!monkey.rented && checkCart(monkey)">
+            Currently in Cart<br>
         </span>
-        <span *ngIf="!(monkey.rented || checkCart(monkey))">
+        <span id = "bold" *ngIf="!(monkey.rented || checkCart(monkey))">
             Available for Rent<br>
-            <button id="add" type="button" (click)="addToCart(monkey)">Add To Cart</button>
         </span>
+        <h3>RATING</h3>
+        <span *ngIf="getAverageRating() == -1">
+            No Ratings Yet
+        </span>
+        <span *ngIf="getAverageRating() != -1">
+            {{getAverageRating()}}/5
+        </span>
+        <br>
+        <span id = "bold">
+            <h3>REVIEWS</h3>
+        </span>
+        <span *ngIf="getReviews().length == 0">
+            No Reviews Currently
+        </span>
+        <span *ngIf="getReviews().length != 0">    
+            <li *ngFor="let review of getReviews()">
+                {{review}}
+            </li>
+        </span>
+        <br>
+        DELETE ME 
+        <a routerLink="/post-return-page/{{monkey.id}}">POST REVIEW PAGE</a>
+                <button id="add" type="button" (click)="addToCart(monkey)">Add To Cart</button>
     </div>
-    <br>
-    <h3>RATING</h3>
-    <span *ngIf="getAverageRating() == -1">
-        No Ratings Yet
-    </span>
-    <span *ngIf="getAverageRating() != -1">
-        {{getAverageRating()}}/5
-    </span>
-    <br>
-    <h3>REVIEWS</h3>
-    <span *ngIf="getReviews().length == 0">
-        No Reviews Currently
-    </span>
-    <span *ngIf="getReviews().length != 0">    
-        <li *ngFor="let review of getReviews()">
-            {{review}}
-        </li>
-    </span>
-    <br>
-    DELETE ME 
-    <a routerLink="/post-return-page/{{monkey.id}}">POST REVIEW PAGE</a>
 </div>
 <router-outlet></router-outlet>

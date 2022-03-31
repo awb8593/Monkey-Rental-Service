@@ -10,7 +10,7 @@
     <input #searchBox id="search-box" (input)="search(searchBox.value)">
 </div>
 
-<div id = "searchMonkey" style="display: inline-block;">
+<div id = "searchMonkey" >
     <ul class="monkeys">
         <li style="list-style-type:none;" *ngFor="let monkey of monkeys$ | async">
             <a routerLink="/product-page/{{monkey.id}}">

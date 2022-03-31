@@ -11,7 +11,7 @@ const routes : Routes = [
   { path: 'buyer-product-list', component: BuyerProductListComponent },
   { path: 'product-page/:id', component: ProductPageComponent },
   { path: 'shopping-cart', component: ShoppingCartComponent},
-  { path: 'rental-page', component: RentalPageComponent}
+  { path: 'rental-page', component: RentalPageComponent},
   { path: 'post-return-page/:id', component: PostReturnPageComponent}
 ];
 
