@@ -156,11 +156,11 @@ One of our biggest current issues is our code's readability. This is due to seve
 To ensure that the project is meeting our requirements, we conducted two types of tests. Acceptance testing allowed us to ensure that requirements related to the front-end of the e-store were working as expected, while Unit Testing allowed us to test the system itself and make sure it is handling everything correctly on the back-end. 
 
 ### Acceptance Testing
-- 30 of stories that we finished pass all of their testing criteria
-- 4 of the stories partially pass acceptance criteria
-- 6 of the stories have yet to be tested
+- 39 of stories that we finished pass all of their testing criteria
+- 0 of the stories partially pass acceptance criteria
+- 0 of the stories have yet to be tested
 
-Most of the stories are currently passing their acceptance criteria tests. The issues found in the stories that are currently partially passing or failing came about when we noticed that they work or do not work in specific scenarios, or there is simply a small detail that is technically not correct. For example, the buyer product list's rented status does not currently update until the page is left and and returned to. These issues do not concern us as we are confident that we will be able to get these stories to a passing status in little time. The stories that have not been tested are the stories related to customer reviews, as they have not been implemented yet.
+The project now meets all of the acceptance criteria we have defined. We accomplished this by making sure that each user story passed its acceptance criteria before considering it "done." We also considered the acceptance criteria that were previously partially passing as bugs and worked on fixing them alongside working on the user stories. This approach has led to all of these previous bugs now being fixed and passing their acceptance tests. Finally, the acceptance criteria for our review feature that were previously failing due to reviews not being implemented are now all passing, as reviews are now fully implemented.
 
 ### Unit Testing and Code Coverage
 The way that we have handled unit testing is by creating a doc of all tests that need to be written and allowing team members to evenly split the work among themselves. We have 100% coverage in the model tier and 95% coverage total. Our goal for overall coverage is 90% minimum but we like to strive for higher if we have time. We chose this number because it results in a balance of having enough testing without wasting time working on tests when more important parts of the project need to be done. Our lowest current element is estoreapi with a current coverage of 88%. The coverage is this low because main is not fully tested currently.
