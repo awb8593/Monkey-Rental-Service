@@ -9,13 +9,10 @@ import { CurrentUserService } from './current-user.service';
 export class AppComponent {
   title = 'Monkey e-Store';
   
+  
   constructor(
     public currentUserService: CurrentUserService,
     
   ) {}
-
-  hide(){
-    document.getElementById('productPage')!.style.display='none';
-  }
 }
 

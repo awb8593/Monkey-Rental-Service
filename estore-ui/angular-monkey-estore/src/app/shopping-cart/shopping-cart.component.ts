@@ -31,7 +31,7 @@ export class ShoppingCartComponent implements OnInit {
     for (let k = 0; k < this.currentUserService.user.cartList.length; k++){
       let monkey =  this.monkeyService.getMonkey(this.currentUserService.user.cartList[k]);
       monkey.subscribe(monkey => this.items.push(monkey));
-      monkey.subscribe(monkey => this.total = (this.total + monkey.price));
+      monkey.subscribe(monkey => this.total = this.total + monkey.price);
     }
   }
 
