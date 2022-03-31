@@ -6,7 +6,7 @@ h1 {
   }
   h2, h3 {
     color: rgb(27, 27, 27);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Franklin Gothic';
     font-weight:bold;
   }
   body {
@@ -52,6 +52,7 @@ h1 {
     color:white;
     width:60px;
     font-family:'Arial';
+    font-weight: bold;
   }
 
   #back:hover {

@@ -1,5 +1,5 @@
 <div class = "productPage" *ngIf="monkey">
-    <button id="back" type="button" (click)="goBack()">Back</button>
+    <button id="back" style = "cursor:pointer" type="button" (click)="goBack()">Back</button>
     <h2> {{monkey.name | uppercase}} Details <br></h2>
     Species: {{monkey.species}} <br>
     Price Per Hour: ${{monkey.price}} <br>

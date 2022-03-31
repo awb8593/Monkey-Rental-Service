@@ -4,6 +4,8 @@ import { Monkey } from '../monkey';
 import { ShoppingCartService } from '../shopping-cart.service';
 import { UserService } from '../user.service';
 import { MonkeyService } from '../monkey.service';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-shopping-cart',
@@ -18,6 +20,7 @@ export class ShoppingCartComponent implements OnInit {
   constructor(private cartService: ShoppingCartService,
     public currentUserService: CurrentUserService,
     public monkeyService: MonkeyService,
+    private location: Location,
     private userService: UserService) 
     {}
 
@@ -28,7 +31,7 @@ export class ShoppingCartComponent implements OnInit {
     for (let k = 0; k < this.currentUserService.user.cartList.length; k++){
       let monkey =  this.monkeyService.getMonkey(this.currentUserService.user.cartList[k]);
       monkey.subscribe(monkey => this.items.push(monkey));
-      monkey.subscribe(monkey => this.total = this.total + monkey.price);
+      monkey.subscribe(monkey => this.total = (this.total + monkey.price));
     }
   }
 
@@ -54,6 +57,10 @@ export class ShoppingCartComponent implements OnInit {
   getMonkeys(): void{
     this.userService.getUserCart(this.currentUserService.user.id)
     .subscribe(cartArray => this.items = cartArray);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
   checkCart(monkey: Monkey): boolean {

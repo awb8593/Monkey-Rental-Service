@@ -6,7 +6,7 @@
     <div class = "login">
         <label for="username">{{enterUsernameText}}</label>
         <input id="username" #username />
-        <button type="button" autofocus (click)="login(username.value); username.value=''">Login</button>
+        <button type="button" style = "cursor:pointer" autofocus (click)="login(username.value); username.value=''">Login</button>
     </div>
 
     <p> or </p>
@@ -16,7 +16,7 @@
     <div class = "signUp">
         <label for="newUsername">{{createUsernameText}}</label>
         <input id="newUsername" #newUsername />
-        <button type="button" autofocus (click)="createUser(newUsername.value); newUsername.value=''">Create</button>
+        <button type="button" style = "cursor:pointer" autofocus (click)="createUser(newUsername.value); newUsername.value=''">Create</button>
     </div>
 
 </div>

@@ -7,7 +7,7 @@
 }
 
 .header h3 {
-    font-family:Arial;
+    font-family: 'Franklin Gothic';
     font-size: 20pt;
 }
 
@@ -18,7 +18,16 @@
 }
 
 .cart-item button{
+    display:inline-block;
     margin-left: 10px;
+    font-family: 'Arial';
+    font-weight: bold;
+    background-color: rgb(245, 52, 52);
+    color: white;
+}
+
+.cart-item button:hover {
+    background-color: rgb(205, 32, 32)
 }
 
 .checkout button{
@@ -40,3 +49,19 @@
     background-color:rgb(26, 121, 26);
 
 }
+
+#back {
+    display:flex;
+    margin-left: auto;
+    margin-right: 2px;
+    margin-bottom:-30px;
+    background-color: rgb(85, 85, 85);
+    color:white;
+    width:60px;
+    font-family:'Arial';
+    font-weight: bold;
+  }
+
+#back:hover {
+    background-color:#333
+  }

@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="shopping-cart.component.css">
 <div class="cart">
+    <button id="back" style = "cursor:pointer" type="button" (click)="goBack()">Back</button>
     <div class ="header">
         <h3>My Shopping Cart</h3>
     </div>   
@@ -9,12 +10,12 @@
                 <span id = "name"> {{item.name}} </span>
                 <span id = "price"> ${{item.price}}</span>
             </span>
-        <button (click)="removeFromCart(item)">Remove from Cart</button>
+        <button (click)="removeFromCart(item)">Remove</button>
         This monkey has been rented and is unavailable
         </span>
         <span *ngIf="!(item.rented && checkCart(item))">
             {{item.name}} ${{item.price}}
-            <button (click)="removeFromCart(item)">Remove from Cart</button>
+            <button (click)="removeFromCart(item)">Remove</button>
         </span>
     </div>
     <div class="total">
