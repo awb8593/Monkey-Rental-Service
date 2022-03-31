@@ -1,7 +1,7 @@
 <div class = "box">
 <h2>Your Rented Monkeys</h2>
     <ul class="rental-item">
-        <li style="list-style-type:none;" *ngFor="let monkey of monkeys">
+        <span *ngFor="let monkey of monkeys">
                 <button [class.selected]="monkey === selectedMonkey" type="button" (click)="onSelect(monkey)">
                 <span class="name"> Name: {{monkey.name}} |</span>
                 <span class="species"> Species: {{monkey.species}} </span>
