@@ -69,10 +69,14 @@ export class RentalPageComponent implements OnInit {
   }
 
   getRentalDate(rental: Rental){
-    this.rentalService.getRentalDateString(rental).subscribe(str => {return str});
+    var returnStr: string = "DATE";
+    this.rentalService.getRentalDateString(rental).subscribe(str => returnStr = str);
+    return returnStr;
   }
 
   getReturnDate(rental: Rental){
-    return this.rentalService.getReturnDateString(rental).subscribe(str => {return str});
+    var returnStr: string = "DATE"
+    this.rentalService.getReturnDateString(rental).subscribe(str => returnStr = str);
+    return returnStr;
   }
 }
