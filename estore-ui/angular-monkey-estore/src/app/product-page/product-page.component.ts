@@ -88,7 +88,7 @@ export class ProductPageComponent implements OnInit{
       for (let i=0; i < numArray.length; i++){
         total += numArray[i];
       }
-      return total/numArray.length;
+      return Number((total/numArray.length).toFixed(2));
     }
     else return -1;
   }

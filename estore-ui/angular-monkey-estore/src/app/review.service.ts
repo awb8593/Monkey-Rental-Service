@@ -18,7 +18,7 @@ export class ReviewService {
   };
 
   constructor(
-    private http: HttpClient,
+    private http: HttpClient
   ) { }
 
   getReviewObject(id: number): Observable<Review> {
@@ -27,5 +27,9 @@ export class ReviewService {
 
   updateReviewObject(review: Review): Observable<any> {
     return this.http.put(this.reviewsUrl, review, this.httpOptions);
+  }
+
+  createReviewObject(review: Review): Observable<Review> {
+    return this.http.post<Review>(this.reviewsUrl, review, this.httpOptions);
   }
 }
