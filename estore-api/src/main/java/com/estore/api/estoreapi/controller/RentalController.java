@@ -73,10 +73,6 @@ public class RentalController {
         }
 
         try {   
-            // Check if monkey is currently rented 
-            if (monkeyAlreadyRented) {
-                return new ResponseEntity<>(HttpStatus.CONFLICT);
-            }
             Rental newRental = rentalDao.createRental(rental);
             return new ResponseEntity<Rental>(newRental, HttpStatus.CREATED);
         }

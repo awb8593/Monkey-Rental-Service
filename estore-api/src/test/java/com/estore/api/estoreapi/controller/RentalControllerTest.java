@@ -60,26 +60,6 @@ public class RentalControllerTest {
         assertEquals(rental,response.getBody());
     }
 
-
-    @Test
-    public void testCreateRentalConflict() throws IOException {  // createRental may throw IOException
-        // Setup
-        Rental rental = new Rental(5, "2000-01-01T00:00:00.000Z", "2001-01-01T00:00:00.000Z", 4, 4);
-        Monkey testMonkey = new Monkey(4, "Test", 10, "", "");
-        testMonkey.setRented(true);
-
-        // when createRental is called, return a conflict 
-        when(mockRentalDAO.createRental(rental)).thenReturn(rental);
-        when(mockMonkeyDAO.getMonkey(4)).thenReturn(testMonkey);
-
-        // Invoke
-        ResponseEntity<Rental> response = rentalController.createRental(rental);
-
-        // Analyze
-        assertEquals(HttpStatus.CONFLICT,response.getStatusCode());
-    }
-
-
     @Test
     public void testCreateRentalHandleException() throws IOException {  // createRental may throw IOException
         // Setup
