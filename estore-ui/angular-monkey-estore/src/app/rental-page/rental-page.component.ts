@@ -67,8 +67,4 @@ export class RentalPageComponent implements OnInit {
     }
     this.getRentedList();
   }
-
-  //getRentalMonkey(id: number): void{
-    //this.monkeyService.getMonkey(id).subscribe(monkey => this.monkey = monkey)
-  //}
 }
