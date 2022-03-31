@@ -56,12 +56,12 @@ export class RentalPageComponent implements OnInit {
     for (let k = 0; k < this.items.length; k++){
       if (this.monkeys[k].id == id){
         this.monkeys[k].rented = false;
-        this.monkeyService.updateMonkey(this.monkeys[k]).subscribe
+        this.monkeyService.updateMonkey(this.monkeys[k]).subscribe()
       }
       if (this.items[k].monkeyId == id){
         this.items[k].active = false
-        this.rentalService.updateRental(this.items[k]).subscribe();;
-        this.rentalService.deleteRental(this.items[k].id).subscribe;
+        this.rentalService.updateRental(this.items[k]).subscribe();
+        this.rentalService.deleteRental(this.items[k].id).subscribe();
         break;
       }
     }
