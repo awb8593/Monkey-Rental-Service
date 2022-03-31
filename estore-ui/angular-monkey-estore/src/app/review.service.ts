@@ -20,6 +20,7 @@ export class ReviewService {
   };
 
   constructor(
+
     private http: HttpClient,
     private messageService: MessageService) { }
 
@@ -60,5 +61,17 @@ export class ReviewService {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
+  }
+
+  getReviewObject(id: number): Observable<Review> {
+    return this.http.get<Review>(`${this.reviewsUrl}/${id}`);
+  }
+
+  updateReviewObject(review: Review): Observable<any> {
+    return this.http.put(this.reviewsUrl, review, this.httpOptions);
+  }
+
+  createReviewObject(review: Review): Observable<Review> {
+    return this.http.post<Review>(this.reviewsUrl, review, this.httpOptions);
   }
 }
