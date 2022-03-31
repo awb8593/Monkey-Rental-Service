@@ -110,9 +110,12 @@ is displayed, as well as a search box to find specific monkeys. If the user is a
 edit and add monkeys while on this page via text boxes and buttons. When clicking on a monkey, the monkey's 
 page will be displayed, showing information regarding the species, name, id, description, cost, and 
 availability of the monkey, as well as an option to add it to the user's cart. This page also displays the monkey's
-average rating and a list of user-written reviews. When on the productlist page the user can be redirected to their cart by clicking on the cart icon and from their they will be taken to a page where they can remove monkeys from 
-their cart as well as checkout using the Checkout button, which updates the status of each rented monkey's availability and adds each of them to the user's current rentals list.
-
+average rating and a list of user-written reviews. When on the productlist page the user can be redirected to their 
+cart by clicking on the cart icon and from their they will be taken to a page where they can remove monkeys from 
+their cart as well as checkout using the Checkout button, which updates the status of each rented monkey's 
+availability and adds each of them to the user's current rentals list. On the user's current rentals page, they can
+view the monkeys that they are currently renting and return them when ready, at which time they are also prompted 
+to leave that monkey a review.
 
 ### View Tier
 
