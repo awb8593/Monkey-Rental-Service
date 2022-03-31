@@ -30,8 +30,8 @@ export class ShoppingCartComponent implements OnInit {
     this.total = 0;
     for (let k = 0; k < this.currentUserService.user.cartList.length; k++){
       let monkey =  this.monkeyService.getMonkey(this.currentUserService.user.cartList[k]);
-      monkey.subscribe(monkey => this.items.push(monkey));
-      monkey.subscribe(monkey => this.total = this.total + monkey.price);
+      monkey.subscribe(monkey => {this.items.push(monkey); this.total = this.total + monkey.price;});
+      //monkey.subscribe(monkey => );
     }
   }
 
@@ -71,4 +71,13 @@ export class ShoppingCartComponent implements OnInit {
     }
     return false;
   }
+
+  getTotalCost(): number {
+    this.total = 0;
+    for(var i = 0; i < this.items.length; i++){
+      this.total = this.total + this.items[i].price;
+    }
+    return this.total;
+  }
+
 }
