@@ -5,6 +5,7 @@ geometry: margin=1in
 
 
 ## Team Information
+* Team: 3-C
 * Team name: 5Guys
 * Team members
   * Jack Yakubison jcy4561
