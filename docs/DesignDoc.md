@@ -67,8 +67,8 @@ The minimum viable product for this project is a running website in which users 
 - Post Review
 - Read Reviews
 
-### Roadmap of Enhancements
-Our biggest enhancement is the ability to rent a monkey for your event rather than simply purchasing one, which would be impractical to do through an e-store.
+### 10% Enhancement
+Our biggest enhancement is the ability to rent a monkey for your event rather than simply purchasing one of many identical monkeys. This requires for each monkey to be saved independently of others, and for users to be able to return monkeys upon renting them. 
 
 We have also implemented the ability to write reviews after you return a monkey that you have rented. Each monkey's
 product page displays their average rating, as well as a list of written reviews from users who have rented them.
