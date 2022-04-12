@@ -153,6 +153,9 @@ One of our biggest current issues is our code's readability. This is due to seve
 ![Commented Code Causing Readability Issues](codeSmellExample1.png)
 ![Unnecessary Type Specifications](codeSmellExample2.png)
 
+Another improvement to make if we were to continue development would be to refactor our current Review storage system. As it it currently exists reviews are created and accessed through their own objects that stores the list of reviews and the list of ratings for each monkey. Moving these two lists into the Monkey objects themselves would cut down on code complexity and would make both the API and UI of the project simpler. 
+
+
 ## Testing
 To ensure that the project is meeting our requirements, we conducted two types of tests. Acceptance testing allowed us to ensure that requirements related to the front-end of the e-store were working as expected, while Unit Testing allowed us to test the system itself and make sure it is handling everything correctly on the back-end. 
 
