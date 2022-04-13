@@ -136,10 +136,9 @@ The Shopping Cart Component is shown on the Buyer Product List. This displays th
 
 ### ViewModel Tier
 
-The ViewModel Tier consists of the MonkeyController Class, the UserController Class, the Monkey Service Component, and the User Service Component. The MonkeyController class handles REST API requests involving monkeys in the e-store. The UserController Class handles REST API requests involving user accounts. 
+The ViewModel Tier consists of the MonkeyController Class, the UserController Class, the RentalController Class, the ReviewController Class, the Monkey Service Component, the User Service Component, the Rental Service Component, and the Review Service component. The MonkeyController class handles REST API requests involving monkeys in the e-store. The UserController Class handles REST API requests involving user accounts. 
 
-The Monkey Service Component sends REST API requests to the MonkeyController to obtain information from the monkeys.json file where monkey information is stored. The User Service Component sends REST API requests to the UserController to obtain user information.
-
+For each Controller - Service Component pairing listed above the Service Component sends REST API requests to the Controller to obtain information from the json file where information for that object of that type is stored. 
 
 ### Model Tier
 
