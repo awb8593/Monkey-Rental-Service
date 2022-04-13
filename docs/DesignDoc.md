@@ -118,7 +118,11 @@ availability and adds each of them to the user's current rentals list. On the us
 view the monkeys that they are currently renting and return them when ready, at which time they are also prompted 
 to leave that monkey a review.
 
-![Add To Cart Sequence Diagram](addToCart.PNG)
+![Add To Cart Sequence Diagram](addToCart.png)
+
+![Returning Sequence Diagram](returningSequence.png)
+
+![Review Sequence Diagram](reviewSequence.png)
 
 ### View Tier
 
