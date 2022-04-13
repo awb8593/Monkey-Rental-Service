@@ -118,6 +118,8 @@ availability and adds each of them to the user's current rentals list. On the us
 view the monkeys that they are currently renting and return them when ready, at which time they are also prompted 
 to leave that monkey a review.
 
+![Add To Cart Sequence Diagram](addToCart.PNG)
+
 ### View Tier
 
 When opening the website UI, the first thing a user will see is the Login Page Component which will give an option to enter your username or create a new one. If the username "admin" is typed, the Owner Features Page will be opened. This page contains a user interface which allows the admin to update monkey information, create a new monkey for the e-store, or delete a monkey from the e-store.
