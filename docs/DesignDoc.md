@@ -126,6 +126,11 @@ If the user logs in with a customer account or creates a new account (which will
 
 After clicking a button for a specific monkey from the Buyer Product List, the Product Page Component will be opened on the same page. This will contain information about the selected monkey and an option to add to cart. This information includes their price, species, description, average rating, and list of user-written reviews.
 
+![Product-Page class diagram](REPLACED_WITH_DIAGRAM.png)
+
+========== REPLACE THIS WITH DIAGRAM DESCRIPTION =============
+
+
 The Shopping Cart Component is shown on the Buyer Product List. This displays the monkeys currently in the user's shopping cart as well as a button to checkout and a button for each monkey to remove from the shopping cart.
 
 
