@@ -112,17 +112,25 @@ edit and add monkeys while on this page via text boxes and buttons. When clickin
 page will be displayed, showing information regarding the species, name, id, description, cost, and 
 availability of the monkey, as well as an option to add it to the user's cart. This page also displays the monkey's
 average rating and a list of user-written reviews. When on the productlist page the user can be redirected to their 
-cart by clicking on the cart icon and from there they will be taken to a page where they can remove monkeys from 
+cart by clicking on the cart button and from there they will be taken to a page where they can remove monkeys from 
 their cart as well as checkout using the Checkout button, which updates the status of each rented monkey's 
 availability and adds each of them to the user's current rentals list. On the user's current rentals page, they can
 view the monkeys that they are currently renting and return them when ready, at which time they are also prompted 
 to leave that monkey a review.
 
+
 ![Add To Cart Sequence Diagram](addToCart.png)
+
+This sequence diagram shows the process that follows adding a monkey to your cart as a buyer user. A user will begin the process by selecting a monkey's add to cart button on their product page. If the monkey selected is capable of being added to the users cart, the product page will call the addToCart method within the shopping cart service. The ShoppingCart Service and product page will update their respective cart caches, then the ShoppingCart Service will send the updated cart to the CurrentUser Service's local user cache. The CurrentUser Service then calls the save method within the current user service. The CurrentUser Service then will send a PUT request with the updated user to the UserController which will call the updateUser method in the UserFileDAO class to update server's user.
 
 ![Returning Sequence Diagram](returningSequence.png)
 
+This sequence diagram shows the process that follows returning a rented monkey. A user begins this process by selecting the return button on the Rental page. The local cached monkey's rental status is updated and it is sent to the Monkey Service. This service then sends a PUT request to the MonkeyController which then will call the MonkeyFileDAO's updateMonkey method to update the server's monkey. The rental page then sends the rental id to the Rental Service. This service sends a DELETE request to the RentalController which calls the RentalFileDAO's deleteRental method to delete the server's rental. The updated local rental list is used to refresh the Rental Page and the user is redirected to the Review page.
+
 ![Review Sequence Diagram](reviewSequence.png)
+
+This sequence diagram shows the process that follows creating a review for a monkey. As the review page is loaded it retrieves the id of the previously returned monkey. This id is then passed to the Review Service which sends a GET request to the ReviewController. This in turn calls the getReview method from the ReviewFileDAO and returns the review that corresponds to the monkeys id to the Review page. The User then continues the process by submitting an entered review text and rating for the monkey. If the local cache in the ReviewPage was updated with an existing review then the user's input will be added to the review object's lists of text and ratings. The page will then call the Review Service's updateReview method which will send out a PUT request to the ReviewController. The controller will call the ReviewFileDAO's updateReview method to update the server's review. The user will then be redirected to the product page. If a review object did not exist for the monkey that was returned the Review page will instead create a new review object from the input and send it to the ReviewService. This service sends a CREATE request to the ReviewController class which calls the createReview method in the ReviewFileDAO. This updates the server's review object. The user is then redirected to the product page. 
+
 
 ### View Tier
 
