@@ -138,14 +138,15 @@ When opening the website UI, the first thing a user will see is the Login Page C
 
 If the user logs in with a customer account or creates a new account (which will automatically be a customer account) at the Login Page, the Buyer Product List Component will be opened. The Buyer Product List contains a list of all the monkeys in the e-store and another list of monkeys which is generated based on the search using the search bar.
 
-After clicking a button for a specific monkey from the Buyer Product List, the Product Page Component will be opened on the same page. This will contain information about the selected monkey and an option to add to cart. This information includes their price, species, description, average rating, and list of user-written reviews.
+After clicking a button for a specific monkey from the Buyer Product List, the Product Page Component will be opened. This will contain information about the selected monkey and an option to add to cart. This information includes their price, species, description, average rating, and list of user-written reviews.
 
-![Product-Page class diagram](REPLACED_WITH_DIAGRAM.png)
+![Product-Page class diagram](PPClassDiagram.png)
 
-========== REPLACE THIS WITH DIAGRAM DESCRIPTION =============
+Above is a class diagram centered around the Product Page. The Product Page as shown gets monkey info from the Monkey Service, and it gets review info from the Review Service. It takes this information and displays it in an organized fashion. The Product Page features an add to cart button which will call the Shopping Cart Service to add the monkey to the cart when clicked.
 
+The Shopping Cart Page displays the monkeys currently in the user's shopping cart as well as a button to checkout and a button for each monkey to remove from the shopping cart.
 
-The Shopping Cart Component is shown on the Buyer Product List. This displays the monkeys currently in the user's shopping cart as well as a button to checkout and a button for each monkey to remove from the shopping cart.
+There is also a Rental Page which displays the user's rented monkeys. After clicking on a monkey, there is an option to return the monkey. After returning the monkey, the user will be brought to a page which allows them to leave a review.
 
 
 ### ViewModel Tier
