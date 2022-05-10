@@ -23,10 +23,7 @@ An online E-store system built in Java 8=>11
 3. Open in your browser `http://localhost:8080/`
 
 ## Known bugs and disclaimers
-(It may be the case that your implementation is not perfect.)
 
-Document any known bug or nuisance.
-If any shortcomings, make clear what these are and where they are located.
 
 ## How to test it
 
@@ -49,15 +46,6 @@ To run tests on all the tiers in isolation do this:
 2. To view the Controller tier tests open in your browser the file at `PROJECT_API_HOME/target/site/jacoco/model/index.html`
 3. To view the Model tier tests open in your browser the file at `PROJECT_API_HOME/target/site/jacoco/model/index.html`
 4. To view the Persistence tier tests open in your browser the file at `PROJECT_API_HOME/target/site/jacoco/model/index.html`
-
-*(Consider using `mvn clean verify` to attest you have reached the target threshold for coverage)
-  
-  
-## How to generate the Design documentation PDF
-
-1. Access the `PROJECT_DOCS_HOME/` directory
-2. Execute `mvn exec:exec@docs`
-3. The generated PDF will be in `PROJECT_DOCS_HOME/` directory
 
 
 ## How to setup/run/test program 
