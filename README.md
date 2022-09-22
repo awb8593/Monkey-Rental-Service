@@ -1,4 +1,4 @@
-# E-Store: Monkey Rental e-store
+# Monkey Rental Service
 
 An online E-store system built in Java 8=>11
   
