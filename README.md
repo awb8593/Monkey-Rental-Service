@@ -1,6 +1,6 @@
 # Monkey Rental Service
 
-An online E-store system built in Java 8=>11
+An online web application system built in Java 8=>11
   
 ## Team
 
